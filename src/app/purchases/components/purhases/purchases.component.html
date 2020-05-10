@@ -1,0 +1,40 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container-fluid">
+                            <mat-tab-group color='primary'>
+                                
+                                <mat-tab>
+                                    <ng-template mat-tab-label>
+                                        <mat-icon mat-list-icon>shopping_basket</mat-icon>
+                                        <div class="titles-mat-tap">Servicios</div>
+                                    </ng-template>
+                                
+                                    <mat-list *ngFor="let item of purchases">
+                                        <mat-list-item>
+                                            <h5 mat-line> 
+                                                <button class="btn btn-sm">{{item}}</button>
+                                                Este mes
+                                            </h5>
+                                        </mat-list-item>
+                                    </mat-list>
+
+                                    <mat-list *ngIf="!purchases">
+                                        <mat-list-item>
+                                            <mat-icon color='warn' mat-list-icon>error_outline</mat-icon>
+                                            <h5 mat-line>Aun no tienes Servicios</h5>
+                                        </mat-list-item>
+                                    </mat-list>
+
+                                </mat-tab>
+                            </mat-tab-group>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

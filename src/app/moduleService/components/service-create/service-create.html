@@ -1,0 +1,33 @@
+
+<div class="card">
+        <!-- Buscador de registros -->
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-7" class="form-group">
+                <div class="d-flex flex-row bd-highlight mb-2">                    
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Columnas de registros -->
+        <div class="card-body">
+            <mat-form-field class="example-full-width">
+                <mat-label>Descripcion Servicio</mat-label>
+                <input matInput placeholder="Descripcion." />
+                <mat-icon matSuffix>description</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Estado Servicio</mat-label>
+                <mat-select [(ngModel)]="selectedValue" name="state">
+                    <mat-option *ngFor="let state of state" [value]="state.value">
+                        {{state.viewValue}}
+                        <mat-icon >done</mat-icon>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+        </div>
+        <div class="">
+            <button class="position_save" color="primary" mat-raised-button>Basic</button>
+        </div>
+    </div>

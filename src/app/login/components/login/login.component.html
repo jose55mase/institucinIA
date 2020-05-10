@@ -1,0 +1,69 @@
+<nav class="navbar justify-content-between nav-bar-logo">
+  <div class="content-nav-logo">
+    <a href="https://konecta.coo/"><img src="https://media-exp1.licdn.com/dms/image/C4E0BAQFdwEEcztaw2w/company-logo_200_200/0?e=2159024400&v=beta&t=vFfiqKWdxIOjnbcK1M27OFJxY8k-4tReoaBqUo7bzQs" width="88px"
+        height="64px"></a>
+
+    <div class="help">Ayuda</div>
+  </div>
+</nav>
+
+<br>
+<br>
+
+<div class="container"> 
+  <mat-card class="example-card">
+    <mat-card-header class="d-flex justify-content-center">
+      <mat-card-title><h3>KONECTA</h3></mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="d-flex justify-content-center">
+      <div class="row ">
+        <div class="col-sm-11">
+          <mat-form-field>
+            <input #username name="username" matInput placeholder="Ingresa usuario o correo" type="text">
+            <button mat-icon-button matSuffix>
+              <mat-icon>person
+              </mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-11">
+          <mat-form-field>
+            <input matInput #password name="password" placeholder="Ingresa tu contraseña"
+              [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-11 d-flex justify-content-center">
+          <button type="submit" 
+            [disabled]='(!password.value || !username.value)' 
+            mat-raised-button color='warn' 
+            (click)="logIn(username.value, password.value, $event)"
+            id="login-button">Ingresar</button>
+        </div>
+      </div>
+      
+      
+        
+      
+      
+    </mat-card-content>
+    <!-- <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions> -->
+  </mat-card>
+</div>
+
+<footer>
+  <div class="footer">
+    <div class="container1">
+      <div class="text-center">
+        <h6>© {{ year }} KONECTA</h6>
+      </div>
+    </div>
+  </div>
+</footer>

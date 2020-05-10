@@ -1,0 +1,151 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="row">
+                                        <div class="col">
+
+                                            <!-- Usuarios   -->
+                                            <mat-card class="mat-card-m">
+                                                <mat-card-header>
+                                                    <mat-card-title class="over-title">
+                                                        <mat-icon mat-list-icon>group_add</mat-icon>  Usuarios 
+                                                    </mat-card-title>
+                                                </mat-card-header>
+                                                <mat-card-content>
+                                                    <mat-list style="margin-left: 5%">
+                                                        <mat-list-item>
+                                                            <h5 mat-line> 
+                                                                <button [style.background-color]="countQuestions > 0 ? '#cf0a2c' : ''" (click)="openDialogQuestions()" class="btn btn-sm">{{ countQuestions }}</button>
+                                                                <a (click)="openDialogQuestions()" href="javascript:void(0)">  Total</a>
+                                                            </h5>
+                                                        </mat-list-item>
+                                                    </mat-list>
+                                                </mat-card-content>
+                                            </mat-card>
+                                        </div>
+                                        <div class="col">
+                                            <br>
+                                            <!-- Estadisticas    -->
+                                            <mat-card class="mat-card-m">
+                                                <mat-card-header>
+                                                    <mat-card-title class="over-title">
+                                                        <mat-icon mat-list-icon>calendar_today</mat-icon>  Estadisticas 
+                                                    </mat-card-title>
+                                                </mat-card-header>
+                                                <mat-card-content>
+                                                    <div class="row">
+                                                        <mat-tab-group>
+                                                            <mat-tab>
+                                                                <ng-template mat-tab-label>
+                                                                Diario
+                                                                </ng-template>
+                                                                <mat-list style="margin-left: 5%">
+                                                                    <mat-list-item>
+                                                                        <h5 mat-line> 
+                                                                            <button class="btn btn-sm">0</button>
+                                                                            Hoy
+                                                                        </h5>
+                                                                    </mat-list-item>
+
+                                                                    <mat-list-item>
+                                                                        <h5 mat-line> 
+                                                                            <button class="btn btn-sm">0</button>
+                                                                            Ayer
+                                                                        </h5>
+                                                                    </mat-list-item>
+                                                                </mat-list>
+                                                            </mat-tab>
+                                                            
+                                                            <mat-tab>
+                                                                <ng-template mat-tab-label>
+                                                                Semanal
+                                                                </ng-template>
+                                                                
+                                                                <mat-list style="margin-left: 5%">
+                                                                    <mat-list-item>
+                                                                        <h5 mat-line> 
+                                                                            <button class="btn btn-sm">0</button>
+                                                                            Desde el lunes
+                                                                        </h5>
+                                                                    </mat-list-item>
+
+                                                                    <mat-list-item>
+                                                                        <h5 mat-line> 
+                                                                            <button class="btn btn-sm">0</button>
+                                                                            Semana pasada
+                                                                        </h5>
+                                                                    </mat-list-item>
+
+                                                                    <mat-list-item>
+                                                                        <h5 mat-line> 
+                                                                            <button class="btn btn-sm">0</button>
+                                                                            Hace dos semanas
+                                                                        </h5>
+                                                                    </mat-list-item>
+                                                                </mat-list>
+                                                            </mat-tab>
+                                                            
+                                                            <mat-tab>
+                                                                <ng-template mat-tab-label>
+                                                                Mensual
+                                                                </ng-template>
+                                                            
+                                                                <mat-list style="margin-left: 5%">
+                                                                    <mat-list-item>
+                                                                        <h5 mat-line> 
+                                                                            <button class="btn btn-sm">0</button>
+                                                                            Este mes
+                                                                        </h5>
+                                                                    </mat-list-item>
+
+                                                                    <mat-list-item>
+                                                                        <h5 mat-line> 
+                                                                            <button class="btn btn-sm">0</button>
+                                                                            Mes pasado
+                                                                        </h5>
+                                                                    </mat-list-item>
+                                                                </mat-list>
+                                                            </mat-tab>
+                                                        </mat-tab-group>
+                                                    </div>
+                                                </mat-card-content>
+                                            </mat-card>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <mat-card class="mat-card-m">
+                                            <mat-card-header>
+                                                <mat-card-title class="over-title">
+                                                    Automatizacion control horario
+                                                </mat-card-title>
+                                            </mat-card-header>
+                                            
+                                            <mat-card-content>
+                                            <p>
+                                                <mat-progress-bar color='primary' mode="determinate" [value]='valueBar'></mat-progress-bar>
+                                                <span class="over-title">
+                                                    Modificaciones / Actualizaciones
+                                                </span>
+                                            </p>
+                                            </mat-card-content>
+                                            <mat-card-actions>
+                                        
+                                            </mat-card-actions>
+                                    </mat-card>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

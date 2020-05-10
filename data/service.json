@@ -1,0 +1,26 @@
+{
+    "data" :
+        [
+            {
+                "id":1,
+                "usuario":"konecta",
+                "clave":"12345"
+            }            
+        ],
+    "Service":[
+        {
+            "pkService": 1,
+            "idService": 1,
+            "descriptionService": "JOSE",
+            "stateService": "1"
+        },
+        {
+            "pkService": 2,
+            "idService": 2,
+            "descriptionService": "JOSE Update",
+            "stateService": "0"
+        }        
+    ]
+}
+    
+    
