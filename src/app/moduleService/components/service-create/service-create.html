@@ -1,6 +1,6 @@
 
 <div class="card">
-        <!-- Buscador de registros -->
+        <!-- Cabeceras registros -->
         <div class="row">
             <div class="col-sm-1"></div>
             <div class="col-sm-7" class="form-group">
@@ -9,25 +9,23 @@
                 </div>
             </div>
         </div>
-        <!-- Columnas de registros -->
-        <div class="card-body">
+        <!-- Columnas de registros -->   
+
+        <form [formGroup]="checkoutForm" >
             <mat-form-field class="example-full-width">
                 <mat-label>Descripcion Servicio</mat-label>
-                <input matInput placeholder="Descripcion." />
+                <input  matInput placeholder="Descripcion." formControlName="description"  />
                 <mat-icon matSuffix>description</mat-icon>
             </mat-form-field>
-            <mat-form-field>
-                <mat-label>Estado Servicio</mat-label>
-                <mat-select [(ngModel)]="selectedValue" name="state">
-                    <mat-option *ngFor="let state of state" [value]="state.value">
-                        {{state.viewValue}}
-                        <mat-icon >done</mat-icon>
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            
-        </div>
+        </form>
+        
         <div class="">
-            <button class="position_save" color="primary" mat-raised-button>Basic</button>
+            <button 
+                class="position_save btn-block" 
+                color="primary"
+                (click)="savedata()"
+                mat-raised-button>
+                Guargar
+            </button>
         </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input, Output,EventEmitter } from '@angular/core';
+
 
 import { ServiceService } from 'app/services/service.service';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
@@ -7,7 +7,11 @@ import { UserService } from 'app/login/services/user.service';
 import { ProductInterationService } from 'app/services/productInteration.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import Swal from'sweetalert2';
-import { User } from 'app/login/components/login/user/user.model';
+import { ModelService } from './../../../models/service.model';
+
+//Nuevos imports
+import { FormBuilder } from '@angular/forms';
+import { Component, OnInit, ViewChild, Input, Output,EventEmitter } from '@angular/core'; 
 
 
 interface state {
@@ -26,16 +30,34 @@ export class ServiceCreateComponent implements OnInit {
   
   selectedValue: string;
   selectedCar: string;
+  checkoutForm;
+  modelService : ModelService;
+
+  constructor(   
+    private formBuilder: FormBuilder,
+  ) {
+    this.checkoutForm = this.formBuilder.group({
+      description: '',      
+    });
+    console.log()
+    if(JSON.parse(sessionStorage.getItem("service")) != null){
+      this.modelService = JSON.parse(sessionStorage.getItem("service"))
+      this.checkoutForm.controls['description'].setValue(this.modelService.descriptionService)
+    }      
+  }
+  ngOnInit() {    
+    
+  }
 
   state: state[] = [
     {value: '0', viewValue: 'Desactivo'},
-    {value: '1', viewValue: 'Activo'},
-    
+    {value: '1', viewValue: 'Activo'},    
   ];
  
+  
 
-  ngOnInit() {
-    
+  public savedata(){
+    console.log(this.checkoutForm.value)
   }
 
 }
