@@ -14,6 +14,8 @@ import { AngularMaterialModule } from 'app/angular-material/angular-material.mod
 import { OverviewModule } from 'app/overview/overview.module';
 import { PurchasesModule } from 'app/purchases/purchases.module';
 import { ServiceModule } from 'app/moduleService/service.module';
+import { CountriesModule } from 'app/moduleCountries/service.module'
+
 
 @NgModule({
   imports: [
@@ -25,7 +27,9 @@ import { ServiceModule } from 'app/moduleService/service.module';
     HttpClientModule,
     OverviewModule,
     PurchasesModule,
-    ServiceModule
+    ServiceModule,
+    CountriesModule
+   
   ],
   declarations: [
     UserProfileComponent,

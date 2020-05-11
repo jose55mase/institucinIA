@@ -15,7 +15,7 @@ export const ROUTES: RouteInfo[] = [
   { path: '/service', title: 'Servicios', icon: 'shopping_basket', class: '' },
   { path: '/model/roles', title: 'Roles', icon: 'accessibility', class: '' },
   { path: '/model/client', title: 'Clientes', icon: 'people', class: '' },
-  { path: '/model/countries', title: 'Paises', icon: 'public', class: '' },
+  { path: '/countries', title: 'Paises', icon: 'public', class: '' },
 ];
 
 @Component({

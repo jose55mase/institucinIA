@@ -6,6 +6,7 @@ import { ProductsComponent } from 'app/components/products/products.component';
 import { OverviewComponent } from 'app/overview/components/overview/overview.component';
 import { PurchasesComponent } from 'app/purchases/components/purhases/purchases.component';
 import { ServiceComponent } from 'app/moduleService/components/service/service.component';
+import { CountriesComponent } from 'app/moduleCountries/components/countries.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
@@ -33,6 +34,14 @@ export const AdminLayoutRoutes: Routes = [
         children: [{
             path: 'service',
             loadChildren: () => import('../../moduleService/service.module').then(m => m.ServiceModule)
+        }],
+    },
+    {
+        path: 'countries',
+        component: CountriesComponent,
+        children: [{
+            path: 'countries',
+            loadChildren: () => import('../../moduleCountries/service.module').then(m => m.CountriesModule)
         }],
     },
 ];
