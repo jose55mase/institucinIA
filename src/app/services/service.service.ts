@@ -10,7 +10,7 @@ export class ServiceService {
 
   constructor(private http: HttpClient) { }
   getAllService(): Observable<any> {   
-    return this.http.get<any>('http://localhost:3000/Service')
+    return this.http.get<any>('http://localhost:9090/SpringMVC/api/service/list')
   }
   
 }

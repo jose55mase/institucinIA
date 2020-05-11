@@ -5,12 +5,12 @@ import { AngularMaterialModule } from 'app/angular-material/angular-material.mod
 import { OverviewModule } from 'app/overview/overview.module';
 import { CountriesComponent } from './components/countries.component';
 import { ListComponent } from './components/list/list.component';
-//import { ServiceCreateComponent } from './components/service-create/service-create'
+import { EstatusCountriesPipe } from 'app/pipes/estatus-countries.pipe';
 
 
 
 @NgModule({
-  declarations: [CountriesComponent,ListComponent ],
+  declarations: [CountriesComponent,ListComponent, EstatusCountriesPipe ],
   imports: [
     CommonModule,
     AngularMaterialModule,
