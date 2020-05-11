@@ -51,12 +51,17 @@ export class ServiceListComponent implements OnInit {
         case 1: // Listar
           this.showCRUDlist = true;
           this.showCRUDcreate = false;
-          break;
-      
+          sessionStorage.removeItem("service")
+          break;      
         default:
           break;
-      }
-      
+      }      
+   }
+
+   public editData(data:any){
+      sessionStorage.setItem("service",JSON.stringify(data))
+      this.showCRUDlist = false;
+      this.showCRUDcreate = true;
    }
   
   
