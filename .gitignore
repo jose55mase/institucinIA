@@ -1,0 +1,12 @@
+# Untracked files:
+#       Documentation/foo.html
+#       Documentation/gitignore.html
+#       file.o
+#       lib.a
+#       src/internal.o
+# ignore objects and archives, anywhere in the tree.
+# ignore generated html files,
+# except foo.html which is maintained by hand
+# Untracked files:
+#       Documentation/foo.html
+/node_modules
