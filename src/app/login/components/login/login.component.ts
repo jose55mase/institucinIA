@@ -77,7 +77,10 @@ export class LoginComponent implements OnInit {
         }
       },
       error => {
-        console.error(error);
+        this._snackBar.open("504 Error Servidor ", '😭', {
+          verticalPosition: 'top',
+          duration: 5000            
+        }) 
       },
     );
   }
