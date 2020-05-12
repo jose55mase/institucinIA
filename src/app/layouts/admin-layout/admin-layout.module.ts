@@ -15,6 +15,7 @@ import { OverviewModule } from 'app/overview/overview.module';
 import { PurchasesModule } from 'app/purchases/purchases.module';
 import { ServiceModule } from 'app/moduleService/service.module';
 import { CountriesModule } from 'app/moduleCountries/service.module'
+import { RolesModule } from 'app/moduleRoles/roles.module'
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { CountriesModule } from 'app/moduleCountries/service.module'
     OverviewModule,
     PurchasesModule,
     ServiceModule,
-    CountriesModule
+    CountriesModule,
+    RolesModule
    
   ],
   declarations: [

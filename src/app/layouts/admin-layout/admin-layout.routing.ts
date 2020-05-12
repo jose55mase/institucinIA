@@ -44,4 +44,13 @@ export const AdminLayoutRoutes: Routes = [
             loadChildren: () => import('../../moduleCountries/service.module').then(m => m.CountriesModule)
         }],
     },
+    {
+        path: 'roles',
+        component: CountriesComponent,
+        children: [{
+            path: 'roles',
+            loadChildren: () => import('../../moduleRoles/roles.module').then(m => m.RolesModule)
+        }],
+    },
 ];
+
