@@ -2,16 +2,16 @@ import { Routes } from '@angular/router';
 
 import { UserProfileComponent } from '../../components/user-profile/user-profile.component';
 import { NotificationsComponent } from '../../components/notifications/notifications.component';
-import { ProductsComponent } from 'app/components/products/products.component';
+
 import { OverviewComponent } from 'app/overview/components/overview/overview.component';
 import { PurchasesComponent } from 'app/purchases/components/purhases/purchases.component';
 import { ServiceComponent } from 'app/moduleService/components/service/service.component';
 import { CountriesComponent } from 'app/moduleCountries/components/countries.component';
-
+import { RolesComponent } from 'app/moduleRoles/components/roles.component'
+ 
 export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'notifications',  component: NotificationsComponent },
-    { path: 'products',  component: ProductsComponent },
+    { path: 'notifications',  component: NotificationsComponent },    
     {
         path: 'overview',
         component: OverviewComponent,
@@ -46,7 +46,7 @@ export const AdminLayoutRoutes: Routes = [
     },
     {
         path: 'roles',
-        component: CountriesComponent,
+        component: RolesComponent,
         children: [{
             path: 'roles',
             loadChildren: () => import('../../moduleRoles/roles.module').then(m => m.RolesModule)

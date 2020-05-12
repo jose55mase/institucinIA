@@ -1,14 +1,14 @@
 import { Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http'
-import { CountriesService } from 'app/services/countries.service';
+import { RolesService } from 'app/services/roles.service';
 
 
 @Component({
   selector: 'app-countries_list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  providers: [CountriesService],
+  providers: [RolesService],
 
 
 })
@@ -35,7 +35,7 @@ export class ListComponent implements OnInit {
   // Model
 
  
-  displayedColumns: string[] = ['Codigo', 'Nombre', 'Estado', 'Accion'];
+  displayedColumns: string[] = ['Codigo', 'Descripcion', 'Estado', 'Accion'];
   public usersList_Id: any;
   public estatus_data: string = '';
   public product_estatus: boolean = false;
@@ -75,7 +75,7 @@ export class ListComponent implements OnInit {
   
   // Constructor y Ng Init
   constructor(
-    private countriesService : CountriesService,
+    private rolesService : RolesService,
     
      
   ) {
@@ -94,7 +94,7 @@ export class ListComponent implements OnInit {
   }
 
   public getProductList() {
-    this.countriesService.getAllService().subscribe(
+    this.rolesService.getAllService().subscribe(
       (response) => {
         console.log("HOla jose", response)
 

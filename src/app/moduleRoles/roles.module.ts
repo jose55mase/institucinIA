@@ -5,12 +5,12 @@ import { AngularMaterialModule } from 'app/angular-material/angular-material.mod
 import { OverviewModule } from 'app/overview/overview.module';
 import { RolesComponent } from './components/roles.component';
 import { ListComponent } from './components/list/list.component';
-import { EstatusCountriesPipe } from 'app/pipes/estatus-countries.pipe';
+import { EstatusRolesPipe } from 'app/pipes/estatus-roles.pipe';
 
 
 
 @NgModule({
-  declarations: [RolesComponent,ListComponent,  ],
+  declarations: [RolesComponent,ListComponent, EstatusRolesPipe ],
   imports: [
     CommonModule,
     AngularMaterialModule,

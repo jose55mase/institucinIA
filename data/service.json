@@ -65,7 +65,7 @@
             "pkRol": 1,
             "idRol": 1,
             "descriptionRol": "Administrador",
-            "stateRol": 1
+            "stateRol": "1"
         }
     ]
 }
