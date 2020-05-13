@@ -2,6 +2,9 @@ import { Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild } fro
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http'
 import { RolesService } from 'app/services/roles.service';
+import { ModuleRoles } from 'app/models/roles.model';
+import Swal from 'sweetalert2';
+import { NotificationService } from 'app/services/notification-service';
 
 
 @Component({
@@ -32,6 +35,7 @@ export class ListComponent implements OnInit {
   //showCRUDlist : boolean = false;
   // Variables
   public data: any;
+  objet = new Object;
   // Model
 
  
@@ -59,7 +63,8 @@ export class ListComponent implements OnInit {
       case 1: // Listar
         this.showCRUDlist = true;
         this.showCRUDcreate = false;
-        sessionStorage.removeItem("service")
+        sessionStorage.removeItem("objectKonecta")
+        this.getProductList();
         break;
       default:
         break;
@@ -67,21 +72,42 @@ export class ListComponent implements OnInit {
   }
 
   public editData(data: any) {
-    sessionStorage.setItem("service", JSON.stringify(data))
+    sessionStorage.setItem("objectKonecta", JSON.stringify(data))
     this.showCRUDlist = false;
     this.showCRUDcreate = true;
+  }
+
+  public delete(data: ModuleRoles) {
+    if (data.descriptionRol=="0") {      
+      Swal.fire( "Listo" ,  "Este registro ya esta desactivo" ,  "warning" )
+      this.notificationService.alert('', "Ya Desactivo", 'warning');
+    }else{      
+      this.objet = {
+        descriptionRol : data.descriptionRol,
+        idRol : data.idRol,
+        pkRol: data.pkRol,
+        stateRol:"0",
+      }
+      this.rolesService.delete(this.objet).subscribe(
+        (response)=>{
+          this.getProductList();
+          this.notificationService.alert('', "Registro Desactivo", 'success');
+        },
+        (error)=>{
+          this.notificationService.alert('', "Error al Desactivar registro", 'error');
+        }
+      )
+    }
+
   }
 
   
   // Constructor y Ng Init
   constructor(
     private rolesService : RolesService,
-    
+    private notificationService: NotificationService,
      
-  ) {
-   
-    
-  }
+  ) {}
 
   ngOnInit() {
     this.getProductList();
@@ -95,10 +121,8 @@ export class ListComponent implements OnInit {
 
   public getProductList() {
     this.rolesService.getAllService().subscribe(
-      (response) => {
-        console.log("HOla jose", response)
-
-        this.data = new MatTableDataSource(response)
+      (response) => {        
+        this.data = new MatTableDataSource<ModuleRoles>(response)
         this.data.paginator = this.paginator = this.paginator
         this.data.applyFilter = this.applyFilter;
         this.paginator._intl.itemsPerPageLabel = 'Registros por pagina';
@@ -108,7 +132,7 @@ export class ListComponent implements OnInit {
         this.paginator._intl.previousPageLabel = 'Pagina atras';
 
       },
-      (error) => { console.log('No hay datos') }
+      (error) => { Swal.fire( "502 " ,  "Valida con el administrador" ,  "error" ) }
     )
   }
 }
