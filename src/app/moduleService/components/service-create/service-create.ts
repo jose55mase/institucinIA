@@ -1,17 +1,14 @@
 
 
 import { ServiceService } from 'app/services/service.service';
-import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
-import { ModelProduct } from 'app/models/product.model';
-import { UserService } from 'app/login/services/user.service';
-import { ProductInterationService } from 'app/services/productInteration.service';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 import Swal from'sweetalert2';
 import { ModelService } from './../../../models/service.model';
 
 //Nuevos imports
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder,Validators, FormControl } from '@angular/forms';
 import { Component, OnInit, ViewChild, Input, Output,EventEmitter } from '@angular/core'; 
+import { NotificationService } from 'app/services/notification-service';
 
 
 interface state {
@@ -32,18 +29,34 @@ export class ServiceCreateComponent implements OnInit {
   selectedCar: string;
   checkoutForm;
   modelService : ModelService;
+  objet = new Object;
 
-  constructor(   
+  public btnSaveDate : boolean = false;
+  public btnUpDate : boolean = false;
+
+  constructor(  
+    private notificationService : NotificationService,
     private formBuilder: FormBuilder,
+    private serviceService : ServiceService
   ) {
+    
+    
     this.checkoutForm = this.formBuilder.group({
-      description: '',      
+      
+      description: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(30)      
+      ])),     
     });
-    console.log()
+    
     if(JSON.parse(sessionStorage.getItem("service")) != null){
+      this.btnUpDate = true;
       this.modelService = JSON.parse(sessionStorage.getItem("service"))
       this.checkoutForm.controls['description'].setValue(this.modelService.descriptionService)
-    }      
+    }else{ this.btnSaveDate = true; }
+      
+     
   }
   ngOnInit() {    
     
@@ -57,7 +70,40 @@ export class ServiceCreateComponent implements OnInit {
   
 
   public savedata(){
-    console.log(this.checkoutForm.value)
+    var idServiceData = Date.now()
+    console.log(idServiceData)
+    this.objet = {
+      descriptionService : this.checkoutForm.value.description,
+      idService : idServiceData,
+      pkService: idServiceData,
+      stateService:"1",
+    }
+    console.log(this.objet)
+    this.serviceService.save(this.objet).subscribe(
+      (response)=>{
+        this.notificationService.alert('', "Registro guardado correctamente", 'success');
+      },
+      (error)=>{
+        this.notificationService.alert('', "Error al guardar", 'error');
+      }
+      )    
+  }
+
+  public update(data){    
+    this.objet = {
+      descriptionService : this.checkoutForm.value.description,
+      idService : this.modelService.pkService,
+      pkService: this.modelService.pkService,
+      stateService:"1",
+    }
+    this.serviceService.save(this.objet).subscribe(
+      (response)=>{
+        this.notificationService.alert('', "Registro actulizado correctamente", 'success');
+      },
+      (error)=>{
+        this.notificationService.alert('', "Error al guardar", 'error');
+      }
+      )    
   }
 
 }

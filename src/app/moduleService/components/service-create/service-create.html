@@ -14,18 +14,40 @@
         <form [formGroup]="checkoutForm" >
             <mat-form-field class="example-full-width">
                 <mat-label>Descripcion Servicio</mat-label>
-                <input  matInput placeholder="Descripcion." formControlName="description"  />
+                <input
+                 
+                    matInput 
+                    placeholder="Descripcion." 
+                    autocomplete="off" 
+                    formControlName="description"                   
+                  
+                />
                 <mat-icon matSuffix>description</mat-icon>
             </mat-form-field>
+            {{checkoutForm.get('description').value.length}}
+            <mat-error  *ngIf=" checkoutForm.get('description').value == '' && checkoutForm.get('description').touched "  >Este campo es obligatorio</mat-error>
+            
         </form>
         
-        <div class="">
+        <div *ngIf="btnSaveDate"  class="">
             <button 
                 class="position_save btn-block" 
                 color="primary"
                 (click)="savedata()"
+                [disabled]="!checkoutForm.valid"
                 mat-raised-button>
                 Guargar
+            </button>
+        </div>
+
+        <div *ngIf="btnUpDate" class="">
+            <button 
+                class="position_save btn-block" 
+                color="primary"
+                (click)="update()"
+                [disabled]="!checkoutForm.valid"
+                mat-raised-button>
+                Editar
             </button>
         </div>
     </div>

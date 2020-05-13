@@ -17,6 +17,9 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 import { LoginModule } from './login/login.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ToastrModule } from 'ngx-toastr';
+
+
 
 
 @NgModule({
@@ -30,6 +33,7 @@ import { environment } from '../environments/environment';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    ToastrModule.forRoot(), // ToastrModule added
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),

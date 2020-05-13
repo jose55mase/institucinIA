@@ -54,7 +54,7 @@
                                     <button mat-mini-fab color="primary" aria-label="" (click)="editData(row)">
                                       <mat-icon>edit</mat-icon>
                                     </button>
-                                    <button mat-mini-fab color="warn" aria-label="">
+                                    <button mat-mini-fab color="warn" aria-label="" (click)="delete(row)">
                                       <mat-icon>delete</mat-icon>
                                     </button>
                                 </mat-button-toggle-group>
@@ -82,7 +82,7 @@
           matTooltip="Info about the action"                          
           aria-label="Button that shows a red tooltip"
           color="warn"
-          matTooltip="Cancelar"
+          matTooltip="Salir"
           (click)="CRUD(1)"
           >          
           <mat-icon>close</mat-icon>
