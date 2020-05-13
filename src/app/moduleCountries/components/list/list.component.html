@@ -10,7 +10,7 @@
             matTooltip="Info about the action"                          
             aria-label="Button that shows a red tooltip"
             color="primary"
-            matTooltip="Crear nuevo servicio"
+            matTooltip="Crear nuevo pais"
             (click)="CRUD(2)"
             >
             <mat-icon>add</mat-icon>
@@ -54,7 +54,7 @@
                                       <button mat-mini-fab color="primary" aria-label="" (click)="editData(row)">
                                         <mat-icon>edit</mat-icon>
                                       </button>
-                                      <button mat-mini-fab color="warn" aria-label="">
+                                      <button mat-mini-fab color="warn" (click)="delete(row)" aria-label="">
                                         <mat-icon>delete</mat-icon>
                                       </button>
                                   </mat-button-toggle-group>
@@ -82,13 +82,13 @@
             matTooltip="Info about the action"                          
             aria-label="Button that shows a red tooltip"
             color="warn"
-            matTooltip="Cancelar"
+            matTooltip="Salir"
             (click)="CRUD(1)"
             >          
             <mat-icon>close</mat-icon>
           </button>  
           <div class="col-md-12">
-          
+            <app-countries_add></app-countries_add>
           </div>      
             
         </div>   

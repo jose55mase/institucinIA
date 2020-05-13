@@ -1,0 +1,53 @@
+
+<div class="card">
+  <!-- Cabeceras registros -->
+  <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-7" class="form-group">
+          <div class="d-flex flex-row bd-highlight mb-2">                    
+              
+          </div>
+      </div>
+  </div>
+  <!-- Columnas de registros -->   
+
+  <form [formGroup]="checkoutForm" >
+      <mat-form-field class="example-full-width">
+          <mat-label>Nombre Pais</mat-label>
+          <input
+           
+              matInput 
+              placeholder="Pais" 
+              autocomplete="off" 
+              formControlName="name"                   
+            
+          />
+          <mat-icon matSuffix>description</mat-icon>
+      </mat-form-field>
+      {{checkoutForm.get('name').value.length}}
+      <mat-error  *ngIf=" checkoutForm.get('name').value == '' && checkoutForm.get('name').touched "  >Este campo es obligatorio</mat-error>
+      
+  </form>
+  
+  <div *ngIf="btnSaveDate"  class="">
+      <button 
+          class="position_save btn-block" 
+          color="primary"
+          (click)="savedata()"
+          [disabled]="!checkoutForm.valid"
+          mat-raised-button>
+          Guargar
+      </button>
+  </div>
+
+  <div *ngIf="btnUpDate" class="">
+      <button 
+          class="position_save btn-block" 
+          color="primary"
+          (click)="update()"
+          [disabled]="!checkoutForm.valid"
+          mat-raised-button>
+          Editar
+      </button>
+  </div>
+</div>

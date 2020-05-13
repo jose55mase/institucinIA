@@ -1,6 +1,6 @@
 export  class ModelCountries{
     pkCountry;
     idCountry;
-    countryName;
-    countryState;
+    countryName :string;
+    countryState : number;
 }

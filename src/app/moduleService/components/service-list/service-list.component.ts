@@ -182,7 +182,7 @@ export class ServiceListComponent implements OnInit {
 
   public getProductList() {
     this.serviceService.getAllService().subscribe(
-      (response) => {
+      (response) => {       
         this.data = new MatTableDataSource(response)
         this.data.paginator = this.paginator = this.paginator
         this.data.applyFilter = this.applyFilter;
@@ -193,7 +193,7 @@ export class ServiceListComponent implements OnInit {
         this.paginator._intl.previousPageLabel = 'Pagina atras';
 
       },
-      (error) => { console.log('No hay datos') }
+      (error) => { Swal.fire( "502 " ,  "Valida con el administrador" ,  "error" ) }
     )
   }
 

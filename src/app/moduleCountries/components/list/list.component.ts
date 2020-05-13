@@ -2,7 +2,9 @@ import { Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild } fro
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http'
 import { CountriesService } from 'app/services/countries.service';
-
+import { ModelCountries } from 'app/models/countries.model';
+import Swal from 'sweetalert2';
+import { NotificationService } from 'app/services/notification-service';
 
 @Component({
   selector: 'app-countries_list',
@@ -32,6 +34,7 @@ export class ListComponent implements OnInit {
   //showCRUDlist : boolean = false;
   // Variables
   public data: any;
+  objet = new Object;
   // Model
 
  
@@ -50,7 +53,6 @@ export class ListComponent implements OnInit {
 
 
   public CRUD(crud: number, id?) {
-    console.log(crud)
     switch (crud) {
       case 2: // Crear
         this.showCRUDlist = false;
@@ -59,7 +61,8 @@ export class ListComponent implements OnInit {
       case 1: // Listar
         this.showCRUDlist = true;
         this.showCRUDcreate = false;
-        sessionStorage.removeItem("service")
+        sessionStorage.removeItem("objectKonecta")
+        this.getProductList();
         break;
       default:
         break;
@@ -67,21 +70,41 @@ export class ListComponent implements OnInit {
   }
 
   public editData(data: any) {
-    sessionStorage.setItem("service", JSON.stringify(data))
+    sessionStorage.setItem("objectKonecta", JSON.stringify(data))
     this.showCRUDlist = false;
     this.showCRUDcreate = true;
   }
+  public delete(data: ModelCountries) {
+    if (data.countryState==0) {      
+      Swal.fire( "Listo" ,  "Este registro ya esta desactivo" ,  "warning" )
+      this.notificationService.alert('', "Ya Desactivo", 'warning');
+    }else{
+      this.objet = {
+        countryName : data.countryName,
+        idCountry : data.idCountry,
+        pkCountry: data.pkCountry,
+        countryState:0,
+      }
+      this.countriesService.delete(this.objet).subscribe(
+        (response)=>{
+          this.getProductList();
+          this.notificationService.alert('', "Registro Desactivo", 'success');
+        },
+        (error)=>{
+          this.notificationService.alert('', "Error al Desactivar registro", 'error');
+        }
+      )
+    }
+
+  }
+
 
   
   // Constructor y Ng Init
   constructor(
     private countriesService : CountriesService,
-    
-     
-  ) {
-   
-    
-  }
+    private notificationService: NotificationService,
+  ) {}
 
   ngOnInit() {
     this.getProductList();
@@ -96,9 +119,7 @@ export class ListComponent implements OnInit {
   public getProductList() {
     this.countriesService.getAllService().subscribe(
       (response) => {
-        console.log("HOla jose", response)
-
-        this.data = new MatTableDataSource(response)
+        this.data = new MatTableDataSource<ModelCountries>(response)
         this.data.paginator = this.paginator = this.paginator
         this.data.applyFilter = this.applyFilter;
         this.paginator._intl.itemsPerPageLabel = 'Registros por pagina';
@@ -108,7 +129,7 @@ export class ListComponent implements OnInit {
         this.paginator._intl.previousPageLabel = 'Pagina atras';
 
       },
-      (error) => { console.log('No hay datos') }
+      (error) => { Swal.fire( "502 " ,  "Valida con el administrador" ,  "error" ) }
     )
   }
 }

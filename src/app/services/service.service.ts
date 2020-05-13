@@ -8,25 +8,25 @@ import { environment } from 'environments/environment';
   providedIn: 'root'
 })
 export class ServiceService {
-  URL: string;
+  URI: string;
   constructor(private http: HttpClient) { 
-    this.URL = `${environment.apiUrl}`
+    this.URI = `${environment.apiUrl}`
   }
 
   getAllService(): Observable<any> {   
-    return this.http.get<any>(`${this.URL}/service/list`)
+    return this.http.get<any>(`${this.URI}/service/list`)
   }
 
   save(data): Observable<any> {   
-    return this.http.post<any>(`${this.URL}/service/save`,data)
+    return this.http.post<any>(`${this.URI}/service/save`,data)
   }
 
   update(data): Observable<any> {   
-    return this.http.post<any>(`${this.URL}/service/save`,data)
+    return this.http.post<any>(`${this.URI}/service/save`,data)
   }
 
   delete(data): Observable<any> {   
-    return this.http.post<any>(`${this.URL}/service/delete`,data)
+    return this.http.post<any>(`${this.URI}/service/delete`,data)
   }
   
 }
