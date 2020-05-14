@@ -64,7 +64,7 @@ export class AddComponent implements OnInit {
   public savedata(){
     var idesData = Date.now()
     this.objet = {
-      name : this.checkoutForm.value.rol,
+      name : this.checkoutForm.value.client,
       id : idesData,
       uid: idesData,
       state:"1",
@@ -83,7 +83,7 @@ export class AddComponent implements OnInit {
   public update(data:ModuleRoles){
     console.log(data) 
     this.objet = {
-      name : this.checkoutForm.value.rol,
+      name : this.checkoutForm.value.client,
       id : this.moduleRoles.id,
       uid: this.moduleRoles.uid,
       state:1,
