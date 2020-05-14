@@ -77,10 +77,11 @@ export class AddComponent implements OnInit {
       (error)=>{
         this.notificationService.alert('❌', "Error al guardar", 'error');
       }
-      )    
+    )    
   }
 
-  public update(data:ModuleRoles){    
+  public update(data:ModuleRoles){
+    console.log(data) 
     this.objet = {
       name : this.checkoutForm.value.rol,
       id : this.moduleRoles.id,
