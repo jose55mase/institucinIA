@@ -1,20 +1,17 @@
 import { Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
-import { HttpClient } from '@angular/common/http'
-import { CountriesService } from 'app/services/countries.service';
-import { ModelCountries } from 'app/models/countries.model';
 import { NotificationService } from 'app/services/notification-service';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ModuleRoles } from 'app/models/roles.model';
 import { RolesService } from 'app/services/roles.service';
+import { ClientService } from 'app/services/client.service';
 
 
 
 @Component({
-  selector: 'app-countries_add',
+  selector: 'app-client_add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss'],
-  providers: [CountriesService],
+  providers: [ClientService],
 
 
 })
@@ -32,13 +29,13 @@ export class AddComponent implements OnInit {
   constructor(  
     private notificationService : NotificationService,
     private formBuilder: FormBuilder,
-    private rolesService : RolesService
+    private clientService : ClientService
   ) {
     
     
     this.checkoutForm = this.formBuilder.group({
       
-      rol: new FormControl('',Validators.compose([
+      client: new FormControl('',Validators.compose([
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(30)      
@@ -48,7 +45,7 @@ export class AddComponent implements OnInit {
     if(JSON.parse(sessionStorage.getItem("objectKonecta")) != null){
       this.btnUpDate = true;
       this.moduleRoles = JSON.parse(sessionStorage.getItem("objectKonecta"))
-      this.checkoutForm.controls['rol'].setValue(this.moduleRoles.name)
+      this.checkoutForm.controls['client'].setValue(this.moduleRoles.name)
     }else{ this.btnSaveDate = true; }
       
      
@@ -72,7 +69,7 @@ export class AddComponent implements OnInit {
       uid: idesData,
       state:"1",
     }    
-    this.rolesService.save(this.objet).subscribe(
+    this.clientService.save(this.objet).subscribe(
       (response)=>{
         this.notificationService.alert('✔', "Registro guardado correctamente", 'success');
         this.checkoutForm.rest
@@ -91,7 +88,7 @@ export class AddComponent implements OnInit {
       state:1,
     }
     console.log(this.objet)
-    this.rolesService.update(this.objet).subscribe(
+    this.clientService.update(this.objet).subscribe(
       (response)=>{
         this.notificationService.alert('✔', "Registro actulizado correctamente", 'success');
       },

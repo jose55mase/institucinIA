@@ -75,15 +75,15 @@ export class ListComponent implements OnInit {
     this.showCRUDcreate = true;
   }
   public delete(data: ModelCountries) {
-    if (data.countryState==0) {      
+    if (data.state==0) {      
       Swal.fire( "Listo" ,  "Este registro ya esta desactivo" ,  "warning" )
       this.notificationService.alert('', "Ya Desactivo", 'warning');
     }else{
       this.objet = {
-        countryName : data.countryName,
-        idCountry : data.idCountry,
-        pkCountry: data.pkCountry,
-        countryState:0,
+        name : data.name,
+        id : data.id,
+        uid: data.uid,
+        state:0,
       }
       this.countriesService.delete(this.objet).subscribe(
         (response)=>{

@@ -1,6 +1,6 @@
 export  class ModelProduct{
-    pkRol;
-    idRol;
-    descriptionRol;
-    stateRol;
+    uid;
+    id;
+    name;
+    state;
 }

@@ -53,7 +53,7 @@ export class ServiceCreateComponent implements OnInit {
     if(JSON.parse(sessionStorage.getItem("service")) != null){
       this.btnUpDate = true;
       this.modelService = JSON.parse(sessionStorage.getItem("service"))
-      this.checkoutForm.controls['description'].setValue(this.modelService.descriptionService)
+      this.checkoutForm.controls['description'].setValue(this.modelService.name)
     }else{ this.btnSaveDate = true; }
       
      
@@ -70,13 +70,13 @@ export class ServiceCreateComponent implements OnInit {
   
 
   public savedata(){
-    var idServiceData = Date.now()
-    console.log(idServiceData)
+    var idData = Date.now()
+    console.log(idData)
     this.objet = {
-      descriptionService : this.checkoutForm.value.description,
-      idService : idServiceData,
-      pkService: idServiceData,
-      stateService:"1",
+      name : this.checkoutForm.value.description,
+      id : idData,
+      uid: idData,
+      state:"1",
     }
     console.log(this.objet)
     this.serviceService.save(this.objet).subscribe(
@@ -91,10 +91,10 @@ export class ServiceCreateComponent implements OnInit {
 
   public update(data){    
     this.objet = {
-      descriptionService : this.checkoutForm.value.description,
-      idService : this.modelService.pkService,
-      pkService: this.modelService.pkService,
-      stateService:"1",
+      name : this.checkoutForm.value.description,
+      id : this.modelService.uid,
+      uid: this.modelService.uid,
+      state:"1",
     }
     this.serviceService.save(this.objet).subscribe(
       (response)=>{

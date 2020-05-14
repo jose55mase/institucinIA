@@ -37,16 +37,16 @@
 
                                 <ng-container matColumnDef="Codigo">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Codigo </th>
-                                    <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.idCountry}} </td>
+                                    <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.id}} </td>
                                 </ng-container>
                                 <ng-container matColumnDef="Nombre">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Nombre </th>
-                                    <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.countryName }} </td>
+                                    <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.name }} </td>
                                 </ng-container>
                                 
                                 <ng-container matColumnDef="Estado">
                                   <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Estado </th>
-                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.countryState | estatusCountries }} </td>
+                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.state | estatusCountries }} </td>
                                 </ng-container>
                                 <ng-container matColumnDef="Accion">
                                   <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Accion </th>

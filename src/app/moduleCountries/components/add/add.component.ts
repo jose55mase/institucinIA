@@ -46,7 +46,7 @@ export class AddComponent implements OnInit {
     if(JSON.parse(sessionStorage.getItem("objectKonecta")) != null){
       this.btnUpDate = true;
       this.modelCountries = JSON.parse(sessionStorage.getItem("objectKonecta"))
-      this.checkoutForm.controls['name'].setValue(this.modelCountries.countryName)
+      this.checkoutForm.controls['name'].setValue(this.modelCountries.name)
     }else{ this.btnSaveDate = true; }
       
      
@@ -57,18 +57,18 @@ export class AddComponent implements OnInit {
 
  /*
    ======= Body Objeto ====
-  pkCountry;
-  idCountry;
-  countryName;
-  countryState;
+  uid;
+  id;
+  name;
+  state;
   */
   public savedata(){
     var idCountriesData = Date.now()
     this.objet = {
-      countryName : this.checkoutForm.value.name,
-      idCountry : idCountriesData,
-      pkCountry: idCountriesData,
-      countryState:"1",
+      name : this.checkoutForm.value.name,
+      id : idCountriesData,
+      uid: idCountriesData,
+      state:"1",
     }
     this.countriesService.save(this.objet).subscribe(
       (response)=>{
@@ -83,10 +83,10 @@ export class AddComponent implements OnInit {
 
   public update(data){    
     this.objet = {
-      countryName : this.checkoutForm.value.name,
-      idCountry : this.modelCountries.idCountry,
-      pkCountry: this.modelCountries.pkCountry,
-      countryState:"1",
+      name : this.checkoutForm.value.name,
+      id : this.modelCountries.id,
+      uid: this.modelCountries.uid,
+      state:"1",
     }
     this.countriesService.update(this.objet).subscribe(
       (response)=>{

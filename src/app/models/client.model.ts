@@ -1,4 +1,4 @@
-export  class ModelService{
+export  class ModelClient{
     name;
     id;
     uid;

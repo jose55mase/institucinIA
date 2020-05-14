@@ -8,6 +8,7 @@ import { PurchasesComponent } from 'app/purchases/components/purhases/purchases.
 import { ServiceComponent } from 'app/moduleService/components/service/service.component';
 import { CountriesComponent } from 'app/moduleCountries/components/countries.component';
 import { RolesComponent } from 'app/moduleRoles/components/roles.component'
+import { ClientComponent } from 'app/moduleClient/components/client.component';
  
 export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
@@ -50,6 +51,14 @@ export const AdminLayoutRoutes: Routes = [
         children: [{
             path: 'roles',
             loadChildren: () => import('../../moduleRoles/roles.module').then(m => m.RolesModule)
+        }],
+    },
+    {
+        path: 'client',
+        component: ClientComponent,
+        children: [{
+            path: 'client',
+            loadChildren: () => import('../../moduleClient/client.module').then(m => m.ClientModule)
         }],
     },
 ];

@@ -69,15 +69,15 @@ export class ServiceListComponent implements OnInit {
   }
 
   public delete(data: ModelService) {
-    if (data.stateService=="0") {      
+    if (data.state=="0") {      
       Swal.fire( "Listo" ,  "Este registro ya esta desactivo" ,  "warning" )
       this.notificationService.alert('', "Ya Desactivo", 'warning');
     }else{
       this.objet = {
-        descriptionService : data.descriptionService,
-        idService : data.idService,
-        pkService: data.pkService,
-        stateService:"0",
+        name : data.name,
+        id : data.id,
+        uid: data.uid,
+        state:"0",
       }
       this.serviceService.delete(this.objet).subscribe(
         (response)=>{

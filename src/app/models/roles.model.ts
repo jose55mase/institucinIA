@@ -1,6 +1,6 @@
 export class ModuleRoles{
-    pkRol: number;
-    idRol: number;
-    descriptionRol:string;
-    stateRol: number;
+    uid: number;
+    id: number;
+    name:string;
+    state: number;
 }

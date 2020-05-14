@@ -9,63 +9,63 @@
         ],
     "Service":[
         {
-            "pkService": 1,
-            "idService": 1,
-            "descriptionService": "JOSE",
-            "stateService": "1"
+            "uid": 1,
+            "id": 1,
+            "name": "JOSE",
+            "state": "1"
         },
         {
-            "pkService": 2,
-            "idService": 2,
-            "descriptionService": "JOSE Update",
-            "stateService": "0"
+            "uid": 2,
+            "id": 2,
+            "name": "JOSE Update",
+            "state": "0"
         },
         {
-            "pkService": 1,
-            "idService": 1,
-            "descriptionService": "JOSE",
-            "stateService": "1"
+            "uid": 1,
+            "id": 1,
+            "name": "JOSE",
+            "state": "1"
         },
         {
-            "pkService": 2,
-            "idService": 2,
-            "descriptionService": "JOSE Update",
-            "stateService": "0"
+            "uid": 2,
+            "id": 2,
+            "name": "JOSE Update",
+            "state": "0"
         },
         {
-            "pkService": 1,
-            "idService": 1,
-            "descriptionService": "JOSE",
-            "stateService": "1"
+            "uid": 1,
+            "id": 1,
+            "name": "JOSE",
+            "state": "1"
         },
         {
-            "pkService": 2,
-            "idService": 2,
-            "descriptionService": "JOSE Update",
-            "stateService": "0"
+            "uid": 2,
+            "id": 2,
+            "name": "JOSE Update",
+            "state": "0"
         }
 
     ],
     "Countries":[
         {
-            "pkCountry": 1,
-            "idCountry": 1,
-            "countryName": "Colombia Update",
-            "countryState": "0"
+            "uid": 1,
+            "id": 1,
+            "name": "Colombia Update",
+            "state": "0"
         },
         {
-            "pkCountry": 0,
-            "idCountry": 0,
-            "countryName": "España",
-            "countryState": "1"
+            "uid": 0,
+            "id": 0,
+            "name": "España",
+            "state": "1"
         }
     ],
     "Roles":[
         {
-            "pkRol": 1,
-            "idRol": 1,
-            "descriptionRol": "Administrador",
-            "stateRol": "1"
+            "uid": 1,
+            "id": 1,
+            "name": "Administrador",
+            "state": "1"
         }
     ]
 }

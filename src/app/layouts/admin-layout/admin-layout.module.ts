@@ -13,6 +13,7 @@ import { PurchasesModule } from 'app/purchases/purchases.module';
 import { ServiceModule } from 'app/moduleService/service.module';
 import { CountriesModule } from 'app/moduleCountries/service.module'
 import { RolesModule } from 'app/moduleRoles/roles.module'
+import { ClientModule } from 'app/moduleClient/client.module';
 
 
 @NgModule({
@@ -27,8 +28,8 @@ import { RolesModule } from 'app/moduleRoles/roles.module'
     PurchasesModule,
     ServiceModule,
     CountriesModule,
-    RolesModule
-   
+    RolesModule,
+    ClientModule
   ],
   declarations: [
     UserProfileComponent,
