@@ -56,8 +56,7 @@ export class LoginComponent implements OnInit {
     );
     */
     this.loginService.login().subscribe(
-      res => { 
-        console.log(username)       
+      res => {                
         if (res[0].usuario == username && res[0].clave == password) {
           //const u: User = { username: username, tkn: res.result.access_token};
           this._snackBar.open("KONECTA", '✅', {
