@@ -7,43 +7,15 @@
                 "clave":"12345"
             }            
         ],
-    "Service":[
+    "Materias":[
         {
-            "uid": 1,
+            
             "id": 1,
-            "name": "JOSE",
-            "state": "1"
-        },
-        {
-            "uid": 2,
-            "id": 2,
-            "name": "JOSE Update",
-            "state": "0"
-        },
-        {
-            "uid": 1,
-            "id": 1,
-            "name": "JOSE",
-            "state": "1"
-        },
-        {
-            "uid": 2,
-            "id": 2,
-            "name": "JOSE Update",
-            "state": "0"
-        },
-        {
-            "uid": 1,
-            "id": 1,
-            "name": "JOSE",
-            "state": "1"
-        },
-        {
-            "uid": 2,
-            "id": 2,
-            "name": "JOSE Update",
-            "state": "0"
+            "name": "Matematicas",
+            "state": 0
         }
+        
+        
 
     ],
     "Countries":[

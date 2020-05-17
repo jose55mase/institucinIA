@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { NotificationService } from 'app/services/notification-service';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
-import { ModuleRoles } from 'app/models/roles.model';
-import { RolesService } from 'app/services/roles.service';
+import { ModuleRoles } from 'app/models/asignature.model';
+import { RolesService } from 'app/services/asignature.service';
 import { ClientService } from 'app/services/client.service';
 
 

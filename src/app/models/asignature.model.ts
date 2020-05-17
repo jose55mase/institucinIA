@@ -1,5 +1,4 @@
-export class ModuleRoles{
-    uid: number;
+export class ModuleAsignature{
     id: number;
     name:string;
     state: number;

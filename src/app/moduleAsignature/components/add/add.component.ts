@@ -5,13 +5,13 @@ import { CountriesService } from 'app/services/countries.service';
 import { ModelCountries } from 'app/models/countries.model';
 import { NotificationService } from 'app/services/notification-service';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
-import { ModuleRoles } from 'app/models/roles.model';
-import { RolesService } from 'app/services/roles.service';
+import { ModuleAsignature } from 'app/models/asignature.model';
+import { AsignatureService } from 'app/services/asignature.service';
 
 
 
 @Component({
-  selector: 'app-countries_add',
+  selector: 'app-asignature_add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss'],
   providers: [CountriesService],
@@ -23,7 +23,7 @@ export class AddComponent implements OnInit {
   selectedValue: string;
   selectedCar: string;
   checkoutForm;
-  moduleRoles : ModuleRoles;
+  moduleRoles : ModuleAsignature;
   objet = new Object;
 
   public btnSaveDate : boolean = false;
@@ -32,13 +32,13 @@ export class AddComponent implements OnInit {
   constructor(  
     private notificationService : NotificationService,
     private formBuilder: FormBuilder,
-    private rolesService : RolesService
+    private rolesService : AsignatureService
   ) {
     
     
     this.checkoutForm = this.formBuilder.group({
       
-      rol: new FormControl('',Validators.compose([
+      Materia: new FormControl('',Validators.compose([
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(30)      
@@ -48,7 +48,7 @@ export class AddComponent implements OnInit {
     if(JSON.parse(sessionStorage.getItem("objectKonecta")) != null){
       this.btnUpDate = true;
       this.moduleRoles = JSON.parse(sessionStorage.getItem("objectKonecta"))
-      this.checkoutForm.controls['rol'].setValue(this.moduleRoles.name)
+      this.checkoutForm.controls['Materia'].setValue(this.moduleRoles.name)
     }else{ this.btnSaveDate = true; }
       
      
@@ -67,7 +67,7 @@ export class AddComponent implements OnInit {
   public savedata(){
     var idesData = Date.now()
     this.objet = {
-      name : this.checkoutForm.value.rol,
+      name : this.checkoutForm.value.Materia,
       id : idesData,
       uid: idesData,
       state:"1",
@@ -83,11 +83,11 @@ export class AddComponent implements OnInit {
       )    
   }
 
-  public update(data:ModuleRoles){    
+  public update(data:ModuleAsignature){    
     this.objet = {
-      name : this.checkoutForm.value.rol,
+      name : this.checkoutForm.value.Materia,
       id : this.moduleRoles.id,
-      uid: this.moduleRoles.uid,
+    
       state:1,
     }
     console.log(this.objet)

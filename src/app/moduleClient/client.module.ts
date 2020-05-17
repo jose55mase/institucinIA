@@ -5,12 +5,12 @@ import { AngularMaterialModule } from 'app/angular-material/angular-material.mod
 import { OverviewModule } from 'app/overview/overview.module';
 import { ClientComponent } from './components/client.component';
 import { ListComponent } from './components/list/list.component';
-import { AddComponent } from 'app/moduleClient/components/add/add.component'
+//import { AddComponent } from 'app/moduleClient/components/add/add.component'
 import { EstatusClientPipe } from 'app/pipes/estatus-client.pipe';
 
 
 @NgModule({
-  declarations: [ClientComponent, ListComponent, AddComponent, EstatusClientPipe],
+  declarations: [ClientComponent, ListComponent, EstatusClientPipe],
   imports: [
     CommonModule,
     AngularMaterialModule,

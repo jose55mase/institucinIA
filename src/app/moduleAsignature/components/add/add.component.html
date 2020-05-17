@@ -13,19 +13,19 @@
 
   <form [formGroup]="checkoutForm" >
       <mat-form-field class="example-full-width">
-          <mat-label>Descripcion Rol</mat-label>
+          <mat-label>Descripcion Materia</mat-label>
           <input
            
               matInput 
-              placeholder="Rol" 
+              placeholder="Materia" 
               autocomplete="off" 
-              formControlName="rol"                   
+              formControlName="Materia"                   
             
           />
           <mat-icon matSuffix>description</mat-icon>
       </mat-form-field>
-      {{checkoutForm.get('rol').value.length}}
-      <mat-error  *ngIf=" checkoutForm.get('rol').value == '' && checkoutForm.get('rol').touched "  >Este campo es obligatorio</mat-error>
+      {{checkoutForm.get('Materia').value.length}}
+      <mat-error  *ngIf=" checkoutForm.get('Materia').value == '' && checkoutForm.get('Materia').touched "  >Este campo es obligatorio</mat-error>
       
   </form>
   

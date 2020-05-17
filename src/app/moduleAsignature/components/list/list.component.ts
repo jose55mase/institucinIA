@@ -1,17 +1,17 @@
 import { Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http'
-import { RolesService } from 'app/services/roles.service';
-import { ModuleRoles } from 'app/models/roles.model';
+import { AsignatureService } from 'app/services/asignature.service';
+import { ModuleAsignature } from 'app/models/asignature.model';
 import Swal from 'sweetalert2';
 import { NotificationService } from 'app/services/notification-service';
 
 
 @Component({
-  selector: 'app-countries_list',
+  selector: 'app-asignature_list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  providers: [RolesService],
+  providers: [AsignatureService],
 
 
 })
@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
   /**
  * 
  * @param serviceService 
- * @param users  Konecta
+ * @param users  ruth
  * @param dialog 
  * @param _productInterationService 
  * @param modalService 
@@ -77,15 +77,14 @@ export class ListComponent implements OnInit {
     this.showCRUDcreate = true;
   }
 
-  public delete(data: ModuleRoles) {
-    if (data.name=="0") {      
-      Swal.fire( "Listo" ,  "Este registro ya esta desactivo" ,  "warning" )
+  public delete(data: ModuleAsignature) {
+    if (data.state==0) {      
+      Swal.fire( "128110" ,  "Este registro ya esta desactivo" ,  "warning" )
       this.notificationService.alert('', "Ya Desactivo", 'warning');
     }else{      
       this.objet = {
         name : data.name,
         id : data.id,
-        uid: data.uid,
         state:"0",
       }
       this.rolesService.delete(this.objet).subscribe(
@@ -104,7 +103,7 @@ export class ListComponent implements OnInit {
   
   // Constructor y Ng Init
   constructor(
-    private rolesService : RolesService,
+    private rolesService : AsignatureService,
     private notificationService: NotificationService,
      
   ) {}
@@ -122,7 +121,7 @@ export class ListComponent implements OnInit {
   public getProductList() {
     this.rolesService.getAllService().subscribe(
       (response) => {        
-        this.data = new MatTableDataSource<ModuleRoles>(response)
+        this.data = new MatTableDataSource<ModuleAsignature>(response)
         this.data.paginator = this.paginator = this.paginator
         this.data.applyFilter = this.applyFilter;
         this.paginator._intl.itemsPerPageLabel = 'Registros por pagina';
