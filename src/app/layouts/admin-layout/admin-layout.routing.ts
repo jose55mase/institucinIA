@@ -6,7 +6,7 @@ import { NotificationsComponent } from '../../components/notifications/notificat
 import { OverviewComponent } from 'app/overview/components/overview/overview.component';
 import { PurchasesComponent } from 'app/purchases/components/purhases/purchases.component';
 import { CountriesComponent } from 'app/moduleCountries/components/countries.component';
-import { RolesComponent } from 'app/moduleRoles/components/roles.component'
+import { AsignatureComponent } from 'app/moduleAsignature/components/asignature.component'
 import { ClientComponent } from 'app/moduleClient/components/client.component';
 import { SubjectsComponent } from 'app/moduleNote/components/subjects/subjects.component';
  
@@ -46,11 +46,11 @@ export const AdminLayoutRoutes: Routes = [
         }],
     },
     {
-        path: 'roles',
-        component: RolesComponent,
+        path: 'asignature',
+        component: AsignatureComponent,
         children: [{
-            path: 'roles',
-            loadChildren: () => import('../../moduleRoles/roles.module').then(m => m.RolesModule)
+            path: 'asignature',
+            loadChildren: () => import('../../moduleAsignature/asignature.module').then(m => m.AsignatureModule)
         }],
     },
     {

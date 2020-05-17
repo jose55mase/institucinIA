@@ -4,14 +4,14 @@ import { HttpClient } from '@angular/common/http'
 
 
 @Component({
-  selector: 'app-roles',
-  templateUrl: './roles.component.html',
-  styleUrls: ['./roles.component.css'],
+  selector: 'app-asignature',
+  templateUrl: './asignature.component.html',
+  styleUrls: ['./asignature.component.css'],
   providers: [],
   
   
 })
-export class RolesComponent implements OnInit {
+export class AsignatureComponent implements OnInit {
     ngOnInit(){
 
     }

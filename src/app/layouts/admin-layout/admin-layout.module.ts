@@ -11,7 +11,7 @@ import { AngularMaterialModule } from 'app/angular-material/angular-material.mod
 import { OverviewModule } from 'app/overview/overview.module';
 import { PurchasesModule } from 'app/purchases/purchases.module';
 import { CountriesModule } from 'app/moduleCountries/service.module'
-import { RolesModule } from 'app/moduleRoles/roles.module'
+import { AsignatureModule } from 'app/moduleAsignature/asignature.module'
 import { ClientModule } from 'app/moduleClient/client.module';
 import { SubjectsModule } from 'app/moduleNote/subjects.module';
 
@@ -28,7 +28,7 @@ import { SubjectsModule } from 'app/moduleNote/subjects.module';
     PurchasesModule,
     SubjectsModule,
     CountriesModule,
-    RolesModule,
+    AsignatureModule,
     ClientModule
   ],
   declarations: [
