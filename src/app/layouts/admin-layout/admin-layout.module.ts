@@ -12,7 +12,7 @@ import { OverviewModule } from 'app/overview/overview.module';
 import { PurchasesModule } from 'app/purchases/purchases.module';
 import { ServiceModule } from 'app/moduleService/service.module';
 import { CountriesModule } from 'app/moduleCountries/service.module'
-import { RolesModule } from 'app/moduleRoles/roles.module'
+import { AsignatureModule } from 'app/moduleAsignature/asignature.module'
 import { ClientModule } from 'app/moduleClient/client.module';
 
 
@@ -28,7 +28,7 @@ import { ClientModule } from 'app/moduleClient/client.module';
     PurchasesModule,
     ServiceModule,
     CountriesModule,
-    RolesModule,
+    AsignatureModule,
     ClientModule
   ],
   declarations: [
