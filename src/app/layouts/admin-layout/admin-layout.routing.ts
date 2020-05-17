@@ -6,10 +6,12 @@ import { NotificationsComponent } from '../../components/notifications/notificat
 import { OverviewComponent } from 'app/overview/components/overview/overview.component';
 import { PurchasesComponent } from 'app/purchases/components/purhases/purchases.component';
 import { CountriesComponent } from 'app/moduleCountries/components/countries.component';
-import { AsignatureComponent } from 'app/moduleAsignature/components/asignature.component'
 import { ClientComponent } from 'app/moduleClient/components/client.component';
 import { SubjectsComponent } from 'app/moduleNote/components/subjects/subjects.component';
- 
+import { AsignatureComponent } from 'app/moduleAsignature/components/asignature.component'
+import { UsersComponent } from 'app/moduleUsers/components/users.component'
+
+
 export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'notifications',  component: NotificationsComponent },    
@@ -59,6 +61,14 @@ export const AdminLayoutRoutes: Routes = [
         children: [{
             path: 'client',
             loadChildren: () => import('../../moduleClient/client.module').then(m => m.ClientModule)
+        }],
+    },
+    {
+        path: 'users',
+        component: UsersComponent,
+        children: [{
+            path: 'users',
+            loadChildren: () => import('../../moduleUsers/users.module').then(m => m.UsersModule)
         }],
     },
 ];

@@ -14,6 +14,8 @@ import { CountriesModule } from 'app/moduleCountries/service.module'
 import { AsignatureModule } from 'app/moduleAsignature/asignature.module'
 import { ClientModule } from 'app/moduleClient/client.module';
 import { SubjectsModule } from 'app/moduleNote/subjects.module';
+import { UsersModule } from 'app/moduleUsers/users.module';
+
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { SubjectsModule } from 'app/moduleNote/subjects.module';
     SubjectsModule,
     CountriesModule,
     AsignatureModule,
-    ClientModule
+    ClientModule,
+    UsersModule
   ],
   declarations: [
     UserProfileComponent,

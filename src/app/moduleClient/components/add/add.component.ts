@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { NotificationService } from 'app/services/notification-service';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
-import { ModuleRoles } from 'app/models/asignature.model';
-import { RolesService } from 'app/services/asignature.service';
+import { ModuleAsignature } from 'app/models/asignature.model';
+
 import { ClientService } from 'app/services/client.service';
 
 
@@ -20,7 +20,7 @@ export class AddComponent implements OnInit {
   selectedValue: string;
   selectedCar: string;
   checkoutForm;
-  moduleRoles : ModuleRoles;
+  moduleRoles : ModuleAsignature;
   objet = new Object;
 
   public btnSaveDate : boolean = false;
@@ -45,7 +45,7 @@ export class AddComponent implements OnInit {
     if(JSON.parse(sessionStorage.getItem("objectKonecta")) != null){
       this.btnUpDate = true;
       this.moduleRoles = JSON.parse(sessionStorage.getItem("objectKonecta"))
-      this.checkoutForm.controls['client'].setValue(this.moduleRoles.name)
+     // this.checkoutForm.controls['client'].setValue(this.ModuleAsignature.name)
     }else{ this.btnSaveDate = true; }
       
      
@@ -66,7 +66,7 @@ export class AddComponent implements OnInit {
     this.objet = {
       name : this.checkoutForm.value.client,
       id : idesData,
-      uid: idesData,
+
       state:"1",
     }    
     this.clientService.save(this.objet).subscribe(
@@ -80,12 +80,12 @@ export class AddComponent implements OnInit {
     )    
   }
 
-  public update(data:ModuleRoles){
+  public update(data:ModuleAsignature){
     console.log(data) 
     this.objet = {
       name : this.checkoutForm.value.client,
       id : this.moduleRoles.id,
-      uid: this.moduleRoles.uid,
+
       state:1,
     }
     console.log(this.objet)
