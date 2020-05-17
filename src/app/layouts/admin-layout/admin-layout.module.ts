@@ -10,10 +10,10 @@ import { PublicCategoryserviceService } from 'app/services/publicCategory.servic
 import { AngularMaterialModule } from 'app/angular-material/angular-material.module';
 import { OverviewModule } from 'app/overview/overview.module';
 import { PurchasesModule } from 'app/purchases/purchases.module';
-import { ServiceModule } from 'app/moduleService/service.module';
 import { CountriesModule } from 'app/moduleCountries/service.module'
 import { RolesModule } from 'app/moduleRoles/roles.module'
 import { ClientModule } from 'app/moduleClient/client.module';
+import { SubjectsModule } from 'app/moduleNote/subjects.module';
 
 
 @NgModule({
@@ -26,7 +26,7 @@ import { ClientModule } from 'app/moduleClient/client.module';
     HttpClientModule,
     OverviewModule,
     PurchasesModule,
-    ServiceModule,
+    SubjectsModule,
     CountriesModule,
     RolesModule,
     ClientModule

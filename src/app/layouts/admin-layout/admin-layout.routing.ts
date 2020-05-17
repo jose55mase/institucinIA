@@ -5,10 +5,10 @@ import { NotificationsComponent } from '../../components/notifications/notificat
 
 import { OverviewComponent } from 'app/overview/components/overview/overview.component';
 import { PurchasesComponent } from 'app/purchases/components/purhases/purchases.component';
-import { ServiceComponent } from 'app/moduleService/components/service/service.component';
 import { CountriesComponent } from 'app/moduleCountries/components/countries.component';
 import { RolesComponent } from 'app/moduleRoles/components/roles.component'
 import { ClientComponent } from 'app/moduleClient/components/client.component';
+import { SubjectsComponent } from 'app/moduleNote/components/subjects/subjects.component';
  
 export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
@@ -30,11 +30,11 @@ export const AdminLayoutRoutes: Routes = [
         }],
     },
     {
-        path: 'service',
-        component: ServiceComponent,
+        path: 'subjects',
+        component: SubjectsComponent,
         children: [{
-            path: 'service',
-            loadChildren: () => import('../../moduleService/service.module').then(m => m.ServiceModule)
+            path: 'subjects',
+            loadChildren: () => import('../../moduleNote/subjects.module').then(m => m.SubjectsModule)
         }],
     },
     {

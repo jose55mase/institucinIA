@@ -12,7 +12,7 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
   { path: '/overview', title: 'Resumen', icon: 'list', class: '' },
-  { path: '/service', title: 'Servicios', icon: 'shopping_basket', class: '' },
+  { path: '/subjects', title: 'Notas', icon: 'offline_pin', class: '' },
   { path: '/roles', title: 'Roles', icon: 'accessibility', class: '' },
   { path: '/client', title: 'Clientes', icon: 'people', class: '' },
   { path: '/countries', title: 'Paises', icon: 'public', class: '' },  

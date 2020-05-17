@@ -1,19 +1,17 @@
 import { Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-
-
 import { ProductInterationService } from 'app/services/productInteration.service';
 import { HttpClient } from '@angular/common/http'
 
 
 @Component({
-  selector: 'app-service',
-  templateUrl: './service.component.html',
-  styleUrls: ['./service.component.scss'],
+  selector: 'app-subjet',
+  templateUrl: './subjects.component.html',
+  styleUrls: ['./subjects.component.scss'],
   providers: [ProductInterationService]
   
   
 })
-export class ServiceComponent implements OnInit {
+export class SubjectsComponent implements OnInit {
   public sales: any[];
   public posts: any[];
 
