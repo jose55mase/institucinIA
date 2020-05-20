@@ -1,0 +1,58 @@
+
+  
+table {
+    width: 100%;
+}
+
+.cart-card {
+    max-width: 400px;
+  }
+  
+.header-image-img {
+    background-image: url('/');
+    background-size: cover;
+}
+
+.card-header{
+    background-color:  #ccc;
+   
+}
+
+.card-title{
+    color:  #002855;
+    font-size: 35px;
+}
+
+.backColorTooltip {
+    background-color: #b71c1c;
+}
+
+ul,  
+li {  
+      margin: 0;  
+      padding: 0;  
+      list-style: none;  
+}
+
+mat-toolbar{
+    background-color: #2F7D86;
+    
+}
+button{
+    color:white;
+}
+h3{
+    color: #41CA23;
+}
+
+.example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('./../../../../assets/img/esdudiantevistas.jpg');
+    background-size: cover;
+  }
+mat-spinner{
+    width: 40;
+}

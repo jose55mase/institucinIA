@@ -1,0 +1,102 @@
+<div class="main-content">
+  <h3>
+    Estudiantes <img src="./../../../../assets/img/estudent.jpg" width="67" alt="">
+  </h3>
+  <mat-toolbar >
+    
+    <button mat-button (click)="dowloadShow()">Fomato</button>
+    <button mat-button (click)="ImportShow()">Inscribir</button>
+  </mat-toolbar>
+
+  <div class="row content" *ngIf="import">
+    <div class="col-md-12">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title >....</mat-card-title>
+          <mat-card-subtitle>Estudiantes</mat-card-subtitle>
+        </mat-card-header>
+        Seleccione el formato 
+        <hr>
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <div >        
+            <input type="file" class="form-control" (change)="addfile($event)" placeholder="Upload file" >        
+          </div>
+          <button  class="btn btn-success" mat-button (click)="savaDataEstudent()">Crear grupo</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="col-md-12">
+      <mat-spinner *ngIf="wait"></mat-spinner>
+      <table class="table table-bordered" *ngIf="table">
+        <thead>
+          <tr>
+            <th scope="col"><img src="./../../../../assets/img/estudent.jpg" width="30" alt=""></th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Grado</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let user of dataEstudent;let i = index">
+          <tr>
+            <th scope="row">{{i}}</th>
+            <td>{{user.Nombre}}</td>
+            <td>{{user.Apellidos}}</td>
+            <td>{{user.Telefonos}}</td>
+            <td>{{user.Grado}}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    <!--write other div or row-->
+  </div>
+  
+  <div class="row content" *ngIf="createform">
+    <div class="col-md-7">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title >....</mat-card-title>
+          <mat-card-subtitle>Estudiantes</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="./../../../../assets/img/esdudiantevistas.jpg" width="" alt="formatos">
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button  class="btn btn-success" (click)="exportAsXLSX()" mat-button>Descargar formato</button>
+          <button  class="btn btn-success" mat-button (click)="showform()">Ver formato</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="col-md-4">
+      <ul class="list-group" *ngIf="form">
+        <li class="list-group-item list-group-item-action active content">FORMATO</li>
+        <li class="list-group-item">Nombre <span class="badge badge-primary badge-pill">1</span></li>
+        <li class="list-group-item">Apellidos <span class="badge badge-primary badge-pill">1</span></li>
+        <li class="list-group-item">Telefono <span class="badge badge-primary badge-pill">1</span></li>
+        <li class="list-group-item">Acudiente <span class="badge badge-primary badge-pill">1</span></li>
+        <li class="list-group-item">Direccion <span class="badge badge-primary badge-pill">1</span></li>
+        <li class="list-group-item">Correo <span class="badge badge-primary badge-pill">1</span></li>
+        <li class="list-group-item">Edad <span class="badge badge-primary badge-pill">1</span></li>
+        <li class="list-group-item">Grupo <span class="badge badge-primary badge-pill">1</span></li>
+        <li class="list-group-item">Salon <span class="badge badge-primary badge-pill">1</span></li>
+      </ul>
+    </div>
+    <!--write other div or row-->
+  </div>
+
+  

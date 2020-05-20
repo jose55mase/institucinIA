@@ -22,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 
 
+
 @NgModule({
   imports: [    
     AngularMaterialModule,
@@ -33,6 +34,7 @@ import { ToastrModule } from 'ngx-toastr';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    
     ToastrModule.forRoot(), // ToastrModule added
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'

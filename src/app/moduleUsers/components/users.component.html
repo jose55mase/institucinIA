@@ -1,6 +1,5 @@
 <div class="main-content">
         <!--div *ngIf="espera"><mat-spinner></mat-spinner></div-->
-        
         <div class="container-fluid">            
             <div class="col-md-12">
                 <div class="card">
@@ -8,11 +7,18 @@
                         <div class="container-fluid">
                             <mat-tab-group color='primary'>                            
                                 <mat-tab>
-                                    <ng-template mat-tab-label>
-                                        <mat-icon mat-list-icon>library_books</mat-icon>
-                                        <div class="titles-mat-tap">Materias</div> 
+                                    <ng-template mat-tab-label >
+                                        <mat-icon mat-list-icon>wc</mat-icon>
+                                        <div class="titles-mat-tap">Usuarios</div> 
                                     </ng-template>
-
+                                   <app-users_list ></app-users_list>
+                                </mat-tab>
+                                <mat-tab>
+                                    <ng-template mat-tab-label>
+                                        <mat-icon mat-list-icon>how_to_reg</mat-icon>
+                                        <div class="titles-mat-tap">Estudiantes</div> 
+                                    </ng-template>
+                                   <app-estudents></app-estudents>
                                 </mat-tab>
                             </mat-tab-group>
                         </div>

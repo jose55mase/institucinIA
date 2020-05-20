@@ -14,10 +14,8 @@
             "name": "Matematicas",
             "state": 0
         }
-        
-        
-
     ],
+   
     "Countries":[
         {
             "uid": 1,
@@ -32,12 +30,34 @@
             "state": "1"
         }
     ],
-    "Roles":[
+    "Usuario":[
         {
-            "uid": 1,
             "id": 1,
-            "name": "Administrador",
-            "state": "1"
+            "name": "Carlos",
+            "lasName": "Miguel",
+            "phone": "3434-434",
+            "attending": "MADRE",
+            "direccion": "KR 34 #",
+            "email": "email@email.com",
+            "age": "12",
+            "grup": "A1",
+            "room": "234"
+        }
+    ],
+    "Usuarios":[
+        {
+            "id": 1,
+            "Documento": "123123",
+            "Nombre": "Carlos",
+            "Apellidos": "Miguel",
+            "Telefonos": "3434-434",
+            "Acudiente": "MADRE",
+            "Direccion": "KR 34 #",
+            "Email": "email@email.com",
+            "Edad": "12",
+            "Grupo": "A1",
+            "Salon": "234",
+            "Grado": "5°"
         }
     ]
 }

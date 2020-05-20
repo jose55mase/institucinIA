@@ -24,7 +24,7 @@ export class AsignatureService {
 
   getAllService(): Observable<ModuleAsignature[]> {   
     //return this.http.get<ModuleAsignature[]>(`${this.URI}/roles/list`)
-    return this.http.get<ModuleAsignature[]>(`${this.URI}/Materias`)
+    return this.http.get<ModuleAsignature[]>(`${this.URI}/Usuario`)
   }
 
   save(data): Observable<ModuleAsignature> {   

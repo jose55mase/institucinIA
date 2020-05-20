@@ -1,5 +1,4 @@
 
-
 <div class="main-content" >
     <div class="container-fluid">
         
@@ -33,19 +32,22 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table mat-table [dataSource]="data"  matSort> 
-                                <!-- descripcion Column -->
-                                
+                                <!-- descripcion Column -->                                
                                 <ng-container matColumnDef="Codigo">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Codigo </th>
-                                    <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.id}} </td>
+                                    <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.Documento}} </td>
                                 </ng-container>
-                                <ng-container matColumnDef="Descripcion">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Descripcion </th>
-                                    <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.name }} </td>
+                                <ng-container matColumnDef="Nombre">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Nombre </th>
+                                    <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.Nombre }} </td>
                                 </ng-container>                                
-                                <ng-container matColumnDef="Estado">
-                                  <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Estado </th>
-                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.state }} </td>
+                                <ng-container matColumnDef="Telefono">
+                                  <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Telefono </th>
+                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.Telefonos }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Grupo">
+                                  <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Grupo </th>
+                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.Grupo }} </td>
                                 </ng-container>
                                 <ng-container matColumnDef="Accion">
                                   <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Accion </th>
@@ -87,7 +89,7 @@
             <mat-icon>close</mat-icon>
           </button>  
           <div class="col-md-12">
-            <app-asignature_add></app-asignature_add>
+            
           </div>      
             
         </div>   

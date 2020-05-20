@@ -1,17 +1,20 @@
 import { Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http'
-import { AsignatureService } from 'app/services/asignature.service';
 import { ModuleAsignature } from 'app/models/asignature.model';
 import Swal from 'sweetalert2';
 import { NotificationService } from 'app/services/notification-service';
+import { UsersService } from 'app/services/usuario.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs';
+import { async } from '@angular/core/testing';
 
 
 @Component({
-  selector: 'app-asignature_list',
+  selector: 'app-users_list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  providers: [AsignatureService],
+  providers: [UsersService],
 
 
 })
@@ -39,7 +42,7 @@ export class ListComponent implements OnInit {
   // Model
 
  
-  displayedColumns: string[] = ['Codigo', 'Descripcion', 'Estado', 'Accion'];
+  displayedColumns: string[] = ['Codigo', 'Nombre', 'Telefono', 'Grupo', 'Accion'];
   public usersList_Id: any;
   public estatus_data: string = '';
   public product_estatus: boolean = false;
@@ -88,7 +91,7 @@ export class ListComponent implements OnInit {
         id : data.id,
         state:"0",
       }
-      this.rolesService.delete(this.objet).subscribe(
+      this.usersService.delete(this.objet).subscribe(
         (response)=>{
           this.getProductList();
           this.notificationService.alert('', "Registro Desactivo", 'success');
@@ -104,13 +107,13 @@ export class ListComponent implements OnInit {
   
   // Constructor y Ng Init
   constructor(
-    private rolesService : AsignatureService,
+    private usersService : UsersService,
     private notificationService: NotificationService,
      
   ) {}
-
-  ngOnInit() {
-    this.getProductList();
+  public time  
+  ngOnInit() {    
+    this.getProductList();     
   }
 
   applyFilter(filterValue: string) {
@@ -119,18 +122,31 @@ export class ListComponent implements OnInit {
     this.data.filter = filterValue;    
   }
 
+  
   public getProductList() {
-    this.rolesService.getAllService().subscribe(
-      (response) => {        
-        this.data = new MatTableDataSource<ModuleAsignature>(response)
-        this.data.paginator = this.paginator = this.paginator
-        this.data.applyFilter = this.applyFilter;
-        this.paginator._intl.itemsPerPageLabel = 'Registros por pagina';
-        this.paginator._intl.firstPageLabel = 'Primera pagina';
-        this.paginator._intl.lastPageLabel = 'Ultima pagina';
-        this.paginator._intl.nextPageLabel = 'Pagina adelante';
-        this.paginator._intl.previousPageLabel = 'Pagina atras';
-
+    this.usersService.getAllService().subscribe(
+      (response) => {
+        var dataUsers = new Observable(observer => {
+          setInterval(()=>observer.next(JSON.parse(sessionStorage.getItem("usuarios"))),3000)
+        })
+        dataUsers.subscribe(x=>{
+          if(x==null){
+            response = response;            
+          }else{                 
+            response = response
+              .concat(JSON.parse(sessionStorage.getItem("usuarios")))
+            sessionStorage.removeItem("usuarios")
+          }
+          this.data = new MatTableDataSource<ModuleAsignature>(response)
+          this.data.paginator = this.paginator = this.paginator
+          this.data.applyFilter = this.applyFilter;
+          this.paginator._intl.itemsPerPageLabel = 'Registros por pagina';
+          this.paginator._intl.firstPageLabel = 'Primera pagina';
+          this.paginator._intl.lastPageLabel = 'Ultima pagina';
+          this.paginator._intl.nextPageLabel = 'Pagina adelante';
+          this.paginator._intl.previousPageLabel = 'Pagina atras';
+        })
+                
       },
       (error) => { Swal.fire( "502 " ,  "Valida con el administrador" ,  "error" ) }
     )

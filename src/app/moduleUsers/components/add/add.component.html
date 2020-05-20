@@ -1,53 +1,75 @@
 
-<div class="card">
-  <!-- Cabeceras registros -->
-  <div class="row">
-      <div class="col-sm-1"></div>
-      <div class="col-sm-7" class="form-group">
-          <div class="d-flex flex-row bd-highlight mb-2">                    
-              
-          </div>
-      </div>
-  </div>
-  <!-- Columnas de registros -->   
 
-  <form [formGroup]="checkoutForm" >
-      <mat-form-field class="example-full-width">
-          <mat-label>Descripcion Materia</mat-label>
-          <input
-           
-              matInput 
-              placeholder="Materia" 
-              autocomplete="off" 
-              formControlName="Materia"                   
-            
-          />
-          <mat-icon matSuffix>description</mat-icon>
-      </mat-form-field>
-      {{checkoutForm.get('Materia').value.length}}
-      <mat-error  *ngIf=" checkoutForm.get('Materia').value == '' && checkoutForm.get('Materia').touched "  >Este campo es obligatorio</mat-error>
-      
-  </form>
-  
-  <div *ngIf="btnSaveDate"  class="">
-      <button 
-          class="position_save btn-block" 
-          color="primary"
-          (click)="savedata()"
-          [disabled]="!checkoutForm.valid"
-          mat-raised-button>
-          Guargar
-      </button>
-  </div>
-
-  <div *ngIf="btnUpDate" class="">
-      <button 
-          class="position_save btn-block" 
-          color="primary"
-          (click)="update()"
-          [disabled]="!checkoutForm.valid"
-          mat-raised-button>
-          Editar
-      </button>
-  </div>
+<div class="main-content">
+    <!--div *ngIf="espera"><mat-spinner></mat-spinner></div-->
+    <div class="container-fluid">            
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <mat-tab-group color='primary'>                            
+                            <mat-tab>
+                                <ng-template mat-tab-label >
+                                    <mat-icon mat-list-icon>wc</mat-icon>
+                                    <div class="titles-mat-tap">Usuarios</div> 
+                                </ng-template>                               
+                                <div class="card">
+                                <!-- Cabeceras registros -->
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-7" class="form-group">
+                                        <div class="d-flex flex-row bd-highlight mb-2">                    
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Columnas de registros -->   
+                            
+                                <form [formGroup]="checkoutForm" >
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Descripcion Materia</mat-label>
+                                        <input
+                                        
+                                            matInput 
+                                            placeholder="Materia" 
+                                            autocomplete="off" 
+                                            formControlName="Materia"                   
+                                        
+                                        />
+                                        <mat-icon matSuffix>description</mat-icon>
+                                    </mat-form-field>
+                                    {{checkoutForm.get('Materia').value.length}}
+                                    <mat-error  *ngIf=" checkoutForm.get('Materia').value == '' && checkoutForm.get('Materia').touched "  >Este campo es obligatorio</mat-error>
+                                    
+                                </form>
+                                
+                                <div *ngIf="btnSaveDate"  class="">
+                                    <button 
+                                        class="position_save btn-block" 
+                                        color="primary"
+                                        (click)="savedata()"
+                                        [disabled]="!checkoutForm.valid"
+                                        mat-raised-button>
+                                        Guargar
+                                    </button>
+                                </div>
+                            
+                                <div *ngIf="btnUpDate" class="">
+                                    <button 
+                                        class="position_save btn-block" 
+                                        color="primary"
+                                        (click)="update()"
+                                        [disabled]="!checkoutForm.valid"
+                                        mat-raised-button>
+                                        Editar
+                                    </button>
+                                </div>
+                                </div>
+                            </mat-tab><!-- Fin-->                         
+                        </mat-tab-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
