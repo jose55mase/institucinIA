@@ -11,10 +11,10 @@ import { AngularMaterialModule } from 'app/angular-material/angular-material.mod
 import { OverviewModule } from 'app/overview/overview.module';
 import { PurchasesModule } from 'app/purchases/purchases.module';
 import { CountriesModule } from 'app/moduleCountries/service.module'
-e
 import { ClientModule } from 'app/moduleClient/client.module';
 import { SubjectsModule } from 'app/moduleNote/subjects.module';
 import { UsersModule } from 'app/moduleUsers/users.module';
+import { AsignatureModule } from 'app/moduleAsignature/asignature.module';
 
 
 

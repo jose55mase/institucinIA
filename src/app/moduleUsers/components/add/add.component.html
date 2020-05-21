@@ -1,6 +1,7 @@
 
 
 <div class="main-content">
+    
     <!--div *ngIf="espera"><mat-spinner></mat-spinner></div-->
     <div class="container-fluid">            
         <div class="col-md-12">
@@ -12,9 +13,21 @@
                                 <ng-template mat-tab-label >
                                     <mat-icon mat-list-icon>wc</mat-icon>
                                     <div class="titles-mat-tap">Usuarios</div> 
-                                </ng-template>                               
+                                </ng-template> 
+                                                             
                                 <div class="card">
                                 <!-- Cabeceras registros -->
+                                <button                           
+                                    mat-fab                           
+                                    class="pull-right"
+                                    matTooltip="Info about the action"                          
+                                    aria-label="Button that shows a red tooltip"
+                                    color="warn"
+                                    matTooltip="Salir"
+                                    routerLink="/users"
+                                    >          
+                                    <mat-icon>close</mat-icon>
+                                </button> 
                                 <div class="row">
                                     <div class="col-sm-1"></div>
                                     <div class="col-sm-7" class="form-group">
@@ -24,46 +37,116 @@
                                     </div>
                                 </div>
                                 <!-- Columnas de registros -->   
-                            
-                                <form [formGroup]="checkoutForm" >
-                                    <mat-form-field class="example-full-width">
-                                        <mat-label>Descripcion Materia</mat-label>
-                                        <input
-                                        
-                                            matInput 
-                                            placeholder="Materia" 
-                                            autocomplete="off" 
-                                            formControlName="Materia"                   
-                                        
-                                        />
-                                        <mat-icon matSuffix>description</mat-icon>
-                                    </mat-form-field>
-                                    {{checkoutForm.get('Materia').value.length}}
-                                    <mat-error  *ngIf=" checkoutForm.get('Materia').value == '' && checkoutForm.get('Materia').touched "  >Este campo es obligatorio</mat-error>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="./../../../../assets/img/estudent.jpg" width="100" alt="">   
+                                    </div>
+                                    <div class="col-md-10">
+                                        <form [formGroup]="checkoutForm" >
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <mat-form-field class="example-full-width">
+                                                        <mat-label>Nombre</mat-label>
+                                                        <input
+                                                            matInput 
+                                                            placeholder="Materia" 
+                                                            autocomplete="off" 
+                                                            formControlName="Materia"
+                                                        />
+                                                        <mat-icon matSuffix>face</mat-icon>
+                                                    </mat-form-field>
+                                                    <mat-form-field class="example-full-width">
+                                                        <mat-label>Documento</mat-label>
+                                                        <input
+                                                            matInput 
+                                                            placeholder="Materia" 
+                                                            autocomplete="off" 
+                                                            formControlName="Materia"
+                                                        />
+                                                        <mat-icon matSuffix>picture_in_picture_alt</mat-icon>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <mat-form-field class="example-full-width">
+                                                        <mat-label>Apellidos</mat-label>
+                                                        <input
+                                                            matInput 
+                                                            placeholder="Materia" 
+                                                            autocomplete="off" 
+                                                            formControlName="Materia"
+                                                        />
+                                                        <mat-icon matSuffix>face</mat-icon>
+                                                    </mat-form-field>
+                                                    <mat-form-field class="example-full-width">
+                                                        <mat-label>Telefono</mat-label>
+                                                        <input
+                                                            matInput 
+                                                            placeholder="Materia" 
+                                                            autocomplete="off" 
+                                                            formControlName="Materia"
+                                                        />
+                                                        <mat-icon matSuffix>perm_phone_msg</mat-icon>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <mat-form-field class="example-full-width">
+                                                        <mat-label>Direccion</mat-label>
+                                                        <input
+                                                            matInput 
+                                                            placeholder="Materia" 
+                                                            autocomplete="off" 
+                                                            formControlName="Materia"
+                                                        />
+                                                        <mat-icon matSuffix>location_on</mat-icon>
+                                                    </mat-form-field>
+                                                    <mat-form-field class="example-full-width">
+                                                        <mat-label>Correo electrionico</mat-label>
+                                                        <input
+                                                            matInput 
+                                                            placeholder="Materia" 
+                                                            autocomplete="off" 
+                                                            formControlName="Materia"
+                                                        />
+                                                        <mat-icon matSuffix>send</mat-icon>
+                                                    </mat-form-field>                                                  
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <button class="btn btn-outline-primary" (click)="open(content)">
+                                                        <div>Perfiler y defina el nuevo  `USUARIO`</div>
+                                                        <div class="text-dark" aria-hidden="true"><small>Seleccione configuraciones</small></div>
+                                                    </button>                                                
+                                                </div>
+                                            </div>
+                                        </form>
+
+
+                                        <div *ngIf="btnSaveDate"  class="">
+                                            <button 
+                                                class="position_save btn-block" 
+                                                color="primary"
+                                                (click)="savedata()"
+                                                [disabled]="!checkoutForm.valid"
+                                                mat-raised-button>
+                                                Guargar
+                                            </button>
+                                        </div>
                                     
-                                </form>
+                                        <div *ngIf="btnUpDate" class="">
+                                            <button 
+                                                class="position_save btn-block" 
+                                                color="primary"
+                                                (click)="update()"
+                                                [disabled]="!checkoutForm.valid"
+                                                mat-raised-button>
+                                                Editar
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
                                 
-                                <div *ngIf="btnSaveDate"  class="">
-                                    <button 
-                                        class="position_save btn-block" 
-                                        color="primary"
-                                        (click)="savedata()"
-                                        [disabled]="!checkoutForm.valid"
-                                        mat-raised-button>
-                                        Guargar
-                                    </button>
-                                </div>
-                            
-                                <div *ngIf="btnUpDate" class="">
-                                    <button 
-                                        class="position_save btn-block" 
-                                        color="primary"
-                                        (click)="update()"
-                                        [disabled]="!checkoutForm.valid"
-                                        mat-raised-button>
-                                        Editar
-                                    </button>
-                                </div>
+                                
+                                
                                 </div>
                             </mat-tab><!-- Fin-->                         
                         </mat-tab-group>
@@ -73,3 +156,79 @@
         </div>
     </div>
 </div>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">PERFILES</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      
+        <div class="row">
+            
+                <div class="col-md-12">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Grupo</mat-label>
+                        <input
+                            matInput 
+                            placeholder="Materia" 
+                            autocomplete="off" 
+                           
+                        />
+                        <mat-icon matSuffix>description</mat-icon>
+                    </mat-form-field>                                                   
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Salon</mat-label>
+                        <input
+                            matInput 
+                            placeholder="Materia" 
+                            autocomplete="off" 
+                            
+                        />
+                        <mat-icon matSuffix>description</mat-icon>
+                    </mat-form-field>                                                   
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Grado</mat-label>
+                        <input
+                            matInput 
+                            placeholder="Materia" 
+                            autocomplete="off" 
+                            
+                        />
+                        <mat-icon matSuffix>description</mat-icon>
+                    </mat-form-field>                                                   
+                </div>
+                <div class="col-md-12">
+                    <mat-label>Tipo de usuario <mat-icon matSuffix>person</mat-icon></mat-label>
+                    <section class="example-section">                            
+                        <mat-radio-group [(ngModel)]="labelPosition">
+                            <mat-radio-button class="example-margin" value="Estudiante">Estudiante</mat-radio-button>
+                            <mat-radio-button class="example-margin" value="Maestro">Maestro</mat-radio-button>
+                            <mat-radio-button class="example-margin" value="Secretaria">Secretaria</mat-radio-button>
+                            <mat-radio-button class="example-margin" value="Rector">Rector</mat-radio-button>
+                            <mat-radio-button class="example-margin" value="Administrador">Administrador</mat-radio-button>
+                        </mat-radio-group>
+                        
+                    </section>
+                </div>
+            
+        </div>
+
+
+
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" (click)="c('Save click')">Save</button>
+    </div>
+  </ng-template>
+  
+  
+  

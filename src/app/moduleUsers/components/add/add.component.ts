@@ -7,13 +7,18 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ModuleAsignature } from 'app/models/asignature.model';
 import { AsignatureService } from 'app/services/asignature.service';
 
+import {NgbModal, NgbModalConfig ,ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
+export interface Food {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-asignature_add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss'],
-  providers: [AsignatureService],
+  providers: [AsignatureService, NgbModalConfig, NgbModal],
 
 
 })
@@ -24,14 +29,25 @@ export class AddComponent implements OnInit {
   checkoutForm;
   moduleAsignature : ModuleAsignature;
   objet = new Object;
-
+  closeResult = '';
   public btnSaveDate : boolean = false;
   public btnUpDate : boolean = false;
+  labelPosition = 'after'
+  /**
+   * @Lista 
+   * @Descripcion Permite la visualizacion de listas.
+   */
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
 
   constructor(  
     private notificationService : NotificationService,
     private formBuilder: FormBuilder,
-    private asignatureService : AsignatureService
+    private asignatureService : AsignatureService,
+    config: NgbModalConfig, private modalService: NgbModal
   ) {
     
     
@@ -50,11 +66,34 @@ export class AddComponent implements OnInit {
       this.checkoutForm.controls['Materia'].setValue(this.moduleAsignature.name)
     }else{ this.btnSaveDate = true; }
       
-     
+    config.backdrop = 'static';
+    config.keyboard = false;
   }
   ngOnInit() {    
     
   }
+
+  open(content) {
+    this.modalService.open(content);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  /*
    ======= Body Objeto ====
