@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AngularMaterialModule } from 'app/angular-material/angular-material.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   imports: [
@@ -16,12 +17,14 @@ import { AngularMaterialModule } from 'app/angular-material/angular-material.mod
   declarations: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    HomeComponent
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    HomeComponent
   ]
 })
 export class ComponentsModule { }

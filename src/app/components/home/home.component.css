@@ -1,0 +1,32 @@
+nav{
+  background-color: #2F7D86 !important;   
+}
+.navbar-text{
+  color: white;
+}
+H2.center{
+  text-align: center;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    right: 0%;;
+}
+
+.example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  .navbanavbar-text {
+    color: #2F7D86;
+
+  }
+
+
+  

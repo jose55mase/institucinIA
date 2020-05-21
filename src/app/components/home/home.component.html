@@ -1,0 +1,47 @@
+<nav class="navbar">
+    <span class="navbar-text">
+      <h3> INSTITUCION EDUCATIVA AMBIENTAL </h3>
+      <img src="./../../../assets/icons/LogoProyecto.png" alt="25">
+
+    </span>
+</nav>
+
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <button mat-button [matMenuTriggerFor]="aboveMenu">Above</button>
+                <mat-menu #aboveMenu="matMenu" yPosition="above">
+                    <button mat-menu-item>Item 1</button>
+                    <button mat-menu-item>Item 2</button>
+                </mat-menu>
+            </div>
+            <div class="col-sm">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>Mascotas de jose</mat-card-title>
+                        <mat-card-subtitle>Shakal</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN8AAADiCAMAAAD5w+JtAAAAk1BMVEUmQIr///8gPIgjPokQM4QAK4EHL4MfO4gYN4bDydwbOYcALYIAKoGrssoLMYQSNIWqsc0AJoDi5OyOl7oAJ4Dv8fdTY5tOX5kAGnz4+fvU1+MAIH45TpAsRY5JW5e1u9Cco8GAirLO0uDo6/I7UZNve6lhb6KgqMYxSY95hrFfb6SGkLVFV5XGyttreKeSm7wAFHvMxuBjAAAPXklEQVR4nO2dabeiOBCGhbCExURR9IIK7vvV+f+/bgD1yhIggaAwZ94Pc7rbnpbnhlQqVZVKT/hvq/ftB2hYH+Sz3tp87Eub5/v1/cN0MplMh/JLJgp+P/E033ea/vYG+SzrMprOhgpCWAzVewtEf4AQGg9no8uv1RxmQ3yWP5nKJoRxqBxBqJhzb+k38yAN8FmH1Y8sqRRosfHEaIguLv95yZtvfTmaGDKgxSChrE76Ft/n4crn334UCCrBPaVK4+3d5fhI/PjWl4Wi1mF7SoTmfMnN4HDiswaqXG/kEoh4dlvzeTAufNZOkbjBPaTLx4PN4dE48Pnbsc6ZLhSQhvf69rQ2n3ZUWFYCJmG0qvua1uTrz43G6AIBfTypR1iLT1ugJukiqeNTnXlYg+932+jY/Qkqo+qElfms22foAgFsHj7Nd5/pH6KLCNG24jSsxree4Q/SRYTmqZJPU4XP3g0bWO/KBHv9z/D5arX9QV0B5co+hOx8O/MLg/eQKjPPQlY+d/vpmRcXGK4Yh5CR70ITcWhSWGRbC5n4Nnv0tXfzJfAzaIpv0/vkmpcr894MX//n64P3EJo2wdc3v831Jx1Qh2io+abGt6liEoe0gLR8k++s6XkCyi9PPmfaLrxoJeTH53htwwtkUAHS8LlDHnFN7lJoACn43O85nMWiASznc+WW4lEBlvI5s9bi0QCW8TleK+feS6VGpoyvjZYzLrPE2y7ha9mynhVAxVveYr62j16oWaGrVsjXb5PPmSu5KAtTxDcYf/vRqaRuq/HZP99+ckrBSRW+jdrihS8pJT98n883aUUwgk6zXCOay7dC335oBgGQZ2Py+Na8E+rNSs+bgnl8/3QKr9dDFya+W4cmXyQgkacgmc9vT6yMViJ5FSTy2U3UezQtiRj2JfLtOuB2ZkV0REl8WqN+GYD8CrmS/zCg5Gs0Owvl0x00k6bBIyq+e3MZPoDhKliJncOxicIZYGRzZ1k+a8b/mx8SUW/58jN8T+Yf+FCziZcs37mhpU9Ex348+apNEXczZmSi9hm+ZpY+oJpepoJ8vRtyNjVALeXbNjExoHQmRhE2J8x3sqP0TinN5/MPSQBo7HJjJJu7ztXU4FT9QZoP8LbcQBJHhWWqzuDIcbmQUgOY4htxXhsAUpflBQ/9rcnLmAKxiM/muzaIxrVPV6+yniiczLa0LOA78By+wGRqVHCR3NuYz3IBEz/RJB/H2acbe8oU8kubC+Tx402a0ASfzy3mAoenCgdt7LtS35gCPZdvzsdSA0m9VKwodgZbpe47hOIplzgfn7UPIL3WyQx/btQzpmLcC43z7TkYadHYVilDTUg7y7WMqRmb+DE+S6lNp8ssJjNf1k2uYUz1HZFvWdN6Ad3kdSoqMKYrHVeeiLP3/Ijx1cMDWD7xPLgn2EtVqmjv8NvCvPl+67yeQAIcDkOl5Awqnv4BCwLftLp1ESWR34nEhLRrJWNq/r1Jf3ybyjFPUb7WNpn5Wu/H7JtgfZXhq+q76IrH6Iexyj0xBzKAlOG7VXkPgq0rP5OZr80IMhpT4/VULz6nys4I4xXn49x5cu4Lpk0wXKX4fIkVTkR68cacM+FgK9MbU3BM8U0ZDTFAx0PjzTFS0jx6Y/qyoE8+58j0fqvGvKF+EcVan01KM/96QZ98rsxAp6NJwyYzX9ZJolouXpuIJ9+K3gJD88bVD2OVNUI0tQGzx99+8lFPPwyrbMz5yj5QRBTRYwI9+ehWB1HCdx5NBWrL6S/KTA18JMsefFTOCzDmHzeZ+dImxYSiF/21B9+9fPqp8rb5bklMcs9FfSEAjBbnB59XNv1U43smM1/uCef7bXJkBSM+Z148XeGYnP75vjajcR4hjCp+Ij6rsKAA66sP+mGscpZHckRRP4UfR3xavnkREfqkl1lFjk9uHPQTfhjxXfLMi2hsB+0yKmRpU4LvPQw/efCRw42qcvyKl1lF7sRID5IShiojPmIhsm7uucQyPyXrlErPRB5MxDfM0kH5u15mFW0uMB5RhGFBWsjnZvIOGF6+7mVWkXOIdUuKthAhX8o7C7xMipxyS+X0j+hpTMWwpjfD1y4vs4q08zObD+wH3yhuea5at+lCufsIxbQefLHNHzg2Z1UcZ7MJm7e6rhv1cN3Yjf0k7XOIJD/5JjGjA9CE86rguFr/fjpf54ueqkoYY0VWgv9KavASzb3JadTXXL6gwUoREYUHk9J84UboymlV36wHq/PClBUEoQjEVPECiNq4qjqUkDxenFcHTt0/1zf5uW2SBpn382F4lGNtr8zq7466IkHKQz5AhVjRj7d+3aH8nb4LacItfMBnZZd3EfVq9BwL2BYm0kXWtAgAqmT2boPqS69/jVeVvvhIsUGAcbVdkTuaS6hG/X3AiI6jKlbOGaTa6RXxhR+j/LK/HFmHrQmZxy3LCM3tiHEU7WUvHVQr4esB3WDqbuhPFMyr1lHEyGOI91grKbuPL+MLpP7QrhbOfVvenhYEc+ypXukoi8qC0gi4O0QKalPwPTZR5dqsUMHQAVXHEjJMBYLFSwBKpoIkrBdYWIBlikKo9V4mz3dqPq0k/+yM8s5siDpWzGFvsroP/HXgs9hvBc7Mrz+4ryaLsalgnfzTAcFOppjQn+bGQan5+jOxaEfRJxZRAxUbqrc7aOVm2Fofdp4oY+JQQjn/9GmwWyiK8v5DyycBSc/LO7jbbGFJyGaeDy7LGmq7g71BYgToSJ4kYWVzkT0LQ9iUfMGv9PGZEOJ1TsPMV6gITQ7V0vLucoJRZkRE85Y1pZuRUVJMGW7g6fnCIPY27Zmuj+lXU8TmtF/Hk7T98zhTuAQXqSGkqd+in3+v5DxAaBl/9lHqKBbQzcmhvpvsDKZGyiQm+y25uyFFwpKdrxeGZv5qJuxzMrABcMFBB0ZZJyU1iJL3ms0aZTF6Jb5wIj68GivVrg8BrsnBTBZT1aOv9T3awwQvvqLsA4EvnIjXvuAmF3QMuYdtnEHSpRSVX2GwpW8n/uRzio4cEfnCidhLVPtCfG8k2HBQ446DOGFquP3kS+3fqfjCvXfse5VdUwFF+xRfLtjOL4QZssp8sS+t3LyZSq5X9dSCsubBJxos/Tir6CBVK019xc+KstOlfHjbfJ7CmlYawhdfUfVEGZ9yapwu1MioEBQY1+YTlU8lCH32xsbiVajJJ84/l2XaMB+c/cuv2AULfCGf1GDddUbFRpzE5z35iqqz2sM3YOWT/vK3BUPfYb53fnqUv9noMF+YHiupD+k0X1QB+qhfyt8hdZfvcY7zwUcooOg836MA9FE/mO+BdpcPL9981/8g39h68+V7MJ3lA3PnzZet8Ok8X6I+mVyB1mm+ZP38KS/g1lm+R3nyiy/vbDGM8n+DGdn+sPI5jvPKHgW/ZAxIMfL9CHE+i9yVCD2SKs6vR+Qv57Otteb3R6vT/uxNr/PjfNGLsn+943E+n3rn8+50P/jamuLGZjY+/ZTgI8co0LvXyI70AufwORvrt3+/3LyFMpYNhCSo62p4YTFIKPgDVdV1iBEyZHOobyen0cG3rJxQHBsf0pJ8K8Lzg1jLQofEn+ZzLK2/2nsLVVEQhmq6oqdEogoDVhn35t7t7v+mR5SNT7aSfGvCCoHjiUVS84Y/Ptv6PVzOi7GMwoqeuvUToqhjyTCV7X40WP/dTc3EF8Um4nwC4ZaARO6d1Pom5Ntoh9u1JymYtlSJWiAY0ODfXXi3gWYx7t+lQZqP8IIq8bAt6Z8Xz2dxrGCmq6ZZFcxTHSNTP59ZvmW4SfMRTjgm+Iiti8TPXS7A9EN8t0h59y/InlBNzL9zq+9JSOndJezNl31B4/ZzU72bxxf0voTtzWdnN7no3VBz36WGw+pNyPIRzqjCd/C99ARdm2T4JD4tU8eC3gUhDTY95S5xLpD4nPQCBtD7Q7dD7drjfWrj/aXSm4h4HyOhvN6vLQLYJvOlw2gonhwqiJG2TDCeskv0d0v6mECKe/Jrlg4HX5W5zuNLdgiLWdlwdnblBU20d0v1V0z0FpaSVwsRd4AtlPybz+fGZ2DqXpqCQ7ptUnL40v1bY16meEx+ZHfDQzOTtSopvlggFCcboQrCpAsedrrFd7q/8LvNlJHOrfe78ILKqRrcNN/fGpi9L2Lz/cuLS5Xp0J7p7/26mQRmLzTpwAtqpivFMnyvakklW1PWfh87OyjZ/voPCmBmPmi/jw3kTOyUcP9DVPkcOXF2ZGKi/yeK5i9aPgEJV7AQ+H7DNQJpgjUC2FtdPPF8OW2Nbd+maYPzTYF5FoZ0P8k1sCPgujBhGJsLT5ZCXQw2g/J82+7xy97+QOazwwtvCaf4uPfe5yu4I7AQ7wcadOLexpSASkq4ke+v6tLdeC+ZxAZRZL5NVzZ7b2HS25l7v9qgM7v1p0SC7Szg69wVXcOcEv48PuHYpYBuz0hv5kr51l25PTUUcWko5mv4ljWuEmHu8Zl8PmHH3JL3W9Lzqy8K+DqzCg4LylSK+Kq3NP+olDzbUsbXjSuMYfbSOFo+oZ9f2NsWwWshQTFf+wFVrxighE84tPym2J+SKr0yPmHZ6mXQKDucV8onLFvsaud5nSx8LR5BufxcLAVfa0dwTHHsl4avnSMITJqDsVR8bbSiKqY6tE3HJwzatg7CK135NiWf0J+1ylUrdsoq8AnrXos29EaJ11KBT7DV1oRkzEH54zLzCc6p9tWDXAR+6PFY+ARhRXNxRtOCIkuDICY+Yf3Pt1O4QD4xnXth4xOcaf1LEOtITd9PzJkv8GV+vviOSlfWTizMfMIGfsuOgtmo/PFq8xFbun2CDsMKnVgq8IVd3T4fGlWlVZVHrcQXzMLZZ2OjADHPvFp8gr375EsKAcOSzoUveEm9T9Vr6eNd5eZj1fmCXSH4BKE6vNXoolOHT3CWctMemyqfa/UIqsUXEoImCdXhvmZ3rpp8gZaIviMgm6BR583kxSc42tRkv6K2TEDSdxy6V3HgC7Q+SSyND8ulG72irBe9+PAFXqk/z70JjFUqmp143ebGiy+QdT+a7F3Y0tIVdc/xIj6OfEJ0eYApVe+vL6roZ6dxbbXJly+Q259COacbeZGAjsztjXu7P+58gTbuajKTkU5bTykCiIbGym+iEWUTfJFc/3TtmQaEhREbHUqyed3eG2vT2BhfKNt1V5f9bDhUpEBYfEkPfyuZw5l+uQysRvuHNsr3J80PdLhOH/J24W/9j9wB9hm+7+l/vm7rf75u618lEh5ijdDypgAAAABJRU5ErkJggg=="
+                        alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                        <p>
+                            hola jose sos un crack
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button>LIKE</button>
+                        <button mat-button>Cambiar</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+            <div class="col-sm">
+                One of three columns
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <app-footer></app-footer>
+    </footer>
