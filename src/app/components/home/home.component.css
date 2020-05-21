@@ -2,11 +2,9 @@ nav{
   background-color: #2F7D86 !important;   
 }
 .navbar-text{
-  color: white;
+  color: white
 }
-H2.center{
-  text-align: center;
-}
+
 
 footer{
     position: fixed;
