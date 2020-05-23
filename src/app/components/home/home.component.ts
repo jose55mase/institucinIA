@@ -12,12 +12,23 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   ngOnInit(){
     var observer= new Observable(observer=>{
-      setInterval(()=>observer.next(Math.round(Math.random()*2)),5000)
+      setInterval(()=>observer.next(Math.round(Math.random()*4)),5000)
+    })
+    var observer2= new Observable(observer=>{
+      setInterval(()=>observer.next(Math.round(Math.random()*4)),4000)
     }) 
     this.IMAGES[0]   
     observer.subscribe((data)=>{
       var indice = parseInt(JSON.stringify(data))
-      this.changeImages = this.IMAGES[indice] 
+      this.changeImages1 = this.IMAGES[indice] 
+    })
+    observer2.subscribe((data)=>{
+      var indice = parseInt(JSON.stringify(data))
+      this.changeImages2 = this.IMAGES[indice] 
+    })
+    observer.subscribe((data)=>{
+      var indice = parseInt(JSON.stringify(data))
+      this.changeImages3 = this.IMAGES[indice] 
     })
   }
   
@@ -25,6 +36,10 @@ export class HomeComponent implements OnInit {
     "./../../../assets/img/images1.jpeg"
     ,"./../../../assets/img/images2.jpeg"
     ,"./../../../assets/img/images3.png"
+    ,"./../../../assets/img/images4.jpg"
+    ,"./../../../assets/img/images5.jpg"
   ]  
-  public changeImages = this.IMAGES[2];
+  public changeImages1 = this.IMAGES[2];
+  public changeImages2 = this.IMAGES[0];
+  public changeImages3 = this.IMAGES[1];
 }

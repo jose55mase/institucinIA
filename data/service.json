@@ -1,65 +1,96 @@
 {
-    "data" :
-        [
-            {
-                "id":1,
-                "usuario":"sena",
-                "clave":"12345"
-            }            
-        ],
-    "Materias":[
-        {
-            
-            "id": 1,
-            "name": "Matematicas",
-            "state": 0
-        }
-    ],
-   
-    "Countries":[
-        {
-            "uid": 1,
-            "id": 1,
-            "name": "Colombia Update",
-            "state": "0"
-        },
-        {
-            "uid": 0,
-            "id": 0,
-            "name": "España",
-            "state": "1"
-        }
-    ],
-    "Usuario":[
-        {
-            "id": 1,
-            "name": "Carlos",
-            "lasName": "Miguel",
-            "phone": "3434-434",
-            "attending": "MADRE",
-            "direccion": "KR 34 #",
-            "email": "email@email.com",
-            "age": "12",
-            "grup": "A1",
-            "room": "234"
-        }
-    ],
-    "Usuarios":[
-        {
-            "id": 1,
-            "Documento": "123123",
-            "Nombre": "Carlos",
-            "Apellidos": "Miguel",
-            "Telefonos": "3434-434",
-            "Acudiente": "MADRE",
-            "Direccion": "KR 34 #",
-            "Email": "email@email.com",
-            "Edad": "12",
-            "Grupo": "A1",
-            "Salon": "234",
-            "Grado": "5°"
-        }
-    ]
+  "data": [
+    {
+      "id": 1,
+      "usuario": "sena",
+      "clave": "12345"
+    }
+  ],
+  "Materias": [
+    {
+      "id": 1,
+      "name": "Matematicas",
+      "state": 0
+    }
+  ],
+  "Countries": [
+    {
+      "uid": 1,
+      "id": 1,
+      "name": "Colombia Update",
+      "state": "0"
+    },
+    {
+      "uid": 0,
+      "id": 0,
+      "name": "España",
+      "state": "1"
+    }
+  ],
+  "Usuario": [
+    {
+      "id": 1,
+      "name": "Carlos",
+      "lasName": "Miguel",
+      "phone": "3434-434",
+      "attending": "MADRE",
+      "direccion": "KR 34 #",
+      "email": "email@email.com",
+      "age": "12",
+      "grup": "A1",
+      "room": "234"
+    }
+  ],
+  "Usuarios": [
+    {
+      "id": 1,
+      "Documento": "123123",
+      "Nombre": "Carlos",
+      "Apellidos": "Miguel",
+      "Telefonos": "3434-434",
+      "Acudiente": "MADRE",
+      "Direccion": "KR 34 #",
+      "Email": "email@email.com",
+      "Edad": "12",
+      "Grupo": "A1",
+      "Salon": "234",
+      "Grado": "5°",
+      "Rol": "ESTUDIANTE"
+    },
+    {
+      "id": 1,
+      "Documento": "4343543",
+      "Nombre": "Carlos",
+      "Apellidos": "Antonio Nieves",
+      "Telefonos": "3434-434",
+      "Acudiente": "PADRE",
+      "Direccion": "KR 34 #",
+      "Email": "email@email.com",
+      "Edad": "12",
+      "Grupo": "A1",
+      "Salon": "234",
+      "Grado": "5°",
+      "Rol": "ESTUDIANTE"
+    }
+  ],
+  "Actividades": [
+    {
+      "activity": "Es una actividad de desarrollo",
+      "grupo": 1,
+      "grado": 5,
+      "id": 1
+    },
+    {
+      "activity": "Ruth edita",
+      "grupo": 8,
+      "grado": 11,
+      "id": 1590186439625
+    },
+    {
+      "activity": "Es una actividad de desarrollo",
+      "grupo": 1,
+      "grado": 2,
+      "id": 1590186439626
+    }
+  ]
 }
-    
-    

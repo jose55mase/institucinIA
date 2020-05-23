@@ -35,20 +35,20 @@
                           <table mat-table [dataSource]="data"  matSort> 
                               <!-- descripcion Column -->
                           
-                              <ng-container matColumnDef="Codigo">
-                                  <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Codigo </th>
-                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.id}} </td>
+                              <ng-container matColumnDef="TI">
+                                  <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> TI </th>
+                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.Documento}} </td>
                               </ng-container>
-                              <ng-container matColumnDef="Descripcion">
-                                  <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Descripcion </th>
-                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.name }} </td>
+                              <ng-container matColumnDef="Nombres">
+                                  <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Nombres </th>
+                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.Nombre }} </td>
                               </ng-container>
                               
-                              <ng-container matColumnDef="Estado">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Estado </th>
-                                <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.state | estatusProduct }} </td>
+                              <ng-container matColumnDef="Apellidos">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Apellidos </th>
+                                <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.Apellidos }} </td>
                               </ng-container>
-                              <ng-container matColumnDef="Accion">
+                              <!--ng-container matColumnDef="Accion">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Accion </th>
                                 <td mat-cell *matCellDef="let row" style="font-size: small"><mat-button-toggle-group name="fontStyle" aria-label="Font Style">
                                     <button mat-mini-fab color="primary" aria-label="" (click)="editData(row)">
@@ -58,7 +58,7 @@
                                       <mat-icon>delete</mat-icon>
                                     </button>
                                 </mat-button-toggle-group>
-                              </ng-container>
+                              </ng-container-->
                               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                              
@@ -88,7 +88,7 @@
           <mat-icon>close</mat-icon>
         </button>  
         <div class="col-md-12">
-          <app-service-create ></app-service-create>
+          
         </div>      
           
       </div>   

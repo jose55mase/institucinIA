@@ -21,10 +21,13 @@ footer{
     background-size: cover;
   }
 
-  .navbanavbar-text {
-    color: #2F7D86;
+.navbanavbar-text {
+  color: #2F7D86;
 
-  }
+}
 
-
+.mat-card-image{
+  width: 270px;
+  height: 200px;
+}
   

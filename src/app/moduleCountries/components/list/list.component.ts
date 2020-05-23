@@ -1,16 +1,20 @@
 import { Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http'
-import { CountriesService } from 'app/services/countries.service';
+
+
+import { ModuleActivity } from 'app/models/activity.model';
 import { ModelCountries } from 'app/models/countries.model';
 import Swal from 'sweetalert2';
 import { NotificationService } from 'app/services/notification-service';
+import { ActivityService } from 'app/services/activity.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-countries_list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  providers: [CountriesService],
+  providers: [ActivityService],
 
 
 })
@@ -19,7 +23,7 @@ export class ListComponent implements OnInit {
   /**
  * 
  * @param serviceService 
- * @param users  Konecta
+ * @param users  Ruth Elsy
  * @param dialog 
  * @param _productInterationService 
  * @param modalService 
@@ -36,9 +40,9 @@ export class ListComponent implements OnInit {
   public data: any;
   objet = new Object;
   // Model
-
+  
  
-  displayedColumns: string[] = ['Codigo', 'Nombre', 'Estado', 'Accion'];
+  displayedColumns: string[] = ['Codigo', 'Actividad', 'Grupo', 'Grado', 'Accion'];
   public usersList_Id: any;
   public estatus_data: string = '';
   public product_estatus: boolean = false;
@@ -50,18 +54,21 @@ export class ListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator; 
   closeResult: string;
 
-
+  open(content) {
+    this.modalService.open(content);
+  }
 
   public CRUD(crud: number, id?) {
     switch (crud) {
       case 2: // Crear
         this.showCRUDlist = false;
         this.showCRUDcreate = true;
+        sessionStorage.removeItem("objectSchool")
         break;
       case 1: // Listar
         this.showCRUDlist = true;
         this.showCRUDcreate = false;
-        sessionStorage.removeItem("objectKonecta")
+        sessionStorage.removeItem("objectSchool")
         this.getProductList();
         break;
       default:
@@ -69,41 +76,46 @@ export class ListComponent implements OnInit {
     }
   }
 
+  /*
+   ======= Body Objeto ====
+  id,
+  activity,
+  grupo,
+  grado
+  */
+ 
+
   public editData(data: any) {
-    sessionStorage.setItem("objectKonecta", JSON.stringify(data))
+    sessionStorage.setItem("objectSchool", JSON.stringify(data))
     this.showCRUDlist = false;
     this.showCRUDcreate = true;
   }
-  public delete(data: ModelCountries) {
-    if (data.state==0) {      
-      Swal.fire( "Listo" ,  "Este registro ya esta desactivo" ,  "warning" )
-      this.notificationService.alert('', "Ya Desactivo", 'warning');
-    }else{
-      this.objet = {
-        name : data.name,
-        id : data.id,
-        uid: data.uid,
-        state:0,
-      }
-      this.countriesService.delete(this.objet).subscribe(
-        (response)=>{
-          this.getProductList();
-          this.notificationService.alert('', "Registro Desactivo", 'success');
-        },
-        (error)=>{
-          this.notificationService.alert('', "Error al Desactivar registro", 'error');
-        }
-      )
+  public delete(data: ModuleActivity) {
+    this.objet = {
+      activity : data.activity,
+      grupo : data.grupo,
+      grado: data.grado,
+      id:data.id,
     }
-
+    this.activityService.delete(this.objet).subscribe(
+      (response)=>{
+        this.getProductList();
+        this.notificationService.alert('', "Registro Desactivo", 'success');
+      },
+      (error)=>{
+        this.notificationService.alert('', "Error al Desactivar registro", 'error');
+      }
+    )
+    
   }
 
 
   
   // Constructor y Ng Init
   constructor(
-    private countriesService : CountriesService,
+    private activityService : ActivityService,
     private notificationService: NotificationService,
+    config: NgbModalConfig, private modalService: NgbModal
   ) {}
 
   ngOnInit() {
@@ -117,9 +129,9 @@ export class ListComponent implements OnInit {
   }
 
   public getProductList() {
-    this.countriesService.getAllService().subscribe(
+    this.activityService.getAllService().subscribe(
       (response) => {
-        this.data = new MatTableDataSource<ModelCountries>(response)
+        this.data = new MatTableDataSource<ModuleActivity>(response)
         this.data.paginator = this.paginator = this.paginator
         this.data.applyFilter = this.applyFilter;
         this.paginator._intl.itemsPerPageLabel = 'Registros por pagina';

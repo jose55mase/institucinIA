@@ -10,6 +10,8 @@ import Swal from 'sweetalert2';
 import { User } from 'app/login/components/login/user/user.model';
 import { ModelService } from 'app/models/service.model';
 import { NotificationService } from 'app/services/notification-service';
+import { AsignatureService } from 'app/services/asignature.service';
+import { UsersService } from 'app/services/usuario.service';
 
 
 interface state {
@@ -19,12 +21,12 @@ interface state {
 
 
 @Component({
-  selector: 'app-service-list',
-  templateUrl: './service-list.component.html',
-  styleUrls: ['./service-list.component.scss']
+  selector: 'app-subjects-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss']
 })
 
-export class ServiceListComponent implements OnInit {
+export class ListComponent implements OnInit {
 
 
   /**
@@ -41,6 +43,7 @@ export class ServiceListComponent implements OnInit {
   */
   modelService: ModelService;
   objet = new Object;
+  public dataListSubject : any[] = []
   showCRUDlist: boolean = true;
   showCRUDcreate: boolean = false;
   //showCRUDlist : boolean = false;
@@ -100,16 +103,25 @@ export class ServiceListComponent implements OnInit {
     private _productInterationService: ProductInterationService,
     private modalService: NgbModal,
     private notificationService: NotificationService,
+    private asignatureService : AsignatureService,
+    private usersService : UsersService,
 
   ) {
     this.productObject = new ModelProduct;
+    
 
   }
+// Tabla filtros y paginacion
+
+
+
 
   ngOnInit() {
 
-    this.getProductList();
-
+    //this.getProductList();
+    this.getAllAsignature();
+    this.getAllUsuarios();
+    
   }
 
 
@@ -136,7 +148,10 @@ export class ServiceListComponent implements OnInit {
   public modelUser: User
 
   public productObject: ModelProduct;
-  displayedColumns: string[] = ['Codigo', 'Descripcion', 'Estado', 'Accion'];
+
+  
+  displayedColumns: any[] = ['TI', 'Nombres', 'Apellidos', ];
+  
   public usersList_Id: any;
   public estatus_data: string = '';
   public product_estatus: boolean = false;
@@ -170,31 +185,51 @@ export class ServiceListComponent implements OnInit {
 
 
 
-  // Tabla filtros y paginacion
+  
+  public getProductList() {
+    this.serviceService.getAllService().subscribe(
+      (response) => {       
+        
 
+      },
+      (error) => { Swal.fire( "502 " ,  "Valida con el administrador" ,  "error" ) }
+    )
+  }
+
+  public getAllAsignature(){
+    this.asignatureService.getAllService().subscribe(
+      (response)=>
+      {console.log("AsignatureResponse",response)
+        this.dataListSubject = this.dataListSubject.concat(response)
+      }
+    )
+  }
+ // uzdbpcmb
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  elemento = new MatTableDataSource<ModelProduct>(this.products);
+  //elemento = new MatTableDataSource<ModelProduct>(this.products);
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.data.filter = filterValue;
   }
-
-  public getProductList() {
-    this.serviceService.getAllService().subscribe(
-      (response) => {       
-        this.data = new MatTableDataSource(response)
-        this.data.paginator = this.paginator = this.paginator
-        this.data.applyFilter = this.applyFilter;
-        this.paginator._intl.itemsPerPageLabel = 'Registros por pagina';
-        this.paginator._intl.firstPageLabel = 'Primera pagina';
-        this.paginator._intl.lastPageLabel = 'Ultima pagina';
-        this.paginator._intl.nextPageLabel = 'Pagina adelante';
-        this.paginator._intl.previousPageLabel = 'Pagina atras';
-
-      },
-      (error) => { Swal.fire( "502 " ,  "Valida con el administrador" ,  "error" ) }
-    )
+  public getAllUsuarios(){
+    this.usersService.getAllService().subscribe(
+      (response)=>
+        {console.log("UsersResponse",response)
+        this.dataListSubject = this.dataListSubject.concat(response)
+        console.log(this.dataListSubject)
+        
+          this.data = new MatTableDataSource(this.dataListSubject)
+          this.data.paginator = this.paginator = this.paginator
+          this.data.applyFilter = this.applyFilter;
+          this.paginator._intl.itemsPerPageLabel = 'Registros por pagina';
+          this.paginator._intl.firstPageLabel = 'Primera pagina';
+          this.paginator._intl.lastPageLabel = 'Ultima pagina';
+          this.paginator._intl.nextPageLabel = 'Pagina adelante';
+          this.paginator._intl.previousPageLabel = 'Pagina atras';
+        
+        }
+      )
   }
 
   public whatProduct(product) {
@@ -212,45 +247,7 @@ export class ServiceListComponent implements OnInit {
     sessionStorage.setItem("updateProduct", JSON.stringify(product));
   }
 
-
-  /**
-  * Pausar despaudar producto
-  */
-  /*
-   public stopProduct(product) {
-     product.Estado = 0;    
-     this.productsService.stopProduct(product).subscribe(
-       (response)=>{
-         Swal.fire("Listo","Producto pausado", "success")
-         this.getProductList();
-       }
-     )
-     this.product_estatus=true
-     this.getProductList();
-   }
-   public activeProduct(product){
-     product.Estado = 2;
-     this.productsService.stopProduct(product).subscribe(
-       (Response)=>{
-         Swal.fire( "Listo" ,  "Producto Activo" ,  "success" )
-         this.getProductList();       
-       }
-     )
-     this.product_estatus=false    
-   }
-   /**
-   * Eliminar producto
-   
-   public deleteProduct(product){
-     product.Estado = 1;
-     this.productsService.stopProduct(product).subscribe(
-       (Response)=>{           
-         Swal.fire( "Listo" ,  "Producto Eliminado" ,  "success" )
-         this.getProductList();
-     }
-     )    
-   } 
-  */
+  
 }
 
 
