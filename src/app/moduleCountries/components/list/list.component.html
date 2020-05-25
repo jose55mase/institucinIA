@@ -65,11 +65,11 @@
                                 
                                 <ng-container matColumnDef="Grado">
                                   <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Grado </th>
-                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.grado}} </td>
+                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.grado | activityProduct}} </td>
                                 </ng-container>
                                 <ng-container matColumnDef="Grupo">
                                   <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Grupo </th>
-                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.grupo}} </td>
+                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.grupo | activityProductGrupo}} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="Accion">

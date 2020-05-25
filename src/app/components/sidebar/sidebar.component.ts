@@ -15,7 +15,7 @@ export const ROUTES: RouteInfo[] = [
   { path: '/subjects', title: 'Notas', icon: 'offline_pin', class: '' },
   { path: '/asignature', title: 'Materias', icon: 'library_books', class: '' },
   { path: '/client', title: 'Clientes', icon: 'people', class: '' },
-  { path: '/countries', title: 'Paises', icon: 'public', class: '' },
+  { path: '/activity', title: 'Actividades', icon: 'card_travel', class: '' },// countries as Actividades
   { path: '/users', title: 'Usuarios', icon: 'people', class: '' },
 ];
 

@@ -2,33 +2,33 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
-import { ModelCountries } from 'app/models/countries.model';
+import { ModelSubjets } from 'app/models/subjets.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class CountriesService {
+export class SubjectsService {
   
   URI: string;
   constructor(private http: HttpClient) { 
     this.URI = `${environment.apiUrl}`
   }
 
-  getAllService(): Observable<ModelCountries[]> {   
-    return this.http.get<ModelCountries[]>(`${this.URI}/countries/list`)
+  getAllService(): Observable<ModelSubjets[]> {   
+    return this.http.get<ModelSubjets[]>(`${this.URI}/countries/list`)
   }
 
-  save(data): Observable<ModelCountries> {   
-    return this.http.post<ModelCountries>(`${this.URI}/countries/save`,data)
+  save(data): Observable<ModelSubjets> {   
+    return this.http.post<ModelSubjets>(`${this.URI}/countries/save`,data)
   }
 
-  update(data): Observable<ModelCountries> {   
-    return this.http.post<ModelCountries>(`${this.URI}/countries/save`,data)
+  update(data): Observable<ModelSubjets> {   
+    return this.http.post<ModelSubjets>(`${this.URI}/countries/save`,data)
   }
 
-  delete(data): Observable<ModelCountries> {   
-    return this.http.post<ModelCountries>(`${this.URI}/countries/delete`,data)
+  delete(data): Observable<ModelSubjets> {   
+    return this.http.post<ModelSubjets>(`${this.URI}/countries/delete`,data)
   }
   
 }

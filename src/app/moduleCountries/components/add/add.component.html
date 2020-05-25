@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-2">
-        <img src="./../../../../assets/img/estudent.jpg" width="100" alt="">   
+        <img src="./../../../../assets/img/estudent.jpg" width="100" alt="">
     </div>
     <div class="col-md-10">
         <div class="card">
@@ -8,74 +8,111 @@
             <div class="row">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-7" class="form-group">
-                    <div class="d-flex flex-row bd-highlight mb-2">                    
-                        
+                    <div class="d-flex flex-row bd-highlight mb-2">
+
                     </div>
                 </div>
             </div>
-            <!-- Columnas de registros -->   
-          
-            <form [formGroup]="checkoutForm" >
+            <!-- Columnas de registros -->
+
+            <form [formGroup]="checkoutForm">
                 <mat-form-field class="example-full-width">
                     <mat-label>Descripcion de la actividad</mat-label>
-                    <textarea
-                        matInput 
-                        placeholder="Describa aqui la actividad a realizar" 
-                        autocomplete="off" 
-                        formControlName="activity"                   
-                      
-                    ></textarea>
+                    <textarea matInput placeholder="Describa aqui la actividad a realizar" autocomplete="off"
+                        formControlName="activity"></textarea>
                     <mat-icon matSuffix>description</mat-icon>
                 </mat-form-field>
                 {{checkoutForm.get('activity').value.length}}
-                <mat-error  *ngIf=" checkoutForm.get('activity').value == '' && checkoutForm.get('activity').touched "  >Este campo es obligatorio</mat-error>
+                <mat-error *ngIf=" checkoutForm.get('activity').value == '' && checkoutForm.get('activity').touched ">
+                    Este campo es obligatorio</mat-error>
                 <mat-form-field>
                     <mat-label>Grado</mat-label>
                     <mat-select formControlName="grado">
-                      <mat-option  *ngFor="let grado of grado" [value]="grado.code">
-                        {{grado.name}}
-                      </mat-option>
+                        <mat-option *ngFor="let grado of grado" [value]="grado.code">
+                            {{grado.name}}
+                        </mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Grupo</mat-label>
                     <mat-select formControlName="grupo">
-                      <mat-option  *ngFor="let grupo of grupo" [value]="grupo.code">
-                        {{grupo.name}}
-                      </mat-option>
+                        <mat-option *ngFor="let grupo of grupo" [value]="grupo.code">
+                            {{grupo.name}}
+                        </mat-option>
                     </mat-select>
                 </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Materia</mat-label>
+                    <mat-select formControlName="asignature">
+                        <mat-option *ngFor="let asignature of asignature" [value]="asignature.id">
+                            {{asignature.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="row card">
+                    <div class="col-sm-8">
+                        <h4>Selecciona Archivo</h4>
+                        <div id="fileSelector">
+                            <input type="file" name="fileUplaod" id="fileUpload" multiple ng2FileSelect
+                                [uploader]="uploader">
+                        </div>
+                        <div>
+                            <div class="row uploadList" *ngFor="let item of uploader.queue">
+                                <div class="col-sm-4">{{item.file.name}}</div>
+                                <div class="col-sm-4">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" [ngStyle]="{'width':item.progress+'%'}"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="button" class="btn btn-dark" (click)="item.upload()">Agregar</button>
+                                    <button type="button" class="btn btn-danger" (click)="item.remove()">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="uploader?.queue?.length > 0">
+                            <button type="button" class="btn btn-primary" (click)="uploader.uploadAll()">Añadir Todo</button>
+                        </div>
+                    </div>
+                </div>
             </form>
-            
-            <div *ngIf="btnSaveDate"  class="">
-                <button 
-                    class="position_save btn-block" 
-                    color="primary"
-                    (click)="savedata()"
-                    [disabled]="!checkoutForm.valid"
-                    mat-raised-button>
+
+
+            <div *ngIf="btnSaveDate" class="">
+                <button class="position_save btn-block" color="primary" (click)="savedata()"
+                    [disabled]="!checkoutForm.valid" mat-raised-button>
                     Guargar
                 </button>
             </div>
-          
+
             <div *ngIf="btnUpDate" class="">
-                <button 
-                    class="position_save btn-block" 
-                    color="primary"
-                    (click)="update()"
-                    [disabled]="!checkoutForm.valid"
-                    mat-raised-button>
+                <button class="position_save btn-block" color="primary" (click)="update()"
+                    [disabled]="!checkoutForm.valid" mat-raised-button>
                     Editar
                 </button>
             </div>
-          </div>
+        </div>
     </div>
 </div>
+    
 
-<div class="custom-file">
-    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="row card">
+            <h4>Lista de Archivos</h4>
+           
+            <div class="row" *ngFor="let item of attachmentList; let i = index"
+                style="margin:10px;padding:5px;background-color:rgb(231, 229, 229); border-radius:5px; line-height:40px;">
+                <div class="col-sm-7">{{item.originalname}}</div>
+                <div class="col-sm-5" style="text-align:center;"><button type="button" class="btn btn-primary"
+                    (click)="download(i)">Descargar</button>
+                    <button type="button" class="btn btn-primary"
+                    (click)="deletefile(i)">Eliminar</button>    
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
 </div>
-
-

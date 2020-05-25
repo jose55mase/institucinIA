@@ -75,12 +75,14 @@
   ],
   "Actividades": [
     {
-      "activity": "nueva actividad",
+      "activity": "nuevo mas",
       "grupo": 3,
-      "grado": 3,
-      "id": 1590341867506,
-      "dataUplad": {},
-      "asignature": 1
+      "grado": 2,
+      "id": 1590307048957,
+      "dataUplad": {
+        "originalname": "1590250924466.Desertjose.jpg",
+        "uploadname": "1590314205120.1590250924466.Desertjose.jpg"
+      }
     }
   ],
   "Notas": []

@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http'
-import { ModelCountries } from 'app/models/countries.model';
 import { NotificationService } from 'app/services/notification-service';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ModuleAsignature } from 'app/models/asignature.model';

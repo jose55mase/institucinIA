@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand">
+        <span class="material-icons">
+        school
+        </span>
+        {{student.Nombre}} {{student.Apellidos}}
+    </a>
+    
+</nav>
+<div class="card">
+    <!-- Cabeceras registros -->
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-7" class="form-group">
+            <div class="d-flex flex-row bd-highlight mb-2">
+                <!-- As a heading -->
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                            role="tab" aria-controls="nav-home" (click)="getAllActivity()" aria-selected="true">
+                            Notas Materias 
+                            <span class="material-icons">done_outline</span>
+                        </a>
+                            
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Columnas de registros -->
+    
+    <div class="card " *ngFor="let item of dataListActividadesName" style="width: 28rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{item.asignature}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{item.activity}}</h6>
+                <form class="card-text">
+                    <mat-radio-group aria-label="Select an option row">
+                        <div class="col-md-1"></div>
+                        <mat-radio-button class="col-md-2" value="5">5</mat-radio-button>
+                        <mat-radio-button class="col-md-2" value="4">4</mat-radio-button>
+                        <mat-radio-button class="col-md-2" value="3">3</mat-radio-button>
+                        <mat-radio-button class="col-md-2" value="2">2</mat-radio-button>
+                        <mat-radio-button class="col-md-2" value="1">1</mat-radio-button>
+                        <div class="col-md-1"></div>
+                    </mat-radio-group>
+                </form>
+        </div>
+    </div>
+
+</div>
