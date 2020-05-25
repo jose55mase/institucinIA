@@ -19,6 +19,18 @@ import { AsignatureService } from 'app/services/asignature.service';
 })
 export class AddComponent implements OnInit {
 
+  favoriteColor = '';
+
+  btnprueba(){
+    alert(this.favoriteColor)
+  }
+
+
+
+
+
+
+
   selectedValue: string;
   selectedCar: string;
   checkoutForm;
