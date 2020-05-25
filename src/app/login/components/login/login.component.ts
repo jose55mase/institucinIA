@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
       res => {                
         if (res[0].usuario == username && res[0].clave == password) {
           //const u: User = { username: username, tkn: res.result.access_token};
-          this._snackBar.open("KONECTA", '✅', {
+          this._snackBar.open("INSTITUCION INTERACTIVA AMBIENTAL", '✅', {
             verticalPosition: 'top',
             duration: 4000            
           })

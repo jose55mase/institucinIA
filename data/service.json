@@ -43,7 +43,7 @@
   ],
   "Usuarios": [
     {
-      "id": 1,
+      "id": 2,
       "Documento": "123123",
       "Nombre": "Carlos",
       "Apellidos": "Miguel",
@@ -54,11 +54,11 @@
       "Edad": "12",
       "Grupo": "A1",
       "Salon": "234",
-      "Grado": "5°",
+      "Grado": "Primero",
       "Rol": "ESTUDIANTE"
     },
     {
-      "id": 1,
+      "id": 454,
       "Documento": "4343543",
       "Nombre": "Carlos",
       "Apellidos": "Antonio Nieves",
@@ -67,9 +67,9 @@
       "Direccion": "KR 34 #",
       "Email": "email@email.com",
       "Edad": "12",
-      "Grupo": "A1",
+      "Grupo": "A3",
       "Salon": "234",
-      "Grado": "5°",
+      "Grado": "Primero",
       "Rol": "ESTUDIANTE"
     }
   ],
