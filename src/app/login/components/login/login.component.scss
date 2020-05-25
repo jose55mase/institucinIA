@@ -1,5 +1,5 @@
 .footer {
-    background-color: #4EB0BB;
+    background-color: #2F7D86;
     position: absolute;
     width: 100%;
     clear: both;
@@ -38,14 +38,14 @@
     display: flex;
     padding: .2em 0em;
     justify-content: space-between;
+    color: black;
 }
 
 .help {
-    width: 100px;
-    height: 40px;
+    width: 200px;
+    height: 0px;
     color: #fff;
-    line-height: 50px;
-    margin-right: -42px;
+    
 }
 
 .logo {
@@ -53,8 +53,13 @@
     margin-right: 0px;
 }
 
+ul{
+    color: #fff;
+    cursor: pointer;   
+}
+
 .nav-bar-logo {
-    background-color: #4EB0BB !important;
+    background-color: #2F7D86 !important;
 }
 
 ::ng-deep .mat-focused .mat-form-field-label {

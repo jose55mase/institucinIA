@@ -14,7 +14,7 @@ export class LoginService {
 
   login(): Observable<any> {
     console.log()
-    return this.http.get<any>('http://192.168.1.2:3000/data')
+    return this.http.get<any>('http://192.168.1.3:3000/data')
   }
   
 }

@@ -43,7 +43,7 @@
   ],
   "Usuarios": [
     {
-      "id": 1,
+      "id": 2,
       "Documento": "123123",
       "Nombre": "Carlos",
       "Apellidos": "Miguel",
@@ -54,11 +54,11 @@
       "Edad": "12",
       "Grupo": "A1",
       "Salon": "234",
-      "Grado": "5°",
+      "Grado": "Primero",
       "Rol": "ESTUDIANTE"
     },
     {
-      "id": 1,
+      "id": 454,
       "Documento": "4343543",
       "Nombre": "Carlos",
       "Apellidos": "Antonio Nieves",
@@ -67,30 +67,20 @@
       "Direccion": "KR 34 #",
       "Email": "email@email.com",
       "Edad": "12",
-      "Grupo": "A1",
+      "Grupo": "A3",
       "Salon": "234",
-      "Grado": "5°",
+      "Grado": "Primero",
       "Rol": "ESTUDIANTE"
     }
   ],
   "Actividades": [
     {
-      "activity": "Es una actividad de desarrollo",
-      "grupo": 1,
-      "grado": 5,
-      "id": 1
-    },
-    {
-      "activity": "Ruth edita",
-      "grupo": 8,
-      "grado": 11,
-      "id": 1590186439625
-    },
-    {
-      "activity": "Es una actividad de desarrollo",
-      "grupo": 1,
-      "grado": 2,
-      "id": 1590186439626
+      "activity": "nueva actividad",
+      "grupo": 3,
+      "grado": 3,
+      "id": 1590341867506,
+      "dataUplad": {},
+      "asignature": 1
     }
   ]
 }

@@ -1,8 +1,16 @@
-nav{
-  
-  background-color: #2F7D86 !important;   
-  
-  
+body{
+  /*background-color: #18C28E;*/
+  background-image: url("./../../../assets/img/colegios-fondo.jpg")
+}
+br{
+  background-color: cadetblue
+}
+
+nav{ 
+  background-color: #2F7D86 !important;    
+}
+h3{
+  color: #000;
 }
 
 .navbar-text{
@@ -24,20 +32,22 @@ p{
   text-align: center;
 }
 footer{
-  border-radius: 10px;
-  position: fixed;
+  /*border-radius: 10px;*/
   bottom: 0;
   right: 0%;
-  height: 120px;
   color: rgb(109, 20, 8); ;
   background-color: #2F7D86;
-  width: 100%;
+
 }
 
+.body-footer{
+  margin: 20px;
+}
 
 .example-card {
-    max-width: 400px;
-  }
+  max-width: 400px;
+  background-color: #16A3B1;
+}
   
   .example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -62,6 +72,9 @@ ul{
 
 /* estos son los estilos de redes Sociales*/
 #ul-menu{
+  position: fixed;
+  top: 200px;
+  right: 0;
   border-radius: 40px;
   list-style-type: none;
   margin: 0;
