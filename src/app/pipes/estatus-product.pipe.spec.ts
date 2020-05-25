@@ -1,8 +1,8 @@
-import { EstatusProductPipe } from './estatus-product.pipe';
+import { EstatusActivityPipe } from './estatus-activity.pipe';
 
 describe('EstatusProductPipe', () => {
   it('create an instance', () => {
-    const pipe = new EstatusProductPipe();
+    const pipe = new EstatusActivityPipe();
     expect(pipe).toBeTruthy();
   });
 });

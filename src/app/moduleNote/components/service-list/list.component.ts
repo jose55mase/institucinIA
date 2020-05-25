@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter, Inject } from '@angular/core';
 
 import { ServiceService } from 'app/services/service.service';
-import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ModelProduct } from 'app/models/product.model';
 import { UserService } from 'app/login/services/user.service';
 import { ProductInterationService } from 'app/services/productInteration.service';
@@ -12,12 +12,26 @@ import { ModelService } from 'app/models/service.model';
 import { NotificationService } from 'app/services/notification-service';
 import { AsignatureService } from 'app/services/asignature.service';
 import { UsersService } from 'app/services/usuario.service';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ActivityService } from 'app/services/activity.service';
 
 
 interface state {
   value: string;
   viewValue: string;
 }
+
+export interface Grupo{
+  code:number;
+  name:String;
+}
+export interface Grado{
+  code:number;
+  name:String;
+}
+
+
+
 
 
 @Component({
@@ -43,11 +57,57 @@ export class ListComponent implements OnInit {
   */
   modelService: ModelService;
   objet = new Object;
-  public dataListSubject : any[] = []
+  
   showCRUDlist: boolean = true;
   showCRUDcreate: boolean = false;
   //showCRUDlist : boolean = false;
   //showCRUDlist : boolean = false;
+  checkoutForm;
+
+  // LISTAS GRUPOS
+  /**
+   * @Lista_grupos
+   * @Descripcion Creara un lista para los grupos
+   */
+  public grupo:Grupo[]=[
+    {code:1 ,name:"A1"},
+    {code:2 ,name:"A2"},
+    {code:3 ,name:"A3"},
+    {code:4 ,name:"B1"},
+    {code:5 ,name:"B2"},
+    {code:6 ,name:"C3"},
+    {code:7 ,name:"C1"},
+    {code:8 ,name:"C2"},
+    {code:9 ,name:"C3"}
+  ]
+
+  // LISTAS GRADOS
+  /**
+   * @Lista_grados
+   * @Descripcion Creara un lista para los grados.
+   */
+  public grado:Grado[]=[
+    {code:1 ,name:"Primero"},
+    {code:2 ,name:"Segundo"},
+    {code:3 ,name:"Tercero"},
+    {code:4 ,name:"Cuarto"},
+    {code:5 ,name:"Quinto"},
+    {code:6 ,name:"Sexto"},
+    {code:7 ,name:"Septimo"},
+    {code:8 ,name:"Octavo"},
+    {code:9 ,name:"Noveno"},
+    {code:10 ,name:"Decimo"},
+    {code:11 ,name:"Once"},
+    {code:12 ,name:"Doce"}
+  ]
+
+  search = {
+    grupo:0,
+    grado:0
+  }
+
+
+
   public CRUD(crud: number, id?) {
     switch (crud) {
       case 2: // Crear
@@ -58,7 +118,7 @@ export class ListComponent implements OnInit {
         this.showCRUDlist = true;
         this.showCRUDcreate = false;
         sessionStorage.removeItem("service")
-        this.getProductList()
+        
         break;
       default:
         break;
@@ -84,7 +144,7 @@ export class ListComponent implements OnInit {
       }
       this.serviceService.delete(this.objet).subscribe(
         (response)=>{
-          this.getProductList();
+         
           this.notificationService.alert('', "Registro Desactivo", 'success');
         },
         (error)=>{
@@ -105,41 +165,28 @@ export class ListComponent implements OnInit {
     private notificationService: NotificationService,
     private asignatureService : AsignatureService,
     private usersService : UsersService,
+    private formBuilder: FormBuilder,
+    
 
   ) {
     this.productObject = new ModelProduct;
-    
-
+    this.checkoutForm = this.formBuilder.group({
+            
+    });
   }
 // Tabla filtros y paginacion
 
-
-
-
-  ngOnInit() {
-
-    //this.getProductList();
-    this.getAllAsignature();
-    this.getAllUsuarios();
+  filteUsers(){
+    if(this.search.grado == 0 ){
+      Swal.fire( "👀" ,  "Valida el filtro Grado" ,  "warning" )
+    }else if(this.search.grupo == 0 ){
+      Swal.fire( "👀" ,  "Valida el filtro Grupo" ,  "warning" )
+    }else{
+      this.getAllUsuarios(this.search);
+    }
     
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 
   // Variables
   public data: any;
@@ -150,61 +197,9 @@ export class ListComponent implements OnInit {
   public productObject: ModelProduct;
 
   
-  displayedColumns: any[] = ['TI', 'Nombres', 'Apellidos', ];
+  displayedColumns: any[] = ['TI', 'Nombres', 'Apellidos', 'Calificar'];
   
-  public usersList_Id: any;
-  public estatus_data: string = '';
-  public product_estatus: boolean = false;
-
-  public whatchProduct: boolean = false;
-  @Output() _updateProduct = new EventEmitter;
-  @Output() _deleteProduct = new EventEmitter;
-  @Output() _lisProduct = new EventEmitter;
-  closeResult: string;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  public getProductList() {
-    this.serviceService.getAllService().subscribe(
-      (response) => {       
-        
-
-      },
-      (error) => { Swal.fire( "502 " ,  "Valida con el administrador" ,  "error" ) }
-    )
-  }
-
-  public getAllAsignature(){
-    this.asignatureService.getAllService().subscribe(
-      (response)=>
-      {console.log("AsignatureResponse",response)
-        this.dataListSubject = this.dataListSubject.concat(response)
-      }
-    )
-  }
- // uzdbpcmb
+  // uzdbpcmb
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   //elemento = new MatTableDataSource<ModelProduct>(this.products);
   applyFilter(filterValue: string) {
@@ -212,14 +207,20 @@ export class ListComponent implements OnInit {
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.data.filter = filterValue;
   }
-  public getAllUsuarios(){
+  
+  public getAllUsuarios(json){
+    console.log(json)
     this.usersService.getAllService().subscribe(
       (response)=>
-        {console.log("UsersResponse",response)
-        this.dataListSubject = this.dataListSubject.concat(response)
-        console.log(this.dataListSubject)
-        
-          this.data = new MatTableDataSource(this.dataListSubject)
+        {
+          console.log(response)
+
+          response = response.filter((data)=>{return  data.Grado == json.grado})
+          response = response.filter((data)=>{return  data.Grupo == json.grupo})
+          
+          console.log(response)
+
+          this.data = new MatTableDataSource(response)
           this.data.paginator = this.paginator = this.paginator
           this.data.applyFilter = this.applyFilter;
           this.paginator._intl.itemsPerPageLabel = 'Registros por pagina';
@@ -231,23 +232,81 @@ export class ListComponent implements OnInit {
         }
       )
   }
-
-  public whatProduct(product) {
-    this.whatchProduct = true;
-    this.productObject = product;
+  ngOnInit() {
+    
   }
-  public listProductClose() {
-    this.whatchProduct = false;
-    this.getProductList()
+  openDialog(estudent): void {
+    const dialogRef = this.dialog.open(ShowNotasModalComponent, {
+      width: '50%',
+      data: estudent
+    });
+/*
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  */
   }
 
-  public updateProduct(product) {
-    this._updateProduct.emit()
-    localStorage.setItem("action", "upDate")
-    sessionStorage.setItem("updateProduct", JSON.stringify(product));
-  }
 
-  
+
+
+
 }
 
 
+@Component({
+  selector: 'showNotas-Modal',
+  templateUrl: './modal/show/showNotas.Modal.Component.html',
+  styleUrls: ['./modal/show/showNotas.Modal.Component.css']
+})
+export class ShowNotasModalComponent implements OnInit{
+
+  // Marias lista
+  public dataListAsignature : any[]= []
+  // Actividades lista
+  public dataListActividades : any[] = []
+  public dataListActividadesName : any[] = []
+
+  student: any = {};
+
+  constructor(
+    private asignatureService : AsignatureService,
+    private activityService : ActivityService,
+    public dialogRef: MatDialogRef<ShowNotasModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data) {
+
+      
+    }
+
+  
+  ngOnInit(){
+    this.student = this.data; 
+    this.activityService.getAllService().subscribe(
+      (response)=>{this.dataListActividades = response},
+    )
+    this.asignatureService.getAllService().subscribe(
+      (response)=>{this.dataListAsignature = response}
+    )
+    
+  }
+  
+  public getAllActivity(){
+    this.dataListActividades.map((activiti)=>{      
+      this.dataListAsignature.forEach((asignature)=>{
+        if(activiti.asignature == asignature.id){
+          activiti["asignature"] = asignature.name
+          this.dataListActividadesName.push(activiti)
+        }
+      })
+    })
+  } 
+
+  
+  //==================== EXIT ==================
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  //==================== END MODAL ==================
+
+}

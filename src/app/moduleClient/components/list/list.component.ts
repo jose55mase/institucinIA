@@ -123,7 +123,7 @@ export class ListComponent implements OnInit {
   public getProductList() {
     this.clientService.getAllService().subscribe(
       (response) => {        
-        this.data = new MatTableDataSource<ModelClient>(response)
+        this.data = new MatTableDataSource(response)
         this.data.paginator = this.paginator = this.paginator
         this.data.applyFilter = this.applyFilter;
         this.paginator._intl.itemsPerPageLabel = 'Registros por pagina';

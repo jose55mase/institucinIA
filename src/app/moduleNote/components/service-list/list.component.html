@@ -14,64 +14,80 @@
           (click)="CRUD(2)"
           >
           <mat-icon>add</mat-icon>
-        </button>     
+        </button>
+        <mat-form-field class="col-md-12">
+            <mat-label>Grado</mat-label>
+            <mat-select [(ngModel)]="search.grado">
+                <mat-option *ngFor="let grado of grado" [value]="grado.name">
+                    {{grado.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-md-12">
+            <mat-label>Grupo</mat-label>
+            <mat-select [(ngModel)]="search.grupo">
+                <mat-option *ngFor="let grupo of grupo" [value]="grupo.name">
+                    {{grupo.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="col-md-12">
+          <button class="btn btn-success btn-block" (click)="filteUsers()" >Buscar</button>
+        </div>
           <div class="col-md-12">
-              <div class="card">                
-                  <!-- Buscador de registros -->
-                  <div class="row">
-                    <div class="col-sm-1"></div>
-                      <div class="col-sm-7" class="form-group">
-                        <div class="d-flex flex-row bd-highlight mb-2">
-                          <div class="p-2 bd-highlight"><input type="text" (keyup)="applyFilter($event.target.value)" class="form-control text-danger"  placeholder=" Buscar en los resgistros"></div>
-                        <div class="p-2 bd-highlight"><mat-icon matSuffix>search</mat-icon></div>
-                        
+            <div class="card">                
+                <!-- Buscador de registros -->
+                <div class="row">
+                  <div class="col-sm-1"></div>
+                    <div class="col-sm-7" class="form-group">
+                      <div class="d-flex flex-row bd-highlight mb-2">
+                        <div class="p-2 bd-highlight"><input type="text" (keyup)="applyFilter($event.target.value)" class="form-control text-danger"  placeholder=" Buscar en los resgistros"></div>
+                      <div class="p-2 bd-highlight"><mat-icon matSuffix>search</mat-icon></div>
+                      
 
-                      </div>
-                    </div> 
-                  </div>
-                  <!-- Columnas de registros -->
-                  <div class="card-body">
-                      <div class="table-responsive">
-                          <table mat-table [dataSource]="data"  matSort> 
-                              <!-- descripcion Column -->
-                          
-                              <ng-container matColumnDef="TI">
-                                  <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> TI </th>
-                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.Documento}} </td>
-                              </ng-container>
-                              <ng-container matColumnDef="Nombres">
-                                  <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Nombres </th>
-                                  <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.Nombre }} </td>
-                              </ng-container>
-                              
-                              <ng-container matColumnDef="Apellidos">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Apellidos </th>
-                                <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.Apellidos }} </td>
-                              </ng-container>
-                              <!--ng-container matColumnDef="Accion">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Accion </th>
-                                <td mat-cell *matCellDef="let row" style="font-size: small"><mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-                                    <button mat-mini-fab color="primary" aria-label="" (click)="editData(row)">
-                                      <mat-icon>edit</mat-icon>
-                                    </button>
-                                    <button mat-mini-fab color="warn" aria-label="" (click)="delete(row)">
-                                      <mat-icon>delete</mat-icon>
-                                    </button>
-                                </mat-button-toggle-group>
-                              </ng-container-->
-                              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                             
-                          </table>
-                          <br>
-                          <mat-paginator #paginator
-                            [pageSize]="5"
-                            [pageSizeOptions]="[5, 10, 20]"
-                            [showFirstLastButtons]="true">
-                          </mat-paginator>
-                      </div>
-                  </div>
-              </div>
+                    </div>
+                  </div> 
+                </div>
+                <!-- Columnas de registros -->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table mat-table [dataSource]="data"  matSort> 
+                            <!-- descripcion Column -->
+                        
+                            <ng-container matColumnDef="TI">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> TI </th>
+                                <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.Documento}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Nombres">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Nombres </th>
+                                <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.Nombre }} </td>
+                            </ng-container>
+                            
+                            <ng-container matColumnDef="Apellidos">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Apellidos </th>
+                              <td mat-cell *matCellDef="let row" style="font-size: small"> {{row.Apellidos }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Calificar">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: medium"> Calificar </th>
+                              <td mat-cell *matCellDef="let row" style="font-size: small"><mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                                  <button mat-mini-fab color="primary" aria-label="" (click)="openDialog(row)">
+                                    <mat-icon>done_outline</mat-icon>
+                                  </button>                                  
+                              </mat-button-toggle-group>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            
+                        </table>
+                        <br>
+                        <mat-paginator #paginator
+                          [pageSize]="5"
+                          [pageSizeOptions]="[5, 10, 20]"
+                          [showFirstLastButtons]="true">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
           </div>
       </div>
 

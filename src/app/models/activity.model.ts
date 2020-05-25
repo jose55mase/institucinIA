@@ -3,4 +3,10 @@ export class ModuleActivity{
     activity:string;
     grupo: number;
     grado: number;
+    asignature:number;
+    dataUplad : {
+        originalname;
+        uploadname;
+    }
+      
 }

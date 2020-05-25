@@ -40,10 +40,10 @@ export const AdminLayoutRoutes: Routes = [
         }],
     },
     {
-        path: 'countries',
+        path: 'activity',
         component: CountriesComponent,
         children: [{
-            path: 'countries',
+            path: 'activity',
             loadChildren: () => import('../../moduleCountries/service.module').then(m => m.CountriesModule)
         }],
     },
