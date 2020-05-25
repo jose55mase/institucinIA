@@ -3,5 +3,7 @@ export  class ModelSubjets{
     idStuedent :number;
     nameStudent:String;
     asignature : String;
+    idActivity:number;
+    activityDescription:string;
     subjet: number;
 }

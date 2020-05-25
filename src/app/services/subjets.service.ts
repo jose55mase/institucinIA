@@ -16,16 +16,17 @@ export class SubjectsService {
   }
 
   getAllService(): Observable<ModelSubjets[]> {   
-    return this.http.get<ModelSubjets[]>(`${this.URI}/countries/list`)
+    return this.http.get<ModelSubjets[]>(`${this.URI}/Notas`)
   }
 
   save(data): Observable<ModelSubjets> {   
-    return this.http.post<ModelSubjets>(`${this.URI}/countries/save`,data)
+    return this.http.post<ModelSubjets>(`${this.URI}/Notas`,data)
   }
 
   update(data): Observable<ModelSubjets> {   
-    return this.http.post<ModelSubjets>(`${this.URI}/countries/save`,data)
+    return this.http.put<ModelSubjets>(`${this.URI}/Notas/${data.id}`,data)
   }
+  
 
   delete(data): Observable<ModelSubjets> {   
     return this.http.post<ModelSubjets>(`${this.URI}/countries/delete`,data)

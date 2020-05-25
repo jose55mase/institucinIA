@@ -8,7 +8,7 @@ import { ListComponent } from './components/list/list.component';
 import { EstudentsComponent } from './components/estudents/estudents.component';
 import { UserRoutes } from './users.routing';
 import { AddComponent } from './components/add/add.component';
-
+import { FormsModule } from '@angular/forms';
  
 
 
@@ -21,6 +21,7 @@ import { AddComponent } from './components/add/add.component';
     CommonModule,
     AngularMaterialModule,
     OverviewModule,
+    FormsModule,
     RouterModule.forChild(UserRoutes),
     
   ],

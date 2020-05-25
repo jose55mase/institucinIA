@@ -3,13 +3,14 @@ import { UploadService } from 'app/services/upload';
 import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs';  
 import { catchError, map } from 'rxjs/operators';  
-
+import {saveAs} from 'file-saver';
 
 import Swal from 'sweetalert2';
 import { NotificationService } from 'app/services/notification-service';
 import { HttpClient } from '@angular/common/http';
 import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
+import { FileService } from 'app/services/file.service';
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
@@ -18,7 +19,7 @@ const EXCEL_EXTENSION = '.xlsx';
   selector: 'app-estudents',
   templateUrl: './estudents.component.html',
   styleUrls: ['./estudents.component.scss'],
-  providers: [UploadService],
+  providers: [UploadService,FileService],
 
 
 })
@@ -46,11 +47,22 @@ export class EstudentsComponent implements OnInit {
       Grado: ""
     },
   ];
-  constructor(private excelService:UploadService){
+  constructor(
+    private _fileService:FileService,
+    private excelService:UploadService
+    ){
 
   }
   exportAsXLSX():void {
-    this.excelService.exportAsExcelFile(this.data, 'Formato_Estudiantes');
+    this.excelService.exportAsExcelFile(this.data, 'Formato_Estudiantes');// exportAsXLSX de a mano
+  }
+
+  downloadExportAsXLSX(index){
+    this._fileService.downloadFile("estudiantes.xlsx")
+    .subscribe(
+        data => saveAs(data, "estudiantes_Formato_XLSX"),
+        error => console.error(error)
+    );
   }
   
   

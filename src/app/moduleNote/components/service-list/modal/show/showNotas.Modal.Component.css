@@ -1,3 +1,12 @@
 card-title{
     margin-top: 30px;
 }
+
+
+
+::ng-deep .mat-tooltip {
+    /* your own custom styles here */ 
+    /* e.g. */
+    background-color: #2F7D86;
+    color: white !important;
+}

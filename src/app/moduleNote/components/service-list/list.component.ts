@@ -14,6 +14,8 @@ import { AsignatureService } from 'app/services/asignature.service';
 import { UsersService } from 'app/services/usuario.service';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivityService } from 'app/services/activity.service';
+import { SubjectsService } from 'app/services/subjets.service';
+import { ModelSubjets } from 'app/models/subjets.model';
 
 
 interface state {
@@ -261,20 +263,47 @@ export class ListComponent implements OnInit {
   styleUrls: ['./modal/show/showNotas.Modal.Component.css']
 })
 export class ShowNotasModalComponent implements OnInit{
+  // Bindign conexion con los checks
+  radioCheckStudents ={
+    asignature:0
+  }
 
   // Marias lista
   public dataListAsignature : any[]= []
   // Actividades lista
   public dataListActividades : any[] = []
   public dataListActividadesName : any[] = []
-
+  // Notas lista
+  public dataListSubjets : any[]= []
+  checkoutForm;
   student: any = {};
+  objet = new Object;
+  modelSubjets : ModelSubjets;
+  btnSaveUpdate = true;
+  subjetEach;
+
+
+  
 
   constructor(
     private asignatureService : AsignatureService,
     private activityService : ActivityService,
     public dialogRef: MatDialogRef<ShowNotasModalComponent>,
+    private subjectsService : SubjectsService,
+    private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data) {
+
+      
+
+      this.checkoutForm = this.formBuilder.group({
+
+      
+        description: new FormControl('',Validators.compose([
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(30)      
+        ])),     
+      });
 
       
     }
@@ -288,8 +317,14 @@ export class ShowNotasModalComponent implements OnInit{
     this.asignatureService.getAllService().subscribe(
       (response)=>{this.dataListAsignature = response}
     )
+    this.subjectsService.getAllService().subscribe(
+      (response)=>{this.dataListSubjets = response},
+      (response)=>{console.error("EROR", response)}
+    )
     
   }
+
+  
   
   public getAllActivity(){
     this.dataListActividades.map((activiti)=>{      
@@ -297,10 +332,74 @@ export class ShowNotasModalComponent implements OnInit{
         if(activiti.asignature == asignature.id){
           activiti["asignature"] = asignature.name
           this.dataListActividadesName.push(activiti)
+          
         }
+        
       })
     })
+    var filter = this.dataListSubjets.filter((data)=>{return data.idStuedent == this.student.id})
+    
+    if(filter.length > 0){
+      filter.map((subjet,indexS)=>{
+        console.log("Nota",subjet)
+        this.dataListActividadesName.map((data,index)=>{
+          console.log("Actividad",data)
+          if(subjet.idActivity == data.id){
+            this.dataListActividadesName[index].subjet = subjet.subjet
+            this.dataListActividadesName[index].subjetId = subjet.id
+            this.dataListActividadesName[index].status = false
+            this.checkoutForm.controls["description"].setValue(subjet.subjet)
+          }else{
+            this.dataListActividadesName[index].status = true;
+            this.dataListActividadesName[index].subjet = 0
+            this.checkoutForm.controls["description"].setValue(0)
+          }
+        })
+        
+      })
+      //this.checkoutForm.controls['asignature'].setValue(this.modelActivity.asignature)
+    }
+    console.log(this.dataListActividadesName)
   } 
+
+  onClickSave(activity){
+    var idSubjet = Date.now()
+    this.objet={
+      id : idSubjet,
+      idStuedent :this.student.id,
+      nameStudent:`${this.student.Nombre} ${this.student.Apellidos}`,
+      asignature : activity.asignature,
+      activityDescription : activity.activity,
+      idActivity: activity.id,
+      subjet: this.checkoutForm.value.description
+    }
+    console.log(this.objet)
+    this.subjectsService.save(this.objet).subscribe(
+      (response)=>{console.log("OK")},
+      (response)=>{console.error("EROR", response)}
+    )
+    
+  }
+
+  onClickUpdate(activity){   
+    console.log(activity) 
+    this.objet={
+      id : activity.subjetId,
+      idStuedent :this.student.id,
+      nameStudent:`${this.student.Nombre} ${this.student.Apellidos}`,
+      asignature : activity.asignature,
+      activityDescription : activity.activity,
+      idActivity: activity.id,
+      subjet: this.checkoutForm.value.description
+    }
+    console.log(this.objet)
+    
+    this.subjectsService.update(this.objet).subscribe(
+      (response)=>{console.log("OK")},
+      (response)=>{console.error("EROR", response)}
+    )
+    
+  }
 
   
   //==================== EXIT ==================

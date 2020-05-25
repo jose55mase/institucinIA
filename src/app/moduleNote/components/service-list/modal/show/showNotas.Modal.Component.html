@@ -31,20 +31,55 @@
     
     <div class="card " *ngFor="let item of dataListActividadesName" style="width: 28rem;">
         <div class="card-body">
-            <h5 class="card-title">{{item.asignature}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{item.activity}}</h6>
-                <form class="card-text">
-                    <mat-radio-group aria-label="Select an option row">
-                        <div class="col-md-1"></div>
-                        <mat-radio-button class="col-md-2" value="5">5</mat-radio-button>
-                        <mat-radio-button class="col-md-2" value="4">4</mat-radio-button>
-                        <mat-radio-button class="col-md-2" value="3">3</mat-radio-button>
-                        <mat-radio-button class="col-md-2" value="2">2</mat-radio-button>
-                        <mat-radio-button class="col-md-2" value="1">1</mat-radio-button>
-                        <div class="col-md-1"></div>
-                    </mat-radio-group>
-                </form>
+            <div class="row">
+                <div class="col-md-10">
+                    <h5 class="card-title">{{item.asignature}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{item.activity}}</h6>
+                        <form class="card-text" [formGroup]="checkoutForm">
+                           
+                            <div class="col-md-1"></div>
+                            <mat-radio-group formControlName="description" [(ngModel)]="item.subjet" aria-label="Select an option row">
+                                
+                                <mat-radio-button class="col-md-2" [value]="5">5</mat-radio-button>
+                                <mat-radio-button class="col-md-2" [value]="4">4</mat-radio-button>
+                                <mat-radio-button class="col-md-2" [value]="3">3</mat-radio-button>
+                                <mat-radio-button class="col-md-2" [value]="2">2</mat-radio-button>
+                                <mat-radio-button class="col-md-2" [value]="1">1</mat-radio-button>
+                            </mat-radio-group>
+                            <div class="col-md-1"></div>
+                        </form>
+                </div>
+                <div class="col-md-2">
+                    <button
+                        *ngIf="item.status"
+                        mat-icon-button
+                        matTooltip="Guardar nueva Nota"
+                        aria-label="Button that displays a tooltip when focused or hovered over"
+                        (click)="onClickSave(item)"
+                        color="accent">
+                        <span class="material-icons">
+                            save
+                        </span>
+                    </button>
+                    <button
+                        *ngIf="!item.status"
+                        mat-icon-button 
+                        matTooltip="Editar  Nota"
+                        aria-label="Button that displays a tooltip when focused or hovered over"
+                        (click)="onClickUpdate(item)"
+                        color="primary">
+                        <span class="material-icons">
+                            system_update_alt
+                        </span>
+                    </button>
+                    
+                </div>
+
+            </div>
+           
+
         </div>
     </div>
-
+    
+   
 </div>
