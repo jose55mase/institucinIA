@@ -39,10 +39,11 @@ export class ListComponent implements OnInit {
   // Variables
   public data: any;
   objet = new Object;
+  loading;
   // Model
 
  
-  displayedColumns: string[] = ['Codigo', 'Nombre', 'Telefono', 'Grupo', 'Accion'];
+  displayedColumns: string[] = ['Tipo', 'Codigo', 'Nombre', 'Grado', 'Grupo', 'Accion'];
   public usersList_Id: any;
   public estatus_data: string = '';
   public product_estatus: boolean = false;
@@ -62,12 +63,12 @@ export class ListComponent implements OnInit {
       case 2: // Crear
         this.showCRUDlist = false;
         this.showCRUDcreate = true;
-        sessionStorage.removeItem("objectKonecta")
+        sessionStorage.removeItem("objectIIA")
         break;
       case 1: // Listar
         this.showCRUDlist = true;
         this.showCRUDcreate = false;
-        sessionStorage.removeItem("objectKonecta")
+        sessionStorage.removeItem("objectIIA")
         this.getProductList();
         break;
       default:
@@ -76,9 +77,10 @@ export class ListComponent implements OnInit {
   }
 
   public editData(data: any) {
-    sessionStorage.setItem("objectKonecta", JSON.stringify(data))
-    this.showCRUDlist = false;
-    this.showCRUDcreate = true;
+    sessionStorage.setItem("objectIIA", JSON.stringify(data))
+    // this.showCRUDlist = false;
+    // this.showCRUDcreate = true;
+
   }
 
   public delete(data: ModuleAsignature) {
@@ -103,7 +105,7 @@ export class ListComponent implements OnInit {
     }
 
   }
-
+  
   
   // Constructor y Ng Init
   constructor(
@@ -124,6 +126,7 @@ export class ListComponent implements OnInit {
 
   
   public getProductList() {
+    this.loading = true
     this.usersService.getAllService().subscribe(
       (response) => {
         var dataUsers = new Observable(observer => {
@@ -145,10 +148,19 @@ export class ListComponent implements OnInit {
           this.paginator._intl.lastPageLabel = 'Ultima pagina';
           this.paginator._intl.nextPageLabel = 'Pagina adelante';
           this.paginator._intl.previousPageLabel = 'Pagina atras';
+          this.loading = false;
         })
                 
       },
       (error) => { Swal.fire( "502 " ,  "Valida con el administrador" ,  "error" ) }
     )
   }
+
+  
+  //========================= Exit BTN
+  btnAdd(){
+    sessionStorage.removeItem("objectIIA")
+  }
+  //========================= End
+
 }

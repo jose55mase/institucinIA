@@ -56,24 +56,27 @@ export class LoginComponent implements OnInit {
     );
     */
     this.loginService.login().subscribe(
-      res => {                
-        if (res[0].usuario == username && res[0].clave == password) {
-          //const u: User = { username: username, tkn: res.result.access_token};
-          this._snackBar.open("INSTITUCION INTERACTIVA AMBIENTAL", '✅', {
-            verticalPosition: 'top',
-            duration: 4000            
-          })
-          setTimeout(()=>{
-            const u: User = { username: username, tkn: "ERE4-656-454kjfisf445"};
-            this.userService.setUserLoggedIn(u),
-            this.navigate()
-          },2000)          
-        } else {
-          this._snackBar.open("Credenciales son incorrectas  ", '😭', {
-            verticalPosition: 'top',
-            duration: 5000            
-          })          
-        }
+      res => {        
+        res.map((login)=>{
+          if (login.Documento == username && login.Documento == password) {
+            //const u: User = { username: username, tkn: res.result.access_token};
+            this._snackBar.open("INSTITUCION INTERACTIVA AMBIENTAL", '✅', {
+              verticalPosition: 'top',
+              duration: 4000            
+            })
+            setTimeout(()=>{
+              const u: User = { username: login.Nombre, document:login.Documento, rol:login.Rol ,tkn: "ERE4-656-454kjfisf445"};
+              this.userService.setUserLoggedIn(u),
+              this.navigate()
+            },2000)          
+          } else {
+            this._snackBar.open("Credenciales son incorrectas  ", '😭', {
+              verticalPosition: 'top',
+              duration: 5000            
+            })          
+          }
+        })            
+        
       },
       error => {
         this._snackBar.open("504 Error Servidor ", '😭', {

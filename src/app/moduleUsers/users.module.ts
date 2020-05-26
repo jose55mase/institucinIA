@@ -9,6 +9,7 @@ import { EstudentsComponent } from './components/estudents/estudents.component';
 import { UserRoutes } from './users.routing';
 import { AddComponent } from './components/add/add.component';
 import { FormsModule } from '@angular/forms';
+import { TypeUserPipe } from 'app/pipes/estatus-TypeUser.pipe';
  
 
 
@@ -16,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [UsersComponent, AddComponent,ListComponent,EstudentsComponent],
+  declarations: [UsersComponent, AddComponent,ListComponent,EstudentsComponent,TypeUserPipe],
   imports: [
     CommonModule,
     AngularMaterialModule,

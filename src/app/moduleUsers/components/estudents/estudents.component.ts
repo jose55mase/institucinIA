@@ -11,6 +11,8 @@ import { HttpClient } from '@angular/common/http';
 import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
 import { FileService } from 'app/services/file.service';
+import { UsersService } from 'app/services/usuario.service';
+import { Router } from '@angular/router';
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
@@ -29,6 +31,7 @@ export class EstudentsComponent implements OnInit {
   form : boolean = false;
   wait : boolean = false;
   createform : boolean = false;
+  objet = new Object;
   fileName= 'ExcelSheet.xlsx';  
   dataEstudent = []
   name = 'Angular 6';
@@ -49,7 +52,10 @@ export class EstudentsComponent implements OnInit {
   ];
   constructor(
     private _fileService:FileService,
-    private excelService:UploadService
+    private excelService:UploadService,
+    private usersService : UsersService,
+    private notificationService : NotificationService,
+    private ROUTER : Router,
     ){
 
   }
@@ -114,15 +120,47 @@ export class EstudentsComponent implements OnInit {
   }
   savaDataEstudent(){
     this.wait = true
-    this.dataEstudent.map(data =>{
-      setTimeout(()=>{
+    var save = this.savedata()
+    setTimeout(()=>{
+      if(save.menssge == "OK"){
+        this.notificationService.alert('🎓', "Registro guardado correctamente", 'success');
         this.wait = false
         this.table = true;
-      },3000)
+        this.ROUTER.navigate(['/users'])
+      }else{
+        this.notificationService.alert('💤', "Error", 'error');
+      }
+    },1000)
+    
+  }
+  public savedata(){  
+    var status
+    this.dataEstudent.map((data)=>{
+      var idesData = Date.now()
+      this.objet = {
+        id:idesData,
+        Documento: data.Documento,
+        Nombre:data.Nombre,
+        Apellidos: data.Apellidos,
+        Telefonos : data.Telefonos,
+        Acudiente : data.Acudiente,
+        Direccion: data.Direccion,
+        Email: data.Email,
+        Edad : 0,
+        Grupo: data.Grupo,
+        Salon :data.Salon,
+        Grado: data.Grado,
+        Rol: "Estudiante"
+      }
+      this.usersService.save(this.objet).subscribe(
+        (response)=>{({menssge:"OK"})},
+        (error)=>{ ({menssge:"ERROR"})}
+        )
     })
     
-    
+    return ({menssge:"OK"})
   }
 
 
 }
+

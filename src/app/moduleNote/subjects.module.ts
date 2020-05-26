@@ -15,6 +15,8 @@ import { EstatusActivityPipe } from 'app/pipes/estatus-activity.pipe';
     CommonModule,
     AngularMaterialModule,
     OverviewModule,
+
+    
     
   ],
   entryComponents:[ShowNotasModalComponent],

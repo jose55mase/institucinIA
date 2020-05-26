@@ -7,6 +7,7 @@ import { UserService } from 'app/login/services/user.service';
 import { ProductInterationService } from 'app/services/productInteration.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
+
 import { User } from 'app/login/components/login/user/user.model';
 import { ModelService } from 'app/models/service.model';
 import { NotificationService } from 'app/services/notification-service';
@@ -16,6 +17,9 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivityService } from 'app/services/activity.service';
 import { SubjectsService } from 'app/services/subjets.service';
 import { ModelSubjets } from 'app/models/subjets.model';
+import { FormArray } from '@angular/forms';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 
 
 interface state {
@@ -59,6 +63,7 @@ export class ListComponent implements OnInit {
   */
   modelService: ModelService;
   objet = new Object;
+  loading = false;
   
   showCRUDlist: boolean = true;
   showCRUDcreate: boolean = false;
@@ -211,26 +216,26 @@ export class ListComponent implements OnInit {
   }
   
   public getAllUsuarios(json){
-    console.log(json)
+    this.loading = true
     this.usersService.getAllService().subscribe(
       (response)=>
         {
-          console.log(response)
-
           response = response.filter((data)=>{return  data.Grado == json.grado})
           response = response.filter((data)=>{return  data.Grupo == json.grupo})
-          
-          console.log(response)
-
-          this.data = new MatTableDataSource(response)
-          this.data.paginator = this.paginator = this.paginator
-          this.data.applyFilter = this.applyFilter;
-          this.paginator._intl.itemsPerPageLabel = 'Registros por pagina';
-          this.paginator._intl.firstPageLabel = 'Primera pagina';
-          this.paginator._intl.lastPageLabel = 'Ultima pagina';
-          this.paginator._intl.nextPageLabel = 'Pagina adelante';
-          this.paginator._intl.previousPageLabel = 'Pagina atras';
-        
+          if(response.length == 0){
+            Swal.fire( "📪" ,  "No hay Estudiantes en este grupo" ,  "warning" )
+            this.loading = false;
+          }else{
+            this.data = new MatTableDataSource(response)
+            this.data.paginator = this.paginator = this.paginator
+            this.data.applyFilter = this.applyFilter;
+            this.paginator._intl.itemsPerPageLabel = 'Registros por pagina';
+            this.paginator._intl.firstPageLabel = 'Primera pagina';
+            this.paginator._intl.lastPageLabel = 'Ultima pagina';
+            this.paginator._intl.nextPageLabel = 'Pagina adelante';
+            this.paginator._intl.previousPageLabel = 'Pagina atras';
+            this.loading = false;
+          }
         }
       )
   }
@@ -290,20 +295,12 @@ export class ShowNotasModalComponent implements OnInit{
     private activityService : ActivityService,
     public dialogRef: MatDialogRef<ShowNotasModalComponent>,
     private subjectsService : SubjectsService,
-    private formBuilder: FormBuilder,
+    private notificationService: NotificationService,
     @Inject(MAT_DIALOG_DATA) public data) {
 
       
 
-      this.checkoutForm = this.formBuilder.group({
-
       
-        description: new FormControl('',Validators.compose([
-          Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(30)      
-        ])),     
-      });
 
       
     }
@@ -318,48 +315,51 @@ export class ShowNotasModalComponent implements OnInit{
       (response)=>{this.dataListAsignature = response}
     )
     this.subjectsService.getAllService().subscribe(
-      (response)=>{this.dataListSubjets = response},
-      (response)=>{console.error("EROR", response)}
+      (response)=>{this.dataListSubjets = response},     
     )
     
   }
 
+  get aliases() {
+    return this.checkoutForm.get('aliases') as FormArray;
+  }
   
   
   public getAllActivity(){
-    this.dataListActividades.map((activiti)=>{      
-      this.dataListAsignature.forEach((asignature)=>{
-        if(activiti.asignature == asignature.id){
-          activiti["asignature"] = asignature.name
-          this.dataListActividadesName.push(activiti)
-          
-        }
-        
+    if(this.dataListActividades.length > 0){
+      this.dataListActividades.map((activiti)=>{      
+        this.dataListAsignature.forEach((asignature)=>{
+          if(activiti.asignature == asignature.id){
+            activiti["asignature"] = asignature.name
+            activiti.status = true;
+            this.dataListActividadesName.push(activiti)          
+          }else{
+            Swal.fire( "📪" ,  "No hay actividades" ,  "warning" )
+          }     
+        })
       })
-    })
+    }else{
+      Swal.fire( "📪" ,  "No hay actividades" ,  "warning" )
+    }    
     var filter = this.dataListSubjets.filter((data)=>{return data.idStuedent == this.student.id})
-    
     if(filter.length > 0){
       filter.map((subjet,indexS)=>{
-        console.log("Nota",subjet)
         this.dataListActividadesName.map((data,index)=>{
-          console.log("Actividad",data)
           if(subjet.idActivity == data.id){
             this.dataListActividadesName[index].subjet = subjet.subjet
             this.dataListActividadesName[index].subjetId = subjet.id
             this.dataListActividadesName[index].status = false
-            this.checkoutForm.controls["description"].setValue(subjet.subjet)
+            this.dataListActividadesName[index].subjetControl = new FormControl(subjet.subjet)
           }else{
             this.dataListActividadesName[index].status = true;
             this.dataListActividadesName[index].subjet = 0
-            this.checkoutForm.controls["description"].setValue(0)
+            this.dataListActividadesName[index].subjetControl = new FormControl(0)
           }
         })
         
       })
       //this.checkoutForm.controls['asignature'].setValue(this.modelActivity.asignature)
-    }
-    console.log(this.dataListActividadesName)
+    }    
   } 
 
   onClickSave(activity){
@@ -371,18 +371,18 @@ export class ShowNotasModalComponent implements OnInit{
       asignature : activity.asignature,
       activityDescription : activity.activity,
       idActivity: activity.id,
-      subjet: this.checkoutForm.value.description
+      subjet: activity.subjetControl.value
     }
-    console.log(this.objet)
+    var filte = this.dataListActividadesName.find((data)=>{ return data.id == activity.id})
+    filte.status = false    
     this.subjectsService.save(this.objet).subscribe(
-      (response)=>{console.log("OK")},
-      (response)=>{console.error("EROR", response)}
+      (response)=>{this.notificationService.alert('📝', "Calificion creada", 'success');},
+      (error)=>{this.notificationService.alert('💤', "Error", 'error');}
     )
     
   }
 
-  onClickUpdate(activity){   
-    console.log(activity) 
+  onClickUpdate(activity){
     this.objet={
       id : activity.subjetId,
       idStuedent :this.student.id,
@@ -390,13 +390,11 @@ export class ShowNotasModalComponent implements OnInit{
       asignature : activity.asignature,
       activityDescription : activity.activity,
       idActivity: activity.id,
-      subjet: this.checkoutForm.value.description
+      subjet: activity.subjetControl.value
     }
-    console.log(this.objet)
-    
     this.subjectsService.update(this.objet).subscribe(
-      (response)=>{console.log("OK")},
-      (response)=>{console.error("EROR", response)}
+      (response)=>{this.notificationService.alert('📝', "Calificacion editada", 'success');},
+      (error)=>{this.notificationService.alert('💤', "Error", 'error');}
     )
     
   }
@@ -408,4 +406,5 @@ export class ShowNotasModalComponent implements OnInit{
   }
   //==================== END MODAL ==================
 
+  
 }

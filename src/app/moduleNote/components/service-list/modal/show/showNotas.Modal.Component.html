@@ -1,11 +1,21 @@
+<button  
+    mat-icon-button 
+    class="d-flex justify-content-end"
+    color="warn" matTooltip="Salir"
+    mat-dialog-close
+    aria-label="Button that displays a tooltip when focused or hovered over">
+    <span class="material-icons">
+        close
+    </span>
+</button>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand">
         <span class="material-icons">
-        school
+            school
         </span>
         {{student.Nombre}} {{student.Apellidos}}
     </a>
-    
+
 </nav>
 <div class="card">
     <!-- Cabeceras registros -->
@@ -18,68 +28,75 @@
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
                             role="tab" aria-controls="nav-home" (click)="getAllActivity()" aria-selected="true">
-                            Notas Materias 
+                            Notas Materias
                             <span class="material-icons">done_outline</span>
                         </a>
-                            
+
                     </div>
                 </nav>
             </div>
         </div>
     </div>
     <!-- Columnas de registros -->
-    
-    <div class="card " *ngFor="let item of dataListActividadesName" style="width: 28rem;">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-10">
-                    <h5 class="card-title">{{item.asignature}}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{item.activity}}</h6>
-                        <form class="card-text" [formGroup]="checkoutForm">
-                           
-                            <div class="col-md-1"></div>
-                            <mat-radio-group formControlName="description" [(ngModel)]="item.subjet" aria-label="Select an option row">
-                                
-                                <mat-radio-button class="col-md-2" [value]="5">5</mat-radio-button>
-                                <mat-radio-button class="col-md-2" [value]="4">4</mat-radio-button>
-                                <mat-radio-button class="col-md-2" [value]="3">3</mat-radio-button>
-                                <mat-radio-button class="col-md-2" [value]="2">2</mat-radio-button>
-                                <mat-radio-button class="col-md-2" [value]="1">1</mat-radio-button>
-                            </mat-radio-group>
-                            <div class="col-md-1"></div>
-                        </form>
-                </div>
-                <div class="col-md-2">
-                    <button
-                        *ngIf="item.status"
-                        mat-icon-button
-                        matTooltip="Guardar nueva Nota"
-                        aria-label="Button that displays a tooltip when focused or hovered over"
-                        (click)="onClickSave(item)"
-                        color="accent">
-                        <span class="material-icons">
-                            save
-                        </span>
-                    </button>
-                    <button
-                        *ngIf="!item.status"
-                        mat-icon-button 
-                        matTooltip="Editar  Nota"
-                        aria-label="Button that displays a tooltip when focused or hovered over"
-                        (click)="onClickUpdate(item)"
-                        color="primary">
-                        <span class="material-icons">
-                            system_update_alt
-                        </span>
-                    </button>
-                    
-                </div>
 
-            </div>
-           
+    <div class="card " style="width: 28rem;">
+        <div class="card-body">
+
+            <form class="card-text"  *ngFor="let item of dataListActividadesName">
+                <h5 class="card-title">{{item.asignature}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{item.activity}}</h6>
+                <div class="row">
+                    <div class="col-md-10">
+
+
+                        <div class="col-md-1"></div>
+                        
+                        <mat-radio-group [formControl]="item.subjetControl" 
+                            aria-label="Select an option row">
+                            <mat-radio-button class="col-md-2" [value]="5">5</mat-radio-button>
+                            <mat-radio-button class="col-md-2" [value]="4">4</mat-radio-button>
+                            <mat-radio-button class="col-md-2" [value]="3">3</mat-radio-button>
+                            <mat-radio-button class="col-md-2" [value]="2">2</mat-radio-button>
+                            <mat-radio-button class="col-md-2" [value]="1">1</mat-radio-button>
+                        </mat-radio-group>
+                        <div class="col-md-1"></div>
+
+                    </div>
+
+                    <div class="col-md-2">
+                        
+                        <button *ngIf="item.status" mat-icon-button matTooltip="Guardar nueva Nota"
+                            aria-label="Button that displays a tooltip when focused or hovered over"
+                            (click)="onClickSave(item)" color="accent">
+                            <span class="material-icons">
+                                save
+                            </span>
+                        </button>
+                        <button *ngIf="!item.status" mat-icon-button matTooltip="Editar  Nota"
+                            aria-label="Button that displays a tooltip when focused or hovered over"
+                            (click)="onClickUpdate(item)" color="primary">
+                            <span class="material-icons">
+                                system_update_alt
+                            </span>
+                        </button>
+
+                    </div>
+                </div>
+            </form>
+
+
 
         </div>
     </div>
-    
-   
+
+<button  
+    mat-icon-button 
+    mat-dialog-close
+    class="d-flex justify-content-end"
+    color="warn" matTooltip="Salir"
+    aria-label="Button that displays a tooltip when focused or hovered over">
+    <span class="material-icons">
+        close
+    </span>
+</button>
 </div>

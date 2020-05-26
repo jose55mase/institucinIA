@@ -27,64 +27,30 @@
       "state": "1"
     }
   ],
-  "Usuario": [
+  "Usuarios": [    
     {
-      "id": 1,
-      "name": "Carlos",
-      "lasName": "Miguel",
-      "phone": "3434-434",
-      "attending": "MADRE",
-      "direccion": "KR 34 #",
-      "email": "email@email.com",
-      "age": "12",
-      "grup": "A1",
-      "room": "234"
-    }
-  ],
-  "Usuarios": [
-    {
-      "id": 2,
+      "id": 1590511000540,
       "Documento": "123123",
-      "Nombre": "Carlos",
-      "Apellidos": "Miguel",
-      "Telefonos": "3434-434",
-      "Acudiente": "MADRE",
-      "Direccion": "KR 34 #",
-      "Email": "email@email.com",
-      "Edad": "12",
-      "Grupo": "A1",
-      "Salon": "234",
-      "Grado": "Primero",
-      "Rol": "ESTUDIANTE"
-    },
-    {
-      "id": 454,
-      "Documento": "4343543",
-      "Nombre": "Carlos",
-      "Apellidos": "Antonio Nieves",
-      "Telefonos": "3434-434",
-      "Acudiente": "PADRE",
-      "Direccion": "KR 34 #",
-      "Email": "email@email.com",
-      "Edad": "12",
-      "Grupo": "A3",
-      "Salon": "234",
-      "Grado": "Primero",
-      "Rol": "ESTUDIANTE"
+      "Nombre": "Jose luis",
+      "Apellidos": "Castañeda",
+      "Telefonos": "34243234",
+      "Email": "jose.cas@gmail.com",
+      "Edad": 0,
+      "Grupo": "-----",
+      "Salon": "565",
+      "Grado": "-----",
+      "Rol": "Administrador"
     }
   ],
   "Actividades": [
     {
-      "activity": "nuevo mas",
-      "grupo": 3,
-      "grado": 2,
-      "id": 1590307048957,
-      "dataUplad": {
-        "originalname": "1590250924466.Desertjose.jpg",
-        "uploadname": "1590314205120.1590250924466.Desertjose.jpg"
-      }
+      "activity": "Actividad de prueba",
+      "grupo": 1,
+      "grado": 1,
+      "id": 1590486971649,
+      "dataUplad": {},
+      "asignature": 1
     }
   ],
   "Notas": []
-
 }

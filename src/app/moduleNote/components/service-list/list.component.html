@@ -35,6 +35,13 @@
           <button class="btn btn-success btn-block" (click)="filteUsers()" >Buscar</button>
         </div>
           <div class="col-md-12">
+
+            <div *ngIf="loading" class="text-center text-success">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+
             <div class="card">                
                 <!-- Buscador de registros -->
                 <div class="row">

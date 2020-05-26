@@ -18,11 +18,11 @@ export class UsersService {
   }
 
   save(data): Observable<any> {   
-    return this.http.post<any>(`${this.URI}/service/save`,data)
+    return this.http.post<any>(`${this.URI}/Usuarios`,data)
   }
 
   update(data): Observable<any> {   
-    return this.http.post<any>(`${this.URI}/service/save`,data)
+    return this.http.put<any>(`${this.URI}/Usuarios/${data.id}`,data)
   }
 
   delete(data): Observable<any> {   
