@@ -10,3 +10,4 @@
 # Untracked files:
 #       Documentation/foo.html
 /node_modules
+*.jose

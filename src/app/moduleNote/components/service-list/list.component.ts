@@ -332,10 +332,13 @@ export class ShowNotasModalComponent implements OnInit{
           if(activiti.asignature == asignature.id){
             activiti["asignature"] = asignature.name
             activiti.status = true;
+            activiti.subjet = 0;
+            activiti.subjetControl = new FormControl(0)
             this.dataListActividadesName.push(activiti)          
           }else{
             Swal.fire( "📪" ,  "No hay actividades" ,  "warning" )
-          }     
+          }   
+            
         })
       })
     }else{
@@ -359,7 +362,7 @@ export class ShowNotasModalComponent implements OnInit{
         
       })
       //this.checkoutForm.controls['asignature'].setValue(this.modelActivity.asignature)
-    }    
+    }
   } 
 
   onClickSave(activity){

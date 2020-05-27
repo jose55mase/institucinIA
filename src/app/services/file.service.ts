@@ -13,7 +13,7 @@ export class FileService {
     downloadFile(file:String){
         var body = {filename:file};
 
-        return this._http.post('http://localhost:5000/file/download',body,{
+        return this._http.post('http://192.168.1.4:5000/file/download',body,{
             responseType : 'blob',
             headers:new HttpHeaders().append('Content-Type','application/json')
         });
@@ -22,7 +22,7 @@ export class FileService {
     deleteFile(file:String){
         var body = {filename:file};
 
-        return this._http.post('http://localhost:5000/file/delete',body,{
+        return this._http.post('http://192.168.1.4:5000/file/delete',body,{
             responseType : 'blob',
             headers:new HttpHeaders().append('Content-Type','application/json')
         });
