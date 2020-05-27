@@ -1,0 +1,13 @@
+ruth:
+  app:
+  data:
+    sevice.json
+    sql:
+      -sql.sql
+      -dispache.sql    
+  server:
+    npm:
+      -travis 
+  deploy:
+    -index.js
+    -start.ts
