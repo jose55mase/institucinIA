@@ -28,6 +28,7 @@ export class UserService {
 
   deleteUserLoggedIn() {
     localStorage.removeItem('currentUser');
+    sessionStorage.removeItem("userNow")
   }
 
   /**

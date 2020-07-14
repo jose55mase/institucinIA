@@ -10,6 +10,9 @@ import { ClientComponent } from 'app/moduleClient/components/client.component';
 import { SubjectsComponent } from 'app/moduleNote/components/subjects/subjects.component';
 import { AsignatureComponent } from 'app/moduleAsignature/components/asignature.component'
 import { UsersComponent } from 'app/moduleUsers/components/users.component'
+import { EventsComponent } from 'app/moduleEventes/components/events.component';
+import { QuestionComponent } from 'app/overview/components/questions/question.component';
+import { PageNoFoundComponent } from 'app/components/page-no-found/page-no-found.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -71,5 +74,21 @@ export const AdminLayoutRoutes: Routes = [
             loadChildren: () => import('../../moduleUsers/users.module').then(m => m.UsersModule)
         }],
     },
+    {
+        path: 'events',
+        component: EventsComponent,
+        children: [{
+            path: 'events',
+            loadChildren: () => import('../../moduleEventes/events.module').then(m => m.EventsModule)
+        }],
+    },
+    {
+        path: 'logs',
+        component: QuestionComponent,
+        children: [{
+            path: 'logs',
+            loadChildren: () => import('../../overview/overview.module').then(m => m.OverviewModule)
+        }],
+    },
+    
 ];
-

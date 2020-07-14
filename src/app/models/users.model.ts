@@ -12,4 +12,5 @@ export class ModuleUsers{
     Salon;
     Grado;
     Rol;
+    Password;
 }

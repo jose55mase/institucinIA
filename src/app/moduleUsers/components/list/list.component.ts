@@ -8,6 +8,7 @@ import { UsersService } from 'app/services/usuario.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs';
 import { async } from '@angular/core/testing';
+import { Routes, Router, NavigationExtras } from '@angular/router'; // CLI imports router
 
 
 @Component({
@@ -40,9 +41,13 @@ export class ListComponent implements OnInit {
   public data: any;
   objet = new Object;
   loading;
+   BTNCREATEUSERSTATE = false;
   // Model
 
- 
+  public btnUser(){
+    return this.BTNCREATEUSERSTATE
+  }
+
   displayedColumns: string[] = ['Tipo', 'Codigo', 'Nombre', 'Grado', 'Grupo', 'Accion'];
   public usersList_Id: any;
   public estatus_data: string = '';
@@ -77,6 +82,7 @@ export class ListComponent implements OnInit {
   }
 
   public editData(data: any) {
+    data = {...data,btn:true}
     sessionStorage.setItem("objectIIA", JSON.stringify(data))
     // this.showCRUDlist = false;
     // this.showCRUDcreate = true;
@@ -111,6 +117,8 @@ export class ListComponent implements OnInit {
   constructor(
     private usersService : UsersService,
     private notificationService: NotificationService,
+    private ROUTER : Router,
+
      
   ) {}
   public time  
@@ -159,7 +167,13 @@ export class ListComponent implements OnInit {
   
   //========================= Exit BTN
   btnAdd(){
-    sessionStorage.removeItem("objectIIA")
+    sessionStorage.removeItem("objectIIA");
+    let dataNavigate : NavigationExtras = {
+      queryParams:{
+        "btnCreateUser" : true
+      }
+    }
+    this.ROUTER.navigate(["/createUser"],dataNavigate)
   }
   //========================= End
 

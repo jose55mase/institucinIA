@@ -11,7 +11,9 @@ import { ModuleUsers } from 'app/models/users.model';
 import { UsersService } from 'app/services/usuario.service';
 import { ModelClient } from 'app/models/client.model';
 
-import { Routes, Router, RouterModule } from '@angular/router'; // CLI imports router
+import {ActivatedRoute, Routes, Router, RouterModule,NavigationExtras } from '@angular/router'; // CLI imports router
+import { ListComponent } from '../list/list.component';
+import { param } from 'jquery';
 export interface Grupo{
   code:number;
   name:String;
@@ -48,7 +50,9 @@ export class AddComponent implements OnInit {
   public btnUpDate : boolean = false;
   labelPosition = 'after'
   isLinear = false;
- 
+  userRol = true
+  btnCreateUser = false;
+  
   
     // LISTAS GRUPOS
   /**
@@ -95,9 +99,15 @@ export class AddComponent implements OnInit {
     private formBuilder: FormBuilder,
     private _formBuilder: FormBuilder,
     private ROUTER : Router,
+    private activatedRoute : ActivatedRoute,
+    
   
     config: NgbModalConfig, private modalService: NgbModal
   ) {
+    this.activatedRoute.queryParams.subscribe((param)=>{
+      this.btnCreateUser = param.btnCreateUser;
+    })
+
     this.checkoutForm1 = this.formBuilder.group({
       Documento:new FormControl('',Validators.compose([
         Validators.required,
@@ -150,10 +160,42 @@ export class AddComponent implements OnInit {
       Rol:new FormControl('',Validators.compose([
         Validators.required,            
       ])),
+      Password1 :new FormControl('',Validators.compose([
+                   
+      ])),
+      Password2 :new FormControl('',Validators.compose([
+                    
+      ])),
     })
     
-    if(JSON.parse(sessionStorage.getItem("objectIIA")) != null){
+    if(JSON.parse(sessionStorage.getItem("userNow")) != null && JSON.parse(sessionStorage.getItem("objectIIA")) == null && !this.btnCreateUser){
+      
+      this.userRol = JSON.parse(sessionStorage.getItem("userNow")).btn;
       this.btnUpDate = true;
+      this.moduleAsignature = JSON.parse(sessionStorage.getItem("userNow"))
+      this.checkoutForm1.controls['Nombre'].setValue(this.moduleAsignature.Nombre)
+      this.checkoutForm1.controls['Apellidos'].setValue(this.moduleAsignature.Apellidos)
+      this.checkoutForm1.controls['Acudiente'].setValue(this.moduleAsignature.Acudiente)
+      this.checkoutForm1.controls['Direccion'].setValue(this.moduleAsignature.Direccion)
+      this.checkoutForm1.controls['Documento'].setValue(this.moduleAsignature.Documento)
+      this.checkoutForm1.controls['Edad'].setValue(this.moduleAsignature.Edad)
+      this.checkoutForm1.controls['Email'].setValue(this.moduleAsignature.Email)      
+      let filter =this.grado.find((data)=>{return data.name == this.moduleAsignature.Grado})
+      this.checkoutForm2.controls['Grado'].setValue(filter.name)
+      filter =this.grupo.find((data)=>{return data.name == this.moduleAsignature.Grupo})
+      this.checkoutForm2.controls['Grupo'].setValue(filter.name)
+      this.checkoutForm1.controls['Telefonos'].setValue(this.moduleAsignature.Telefonos)
+      this.checkoutForm2.controls['Rol'].setValue(this.moduleAsignature.Rol)
+      this.checkoutForm2.controls['Salon'].setValue(this.moduleAsignature.Salon)
+      this.checkoutForm2.controls['Password1'].setValue(this.moduleAsignature.Password)
+    }else if(this.btnCreateUser){
+      
+    }else if(JSON.parse(sessionStorage.getItem("objectIIA")) != null && JSON.parse(sessionStorage.getItem("objectIIA")).btn == true){
+     
+      this.btnUpDate = true;
+      this.userRol = true;
+      
+      console.log(JSON.parse(sessionStorage.getItem("objectIIA")))
       this.moduleAsignature = JSON.parse(sessionStorage.getItem("objectIIA"))
       this.checkoutForm1.controls['Nombre'].setValue(this.moduleAsignature.Nombre)
       this.checkoutForm1.controls['Apellidos'].setValue(this.moduleAsignature.Apellidos)
@@ -169,7 +211,7 @@ export class AddComponent implements OnInit {
       this.checkoutForm1.controls['Telefonos'].setValue(this.moduleAsignature.Telefonos)
       this.checkoutForm2.controls['Rol'].setValue(this.moduleAsignature.Rol)
       this.checkoutForm2.controls['Salon'].setValue(this.moduleAsignature.Salon)
-      
+      this.checkoutForm2.controls['Password1'].setValue(this.moduleAsignature.Password)
     }else{ this.btnSaveDate = true; }
       
     config.backdrop = 'static';
@@ -192,7 +234,7 @@ export class AddComponent implements OnInit {
   state: number;
   */
   public savedata(){
-    
+    console.log(this.checkoutForm2.value)
     var idesData = Date.now()
     this.objet = {
       id:idesData,
@@ -207,7 +249,9 @@ export class AddComponent implements OnInit {
       Grupo: this.checkoutForm2.value.Grupo ? "":"-----",
       Salon :this.checkoutForm2.value.Salon,
       Grado: this.checkoutForm2.value.Grado ? "":"-----",
-      Rol:this.checkoutForm2.value.Rol
+      Rol:this.checkoutForm2.value.Rol,
+      dateCreate:`${new Date().getMonth()+1}-${new Date().getDate()}-${new Date().getFullYear()}`,
+      Password:this.checkoutForm1.value.Documento
     }
     
     this.usersService.save(this.objet).subscribe(
@@ -219,10 +263,17 @@ export class AddComponent implements OnInit {
         this.notificationService.alert('❌', "Error al guardar", 'error');
       }
       )    
-      
+    
   }
 
   public update(data:ModuleAsignature){    
+
+    const observer = {
+      next: x => console.log('Observer got a next value: ' + x),
+      error: err => console.error('Observer got an error: ' + err),
+    };
+    observer.next((x)=>{console.log("=>",x)})
+
     this.objet = {
       id:this.moduleAsignature.id,
       Documento: this.checkoutForm1.value.Documento,
@@ -236,24 +287,29 @@ export class AddComponent implements OnInit {
       Grupo: this.checkoutForm2.value.Grupo,
       Salon :this.checkoutForm2.value.Salon,
       Grado: this.checkoutForm2.value.Grado,
-      Rol:this.checkoutForm2.value.Rol
+      Rol:this.checkoutForm2.value.Rol,
+      Password:this.checkoutForm2.value.Password1
     }
-    //console.log(this.objet)
-    
-    this.usersService.update(this.objet).subscribe(
-      (response)=>{
-        this.notificationService.alert('✔', "Registro actulizado correctamente", 'success');
-      },
-      (error)=>{
-        this.notificationService.alert('❌', "Error al guardar", 'error');
-      }
-      )   
-       
+    if((this.checkoutForm2.value.Password2=="" && this.checkoutForm2.value.Password1 == this.moduleAsignature.Password) 
+       || this.checkoutForm2.value.Password2 == this.moduleAsignature.Password){
+      this.usersService.update(this.objet).subscribe(
+        (response)=>{
+          this.notificationService.alert('✔', "Registro actulizado correctamente", 'success');
+        },
+        (error)=>{
+          this.notificationService.alert('❌', "Error al guardar", 'error');
+        }
+        )   
+      
+    }else if(this.checkoutForm2.value.Password2 != this.moduleAsignature.Password){
+      this.notificationService.alert('👮', "Valide las credenciales", 'error');
+    }    
   }
-
+  
   //========================= Exit BTN
   close(){
     sessionStorage.removeItem("objectIIA")
+    
   }
   //========================= End
 

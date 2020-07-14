@@ -46,7 +46,9 @@
                         <mat-divider></mat-divider>
                     </div>
                 </li-->
-
+                <li class="nav-item dropdown">
+                    <img src="./../../../assets/icons/LogoProyecto.png" width="75px" alt="">
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -60,12 +62,29 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <mat-list>
                             <mat-list-item>
+                                <mat-icon mat-list-icon>person</mat-icon>
+                                <button (click)="user()" type="submit" mat-button>{{dataUser.Nombre}}</button>
+                                <button (click)="user()" type="submit" mat-button>{{dataUser.Rol}}</button>
+                            </mat-list-item>
+                            <mat-list-item>
                                 <mat-icon mat-list-icon>exit_to_app</mat-icon>
                                 <button (click)="logOut()" type="submit" mat-button>Cerrar sesion</button>
                             </mat-list-item>
                         </mat-list>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a  class="nav-link" href="javascript:void(0)"
+                         aria-expanded="false">
+                        <button
+                            matBadge="15" matBadgeColor="warn"
+                            (click)="chat()"
+                            mat-icon-button>
+                            <mat-icon>chat</mat-icon>
+                        </button>
+                    </a>
+                </li>
+
             </ul>
         </div>
     </div>

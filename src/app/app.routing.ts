@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { PageNoFoundComponent } from './components/page-no-found/page-no-found.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,14 @@ const routes: Routes = [
       loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
     }]
   },
+  {
+    path: '**',
+    component: PageNoFoundComponent,
+    children: [{
+        path: '**',
+        loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule)
+    }],
+},
 ];
 
 @NgModule({

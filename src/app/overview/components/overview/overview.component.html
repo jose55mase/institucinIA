@@ -21,7 +21,7 @@
                                                     <mat-list style="margin-left: 5%">
                                                         <mat-list-item>
                                                             <h5 mat-line> 
-                                                                <button [style.background-color]="countQuestions > 0 ? '#cf0a2c' : ''" (click)="openDialogQuestions()" class="btn btn-sm">{{ countQuestions }}</button>
+                                                                <button [style.background-color]="countUserList > 0 ? '#cf0a2c' : ''" (click)="openDialogQuestions()" class="btn btn-sm">{{ countUserList }}</button>
                                                                 <a (click)="openDialogQuestions()" href="javascript:void(0)">  Total</a>
                                                             </h5>
                                                         </mat-list-item>
@@ -121,7 +121,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-5">
-                                    <mat-card class="mat-card-m">
+                                    <mat-card (click)="logs()" class="mat-card-m">
+                                        
                                             <mat-card-header>
                                                 <mat-card-title class="over-title">
                                                     Institucion Interactiva Ambiental

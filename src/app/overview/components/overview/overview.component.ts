@@ -3,21 +3,25 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { QuestionComponent } from '../questions/question.component';
 import { QuestionsService } from 'app/overview/services/questions.service';
 import { ProductInterationService } from 'app/services/productInteration.service';
+import { UsersService } from 'app/services/usuario.service';
+
 
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.scss']
+  styleUrls: ['./overview.component.scss'],
+  providers:[UsersService]
 })
 export class OverviewComponent implements OnInit {
   public panelOpenState = false;
-  public countQuestions = 0;
+  public countQuestions = 2;
   public dataQuestions: any[];
   
-  // kiero points
+  // points
   public valueBar = 0;
 
   // Notification
+  public countUserList:number=0;
   public active:number = 0;
   _active:boolean = false
   public stop:number = 0;
@@ -29,22 +33,29 @@ export class OverviewComponent implements OnInit {
   constructor(
     private questionService: QuestionsService,
     public dialog: MatDialog,
-    private _productInterationService: ProductInterationService){ }
+    private _productInterationService: ProductInterationService,
+    private _usersService : UsersService
+    ){ }
 
   ngOnInit() {
-  this.publicationSummary()   
-    this.questionService.getAllQuestions().subscribe(
-      res => {
-        this.dataQuestions = res;
-        if (Array.isArray(res.result.message)) {
-          this.countQuestions = res.result.message.length;
-        } else {
-          console.log('Dont is array');
-        }
-      },
-      err => console.log(err)
-    )
-    
+    this.publicationSummary()   
+      this.questionService.getAllQuestions().subscribe(
+        res => {
+          this.dataQuestions = res;
+          if (Array.isArray(res.result.message)) {
+            this.countQuestions = res.result.message.length;
+          } else {
+            console.log('Dont is array');
+          }
+        },
+        err => console.log(err)
+      )
+      this._usersService.getAllService().subscribe(
+        (response)=>{
+          this.countUserList = response.length;
+          this.valueBar = response.length
+         }
+        )
   }
 
   openDialogQuestions(): void {
@@ -53,8 +64,8 @@ export class OverviewComponent implements OnInit {
         if (Array.isArray(res.result.message)) {
           const dialogRef = this.dialog.open(QuestionComponent, {
             width: '1350px',
-            height: '600px',
-            data: { res }
+            height: '700px',
+           // data: { res }
           });
         } else {
           console.log('Dont is array');
@@ -62,6 +73,15 @@ export class OverviewComponent implements OnInit {
       },
       err => console.log(err)
     )
+  }
+
+  logs(): void {
+    const dialogRef = this.dialog.open(QuestionComponent, {
+      width: '100%',
+      height: '100%',
+      //position:  { right: `10px`}
+     // data: { res }
+    });
   }
 
   publicationSummary(){   

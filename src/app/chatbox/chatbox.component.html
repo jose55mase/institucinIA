@@ -1,0 +1,39 @@
+<button mat-fab color="primary" >
+  Chat <mat-icon>language</mat-icon>
+</button>
+<body >
+    <ul #messagetext id="messages">
+      
+    </ul>
+    <form action="" class="form-container d-flex justify-content-center">
+      <textarea
+        
+        type="text" 
+        id="m"
+        [formControl]="message"
+        placeholder="Escriva su mensage"
+        autocomplete="off" 
+      ></textarea>
+      <button 
+        (click)="sendMessage()" 
+        class="btn btn-success"
+        >Enviar
+        <span class="material-icons">
+          send
+        </span>
+      </button>
+    </form>
+      
+</body>
+<div class="d-flex justify-content-end">
+  <button 
+    mat-dialog-close
+    class="btn btn-danger btn-exit"
+    >Salir
+    <span class="material-icons">
+      close
+    </span>
+  </button>  
+</div>
+
+

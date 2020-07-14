@@ -1,0 +1,23 @@
+<div class="main-content">
+        <!--div *ngIf="espera"><mat-spinner></mat-spinner></div-->
+        
+        <div class="container-fluid">            
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container-fluid">
+                            <mat-tab-group color='accent'>                            
+                                <mat-tab>
+                                    <ng-template mat-tab-label>
+                                        <mat-icon mat-list-icon>photo_library</mat-icon>
+                                        <div class="titles-mat-tap">Eventos</div> 
+                                    </ng-template>
+                                   <app-events_list></app-events_list>
+                                </mat-tab>
+                            </mat-tab-group>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -4,11 +4,16 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { Router } from '@angular/router';
 import { UserService } from 'app/login/services/user.service';
 import { SwPush } from '@angular/service-worker';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ChatboxComponent } from 'app/chatbox/chatbox.component';
+
+
 
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
-    styleUrls: ['./navbar.component.css']
+    styleUrls: ['./navbar.component.css'],
+    
 })
 export class NavbarComponent implements OnInit {
     // settings for push notifications
@@ -19,6 +24,7 @@ export class NavbarComponent implements OnInit {
     mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
+    public dataUser;
 
     constructor(
         location: Location,
@@ -26,6 +32,7 @@ export class NavbarComponent implements OnInit {
         private router: Router,
         private userService: UserService,
         private swPush: SwPush,
+        public dialog: MatDialog,
         ) {
         this.location = location;
         this.sidebarVisible = false;
@@ -43,6 +50,15 @@ export class NavbarComponent implements OnInit {
                 this.mobile_menu_visible = 0;
             }
         });
+        this.dataUser = JSON.parse(sessionStorage.getItem("userNow"))
+        if(this.dataUser == null){
+            localStorage.removeItem("currentUser");
+            this.router.navigate(["/login"])
+        }
+    }
+
+    user() {
+        this.router.navigate(["/createUser"])
     }
 
     sidebarOpen() {
@@ -145,5 +161,14 @@ export class NavbarComponent implements OnInit {
         })
         .then(sub => console.log(sub))
         .catch(err => console.error('Could not subscribe to notifications', err));
+    }
+
+    chat(): void {
+        const dialogRef = this.dialog.open(ChatboxComponent, {
+            width: '600px',
+            height: '300px',
+            position:  { right: `10px`, bottom:"0px"}
+            // data: { res }
+            });
     }
 }

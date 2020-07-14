@@ -1,0 +1,51 @@
+
+  
+table {
+    width: 100%;
+}
+
+.cart-card {
+    max-width: 400px;
+  }
+  
+.header-image-img {
+    background-image: url('/');
+    background-size: cover;
+}
+
+.card-header{
+    background-color:  #ccc;
+   
+}
+
+.card-title{
+    color:  #002855;
+    font-size: 35px;
+}
+
+.backColorTooltip {
+    background-color: #b71c1c;
+}
+
+.titles-mat-tap {
+    margin-left: 10%
+}
+
+.example-h2 {
+    margin: 10px;
+  }
+  
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  .example-margin {
+    margin: 0 10px;
+  }
+
+.modal-title{
+    color: #41CA23;
+}

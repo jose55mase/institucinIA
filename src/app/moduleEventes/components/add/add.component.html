@@ -1,0 +1,191 @@
+
+
+<div class="main-content">
+    
+    <!--div *ngIf="espera"><mat-spinner></mat-spinner></div-->
+    <div class="container-fluid">            
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <mat-tab-group color='primary'>                            
+                            <mat-tab>
+                                <ng-template mat-tab-label >
+                                    <mat-icon mat-list-icon>photo_library</mat-icon>
+                                    <div class="titles-mat-tap">Eventos</div> 
+                                </ng-template> 
+                                                             
+                                <div class="card">
+                                <!-- Cabeceras registros -->
+                                <button                           
+                                    mat-fab                           
+                                    class="pull-right"
+                                    matTooltip="Info about the action"                          
+                                    aria-label="Button that shows a red tooltip"
+                                    color="warn"
+                                    matTooltip="Salir"
+                                    (click)="close()"
+                                    routerLink="/events"
+                                    >          
+                                    <mat-icon>close</mat-icon>
+                                </button> 
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-7" class="form-group">
+                                        <div class="d-flex flex-row bd-highlight mb-2">                    
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <mat-vertical-stepper>
+                                    <mat-step 
+                                        [stepControl]="checkoutForm1" 
+                                        label="Informacion" 
+                                        state="phone"
+                                        errorMessage="Name is required."
+                                        >
+                                <!-- Columnas de registros -->   
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <img src="./../../../../assets/img/estudent.jpg" width="100" alt="">   
+                                        </div>
+                                        <div class="col-md-10">
+                                            <form [formGroup]="checkoutForm1" >
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <mat-form-field class="example-full-width">
+                                                            <mat-label>Nombre</mat-label>
+                                                            <input
+                                                                matInput 
+                                                                placeholder="Nombre" 
+                                                                autocomplete="off" 
+                                                                formControlName="Nombre"
+                                                            />
+                                                            <mat-icon matSuffix>face</mat-icon>
+                                                        </mat-form-field>
+                                                        <mat-form-field class="example-full-width">
+                                                            <mat-label>Descripcion</mat-label>
+                                                            <input
+                                                                matInput 
+                                                                placeholder="Descripcion" 
+                                                                autocomplete="off" 
+                                                                formControlName="Descripcion"
+                                                            />
+                                                            <mat-icon matSuffix>picture_in_picture_alt</mat-icon>
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <mat-form-field class="example-full-width">
+                                                            <mat-label>Imagen</mat-label>
+                                                            <input
+                                                                type="url"
+                                                                matInput 
+                                                                placeholder="Imagen" 
+                                                                autocomplete="off" 
+                                                                formControlName="Imagen"
+                                                            />
+                                                            <mat-icon matSuffix>preview</mat-icon>
+                                                        </mat-form-field>                                                      
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div>
+                                    <button mat-button matStepperNext class="btn-primary" color="primary">Siguiente</button>
+                                    </div>
+                                    </mat-step>
+                                    <mat-step 
+                                        [stepControl]="checkoutForm1"
+                                        label="Fechas" 
+                                        state="chat"
+                                        errorMessage="Name is required."
+                                        >
+                                        <div class="row">
+                                            <form [formGroup]="checkoutForm2">
+                                          
+                                            <div class="col-md-12">
+                                                <mat-form-field>
+                                                    <mat-label>Fecha de Inicio</mat-label>
+                                                    <input 
+                                                        matInput 
+                                                        [matDatepicker]="pickerStart"
+                                                        formControlName="Inicio"
+                                                        >
+                                                    <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+                                                    <mat-datepicker #pickerStart></mat-datepicker>
+                                                  </mat-form-field>
+                                                                                          
+                                            </div>
+                                            <div class="col-md-12">
+                                                <mat-form-field>
+                                                    <mat-label>Fecha de Finalizacion</mat-label>
+                                                    <input 
+                                                    matInput 
+                                                    [matDatepicker]="pickerEnd"
+                                                    formControlName="Final"
+                                                    >
+                                                    <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+                                                    <mat-datepicker #pickerEnd></mat-datepicker>
+                                                </mat-form-field>
+                                            </div>
+                                            
+                 
+                                        </form>
+                                        </div>
+                                      <div>
+                                        <button mat-button matStepperPrevious class="btn-warning">Atras</button>
+                                        <button mat-button matStepperNext class="btn-primary" color="primary">Siguiente</button>
+                                      </div>
+                                    </mat-step>
+                                    <mat-step 
+                                        [stepControl]="checkoutForm2"
+                                        label="Guardar"
+                                        errorMessage="Name is required."
+                                        >
+                                        <div *ngIf="!btnUpDate"  class="">
+                                            <button 
+                                                class="position_save btn-block" 
+                                                color="primary"
+                                                (click)="savedata()"
+                                                [disabled]="!checkoutForm1.valid"
+                                                mat-raised-button>
+                                                Guargar
+                                            </button>
+                                        </div>
+                                    
+                                        <div *ngIf="btnUpDate" class="">
+                                            <button 
+                                                class="position_save btn-block" 
+                                                color="primary"
+                                                (click)="update()"
+                                                [disabled]="!checkoutForm1.valid"
+                                                mat-raised-button>
+                                                Editar
+                                            </button>
+                                        </div>
+                                    </mat-step>
+                                  
+                                    <!-- Icon overrides. -->
+                                    <ng-template matStepperIcon="phone">
+                                      <mat-icon>call_end</mat-icon>
+                                    </ng-template>
+                                    <ng-template matStepperIcon="chat">
+                                      <mat-icon>forum</mat-icon>
+                                    </ng-template>
+                                  </mat-vertical-stepper>
+                                
+                                </div>
+                            </mat-tab><!-- Fin-->                         
+                        </mat-tab-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    
+  

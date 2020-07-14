@@ -1,210 +1,110 @@
-<body>
-    <nav class="navbar">
-        <span class="navbar-text">
-            <h3> INSTITUCION INTERACTIVA AMBIENTAL </h3>
-            <img src="./../../../assets/icons/LogoProyecto.png" width="50">
-        </span>
+<nav class="navbar justify-content-between nav-bar-logo">
+    <div class="content-nav-logo">
+        <a href="#"><img src="../../../../assets/icons/LogoProyecto.png" class="inicio_logo" width="88px" height="64px">
+            Institucion Interactiva Ambiental
+        </a>
         <nav>
+
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">
-                <li><a routerLink="/login" routerLinkActive="active">
-                        <h3> INICIO SESION <span class="material-icons">
-                                account_circle
-                            </span> </h3>
-                    </a></li>
+                    <a class="nav-link active">
+                <li><a routerLink="/login">
+                        <h4> Iniciar sesion <span class="material-icons">
+                                vpn_key
+                            </span> 
+                        </h4>
+                    </a>
+                </li>
 
                 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                <li><a routerLink="/home" routerLinkActive="active">
-                        <h3>INICIO <span class="material-icons">
-                                home
+                    <a class="nav-link">
+                <li><a routerLinkActive="active">
+                        <h4>Ayuda<span class="material-icons">
+                                help
                             </span>
-                        </h3>
-                    </a></li>
-
+                        </h4>
+                    </a>
+                </li>
                 </a>
             </ul>
         </nav>
-    </nav>
+    </div>
+</nav>
 
-    <ul id="ul-menu">
-        <li><a href="http://www.gmail.com"><img src="../../../assets/icons/gmail.png" alt="gmail" width="45px"></a></li>
-        <li><a href="http://www.facebook.com"><img src="../../../assets/icons/facebook.png" alt="facebook"
-                    width="50px"></a>
-        </li>
-        <li><a href="http://www.whatsapp.com"><img src="../../../assets/icons/whatsapp.jpeg" alt="whatsapp"
-                    width="40"></a>
-        </li>
-        <li><a href="http://www.instagram.com"><img src="../../../assets/icons/instagram.png" alt="instagram"
-                    width="50"></a></li>
-    </ul>
+<br>
+<br>
 
-
-    <div class="container">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                            <div mat-card-avatar class="example-header-image"></div>
-                            <mat-card-title>Eventos</mat-card-title>
-                            <mat-card-subtitle>Hoy un lector, mañana un líder.</mat-card-subtitle>
-                        </mat-card-header>
-                        <img mat-card-image src="{{changeImages1}}" alt="Photo of a Shiba Inu" width="140">
-                        <mat-card-content>
-                            <p>
-                            El genio se hace con un 1% de talento, y un 99% de trabajo.
-                            </p>
-                        </mat-card-content>
-                        <mat-card-actions>
-                            <button mat-button></button>
-                        </mat-card-actions>
-                    </mat-card>
-
-
-                    <mat-menu #aboveMenu="matMenu" yPosition="above">
-                    </mat-menu>
-                </div>
-
-                <div class="col-sm">
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                            <div mat-card-avatar class="example-header-image"></div>
-                            <mat-card-title>Nuestra Institución</mat-card-title>
-                            <mat-card-subtitle>Nosotros</mat-card-subtitle>
-                        </mat-card-header>
-                        <img mat-card-image src="{{changeImages2}}" alt="Photo of a Shiba Inu" width="150">
-                        <mat-card-content>
-                            <p>
-                            El genio se hace con un 1% de talento, y un 99% de trabajo.
-                            </p>
-                        </mat-card-content>
-                        <mat-card-actions>
-                            <button mat-button></button>
-                        </mat-card-actions>
-                    </mat-card>
-                </div>
-                <div class="col-sm">
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                            <div mat-card-avatar class="example-header-image"></div>
-                            <mat-card-title>Notificación de Actividades</mat-card-title>
-
-                        </mat-card-header>
-                        <img mat-card-image src="{{changeImages3}}" alt="Photo of a Shiba Inu" width="150">
-                        <mat-card-content>
-                            <p>
-                                Bienestar y desarrollo estudiantil
-                            </p>
-                        </mat-card-content>
-                        <mat-card-actions>
-                            <button mat-button>Un libro es un sueño que tiene en tus manos</button>
-                        </mat-card-actions>
-                    </mat-card>
-                </div>
-
-            </div>
-            <br>
-
-            <div class="jumbotron">
-                <h4>
+<div class="container">
+    <div class="row">
+        <mat-card class="col-md-8 example-card">
+            <mat-card-header>
+              <mat-card-title>EVENTOS</mat-card-title>
+              <mat-card-subtitle>{{changeImages1.name}}</mat-card-subtitle>
+            </mat-card-header>
+            <img src="{{changeImages1.img}}" width="450" height="500" class="card-img-top" alt="...">
+            <mat-card-content class="container">
+                <br>
+                {{changeImages1.description}}
+            </mat-card-content>
+            
+        </mat-card>
+        <hr>
+        <div class="margin-top-sm col-md-4">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title> MISION </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
                     <p>
-                        El mejor maestro no es el que más sabe, sino el que enseña
-                        con amor y dedicación el camino de la vida.
+                        Somos una Institucion Interactiva Ambiental con propositos claros sobre las
+                        necesidades
+                        observadas en los alumnos, padres y departamento administrativo, siendo de manera
+                        muy
+                        interactiva optimizando tiempo, constribuyendo con el medio ambiente y facil de
+                        manejar.
                     </p>
-                </h4>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title> VISION </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>
+                        Somos una Institucion Interactiva Ambiental con propositos claros sobre las
+                        necesidades observadas en los alumnos, padres y departamento administrativo, siendo
+                        de manera muy interactiva optimizando tiempo, constribuyendo con el medio ambiente y
+                        facil de manejar.
+                    </p>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title> OBJETIVOS </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>
+                        Somos una Institucion Interactiva Ambiental con propositos claros sobre las
+                        necesidades observadas en los alumnos, padres y departamento administrativo,
+                        siendo de manera muy interactiva optimizando tiempo, constribuyendo con el medio
+                        ambiente y facil de manejar.
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    
+    
+</div>
 
-
-                <div class="row">
-
-                    <div class="col-md">
-                        <mat-card class="example-card">
-                            <mat-card-header>
-                                <mat-card-title> MISION </mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content>
-                                <p>
-                                    Somos una Institucion Interactiva Ambiental con propositos claros sobre las
-                                    necesidades
-                                    observadas en los alumnos, padres y departamento administrativo, siendo de manera
-                                    muy
-                                    interactiva optimizando tiempo, constribuyendo con el medio ambiente y facil de
-                                    manejar.
-                                </p>
-                            </mat-card-content>
-                        </mat-card>
-                    </div>
-
-
-                    <br>
-                    <div class="col-md">
-                        <mat-card class="example-card">
-                            <mat-card-header>
-                                <mat-card-title> VISION </mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content>
-                                <p>
-                                    Somos una Institucion Interactiva Ambiental con propositos claros sobre las
-                                    necesidades observadas en los alumnos, padres y departamento administrativo, siendo
-                                    de manera muy interactiva optimizando tiempo, constribuyendo con el medio ambiente y
-                                    facil de manejar.
-                                </p>
-                            </mat-card-content>
-                        </mat-card>
-                    </div>
-
-
-                    <br>
-                    <div class="col-md">
-                        <mat-card class="example-card">
-                            <mat-card-header>
-                                <mat-card-title> OBJETIVOS </mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content>
-                                <p>
-                                    Somos una Institucion Interactiva Ambiental con propositos claros sobre las
-                                    necesidades observadas en los alumnos, padres y departamento administrativo,
-                                    siendo de manera muy interactiva optimizando tiempo, constribuyendo con el medio
-                                    ambiente y facil de manejar.
-                                </p>
-                            </mat-card-content>
-                        </mat-card>
-                    </div>
-
-
-                </div>
+<footer>
+    <div class="footer">
+        <div class="container1">
+            <div class="text-center">
+                <h6>© {{ year }} INSTITUCION INTERACTIVA AMBIENTAL</h6>
             </div>
         </div>
     </div>
-
-    !-- Footer -->
-    <footer class=" row">
-        <div class="col-sm-2">
-
-        </div>
-        <div class="col-sm-4 body-footer">
-
-            <address>
-                <h4>
-                    Direccion: KR 51 # 96 SUR 50<br>
-                    La Estrella Antioquia
-                </h4>
-            </address>
-
-            <h4>Contactos: TF 4255660 - 3015331747 </h4>
-
-        </div>
-
-        <div class="col-sm-5">
-            <app-footer></app-footer>
-        </div>
-
-
-    </footer>
-    <!-- Footer -->
-</body>
-
-<
+</footer>

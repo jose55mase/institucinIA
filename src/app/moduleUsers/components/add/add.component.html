@@ -17,7 +17,8 @@
                                                              
                                 <div class="card">
                                 <!-- Cabeceras registros -->
-                                <button                           
+                                <button
+                                    *ngIf="userRol"                       
                                     mat-fab                           
                                     class="pull-right"
                                     matTooltip="Info about the action"                          
@@ -192,7 +193,41 @@
                                                 <mat-error  *ngIf="!checkoutForm2.get('Rol').touched">
                                                     Este campo es obligatorio
                                                 </mat-error>
+                                               
+                                                
+                                            
                                             </div>
+                                            <hr>
+                                            Contraseñas
+                                            <br>
+                                            <div class="col-md-6">
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-label>Contraseña</mat-label>
+                                                    <input
+                                                        type = "password"
+                                                        matInput 
+                                                        placeholder="Password" 
+                                                        autocomplete="off" 
+                                                        formControlName="Password1"
+                                                    />
+                                                    <mat-icon matSuffix>vpn_key</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-label>Confirme clave actual</mat-label>
+                                                    <input
+                                                        type = "password"
+                                                        matInput 
+                                                        placeholder="Password" 
+                                                        autocomplete="off" 
+                                                        formControlName="Password2"
+                                                    />
+                                                    <mat-icon matSuffix>vpn_key</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                            
                                         </form>
                                         </div>
                                       <div>

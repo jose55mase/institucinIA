@@ -15,6 +15,8 @@ import { ClientModule } from 'app/moduleClient/client.module';
 import { SubjectsModule } from 'app/moduleNote/subjects.module';
 import { UsersModule } from 'app/moduleUsers/users.module';
 import { AsignatureModule } from 'app/moduleAsignature/asignature.module';
+import { EventsModule } from 'app/moduleEventes/events.module';
+import { ChatModule } from 'app/chatbox/chat.module';
 
 
 
@@ -32,7 +34,10 @@ import { AsignatureModule } from 'app/moduleAsignature/asignature.module';
     CountriesModule,
     AsignatureModule,
     ClientModule,
-    UsersModule
+    UsersModule,
+    EventsModule,
+    ChatModule,
+    
   ],
   declarations: [
     UserProfileComponent,

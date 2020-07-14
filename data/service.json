@@ -31,28 +31,31 @@
     {
       "id": 1590511000540,
       "Documento": "123123",
-      "Nombre": "Jose luis",
+      "Nombre": "Tobar",
       "Apellidos": "Castañeda",
       "Telefonos": "34243234",
-      "Email": "jose.cas@gmail.com",
+      "Email": "tobar.c@gmail.com",
       "Edad": 0,
       "Grupo": "-----",
       "Salon": "565",
       "Grado": "-----",
-      "Rol": "Administrador"
+      "Rol": "Administrador",
+      "dateCreate": "6-20-2020",
+      "Password": "11111"
     },
     {
       "id": 1590536819111,
       "Documento": "1107068906",
-      "Nombre": "ruth",
-      "Apellidos": "tobar",
+      "Nombre": "Ruth",
+      "Apellidos": "Tobar",
       "Telefonos": "3216412474",
       "Email": "retobar6@misena.edu.co",
       "Edad": 0,
       "Grupo": "-----",
-      "Salon": "",
+      "Salon": "jj",
       "Grado": "-----",
-      "Rol": "Maestro"
+      "Rol": "Secretaria",
+      "Password": "99999"
     },
     {
       "id": 1590537600530,
@@ -60,14 +63,14 @@
       "Nombre": "Diego Alejandro",
       "Apellidos": "Tobar",
       "Telefonos": 6126411,
-      "Acudiente": "Mama",
-      "Direccion": "Calle falsa 123",
       "Email": "testin@email.com",
       "Edad": 0,
       "Grupo": "A2",
       "Salon": 4,
       "Grado": "Quinto",
-      "Rol": "Estudiante"
+      "Rol": "Rector",
+      "dateCreate": "6-20-2020",
+      "Password": "11111"
     },
     {
       "id": 1590537600532,
@@ -75,22 +78,82 @@
       "Nombre": "Alejandra",
       "Apellidos": "Tobar",
       "Telefonos": 6248542,
-      "Acudiente": "milena",
-      "Direccion": "Kr 34 ## 96 sur 50",
       "Email": "diego@gmail.com",
       "Edad": 0,
       "Grupo": "A1",
       "Salon": 1,
       "Grado": "Primero",
-      "Rol": "Estudiante"
+      "Rol": "Maestro",
+      "dateCreate": "6-20-2020",
+      "Password": "11111"
+    },
+    {
+      "id": 1593112002776,
+      "Documento": "11111",
+      "Nombre": "Prueba",
+      "Apellidos": "Testing",
+      "Telefonos": "5555",
+      "Email": "ruth@gmail.com",
+      "Edad": 0,
+      "Grupo": "-----",
+      "Salon": "jj",
+      "Grado": "-----",
+      "Rol": "Secretaria",
+      "Password": "11111"
+    },
+    {
+      "id": 1593348599202,
+      "Documento": "88888",
+      "Nombre": "Alejandto",
+      "Apellidos": "Tobar",
+      "Telefonos": "55555",
+      "Email": "alejo@gmil.com",
+      "Edad": 0,
+      "Grupo": "-----",
+      "Salon": "",
+      "Grado": "-----",
+      "Rol": "Secretaria",
+      "Password": "88888"
     }
   ],
   "Actividades": [
     {
-      "activity": "ddddddddddd",
+      "activity": "Crear un mapa para los estudios",
       "grupo": 1,
       "grado": 1,
       "id": 1590539143315,
+      "asignature": 1,
+      "dataUplad": {}
+    },
+    {
+      "activity": "Dia de los niños, dia para celebras con amor y felicidad",
+      "grupo": 1,
+      "grado": 3,
+      "id": 1593218866374,
+      "dataUplad": {},
+      "asignature": 1
+    },
+    {
+      "activity": "Dia de los niños, dia para celebrar con amor y felicidad",
+      "grupo": 1,
+      "grado": 3,
+      "id": 1593219455478,
+      "dataUplad": {},
+      "asignature": 1
+    },
+    {
+      "activity": "Dia de los niños, dia para celebrar con amor y felicidad",
+      "grupo": 1,
+      "grado": 3,
+      "id": 1593220416019,
+      "dataUplad": {},
+      "asignature": 1
+    },
+    {
+      "activity": "Actividad de sumas y multiplicaciones",
+      "grupo": 1,
+      "grado": 3,
+      "id": 1593291635487,
       "dataUplad": {},
       "asignature": 1
     }
@@ -103,7 +166,33 @@
       "asignature": "Matematicas",
       "activityDescription": "ddddddddddd",
       "idActivity": 1590539143315,
-      "subjet": 2
+      "subjet": 5
+    }
+  ],
+  "Eventos": [
+    {
+      "id": 1592603443733,
+      "description": "Esto es par los niños disfruten",
+      "name": "Disfraz",
+      "img": "https://cdn-3.expansion.mx/dims4/default/e6d1351/2147483647/strip/true/crop/598x479+0+0/resize/800x641!/quality/90/?url=https%3A%2F%2Fcdn-3.expansion.mx%2F73%2F12%2Fc33aada4459893af6c51ca0c1ee6%2Fscreen-shot-2018-04-30-at-2.54.22%20PM.png",
+      "dataEnd": "6-22-2020",
+      "dateStart": "6-20-2020"
+    },
+    {
+      "id": 1592623331299,
+      "description": "es el dia para compartir con los seres queridos",
+      "name": "Navidad",
+      "img": "https://estaticos.muyinteresante.es/media/cache/1140x_thumb/uploads/images/gallery/584eb6e95cafe885c4415f12/navidad0.jpg",
+      "dataEnd": "6-20-2020",
+      "dateStart": "6-19-2020"
+    },
+    {
+      "id": 1593291786775,
+      "description": "feria de las flores, momentos de compartir en familia",
+      "name": "Feria de las flores",
+      "img": "https://www.aviatur.com/source/contenidos/desfile-silleteros-feria-de-las-flores-medellin.jpg",
+      "dataEnd": "6-30-2020",
+      "dateStart": "6-16-2020"
     }
   ]
 }
