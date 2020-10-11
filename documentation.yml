@@ -1,0 +1,7 @@
+instalation_angular:
+  dependecie: npm install
+  start: npm start 
+
+instalation_json_server:
+  install: npm install -g json-server
+  start: json-server data/service.json --host 192.168.1.5(ip you maching)

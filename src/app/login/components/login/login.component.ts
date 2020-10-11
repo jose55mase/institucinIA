@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     const user = this.userService.getUserLoggedIn() == null ? {} : this.userService.getUserLoggedIn();
     if (user.tkn) {
       this.navigate()
-    
+
     }
   }
 
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
           this._snackBar.open(res.message, '😭', {
             verticalPosition: 'top',
             duration: 5000
-            
+
           })
         } else {
           const u: User = { username: username, tkn: res.result.access_token};
@@ -57,37 +57,44 @@ export class LoginComponent implements OnInit {
     );
     */
     this.loginService.login().subscribe(
-      res => {     
+      res => {
         var login = res.find(
           (login)=>{
             return login.Documento == username
           }
         )
-        if(login.Password == password) {
-          this._snackBar.open("INSTITUCION INTERACTIVA AMBIENTAL", '✅', {
-            verticalPosition: 'top',
-            duration: 4000            
-          })
-          setTimeout(()=>{
-            login = {...login,btn:false}
-            sessionStorage.setItem("userNow",JSON.stringify(login))
-            const u: User = { username: login.Nombre, document:login.Documento, rol:login.Rol ,tkn: "ERE4-656-454kjfisf445"};
-            this.userService.setUserLoggedIn(u),
-            this.navigate()
-          },2000)
-        }
-        else {
+        
+        if(login != undefined){
+          if(login.Password == password) {
+            this._snackBar.open("INSTITUCION INTERACTIVA AMBIENTAL", '✅', {
+              verticalPosition: 'top',
+              duration: 4000
+            })
+            setTimeout(()=>{
+              login = {...login,btn:false}
+              sessionStorage.setItem("userNow",JSON.stringify(login))
+              const u: User = { username: login.Nombre, document:login.Documento, rol:login.Rol ,tkn: "ERE4-656-454kjfisf445"};
+              this.userService.setUserLoggedIn(u),
+              this.navigate()
+            },2000)
+          }else{
+            this._snackBar.open("Credenciales son incorrectas  ", '😭', {
+              verticalPosition: 'top',
+              duration: 5000
+            })
+          }
+        }else{
           this._snackBar.open("Credenciales son incorrectas  ", '😭', {
             verticalPosition: 'top',
-            duration: 5000            
+            duration: 5000
           })
         }
       },
       error => {
         this._snackBar.open("504 Error Servidor ", '😭', {
           verticalPosition: 'top',
-          duration: 5000            
-        }) 
+          duration: 5000
+        })
       },
     );
    // console.log(this.loginUser)

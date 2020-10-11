@@ -34,7 +34,8 @@ hr{
   text-align: center;
   vertical-align: middle;
   line-height: normal;
-  margin: 0;
+  margin: 0%;
+  margin-top: 10%;
   position: fixed;
   bottom: 0px;
 }
@@ -73,7 +74,7 @@ hr{
   width: 200px;
   height: 0px;
   color: #fff;
-  
+
 }
 
 .logo {
@@ -83,7 +84,7 @@ hr{
 
 ul{
   color: #fff;
-  cursor: pointer;   
+  cursor: pointer;
 }
 
 .nav-bar-logo {
@@ -98,10 +99,9 @@ ul{
 ::ng-deep.mat-form-field-underline {
   /*change color of underline*/
   background-color: #4EB0BB !important;
-} 
+}
 
 ::ng-deep.mat-form-field-ripple {
   /*change color of underline when focused*/
   background-color: #4EB0BB !important;
 }
-
