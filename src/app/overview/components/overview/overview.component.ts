@@ -4,6 +4,7 @@ import { QuestionComponent } from '../questions/question.component';
 import { QuestionsService } from 'app/overview/services/questions.service';
 import { ProductInterationService } from 'app/services/productInteration.service';
 import { UsersService } from 'app/services/usuario.service';
+import { map } from 'jquery';
 
 
 @Component({
@@ -13,6 +14,48 @@ import { UsersService } from 'app/services/usuario.service';
   providers:[UsersService]
 })
 export class OverviewComponent implements OnInit {
+  
+  constructor(){
+    this.sum();
+  }
+  ngOnInit(){
+    
+  }
+
+  public sumValue = [];
+
+  private sum<Number>():void{
+    [34,2,3,4,4,5].map((data)=>{
+      this.sumValue.push(34,2,3,4,4,5);
+    })
+    
+    //this.sumValue.push();
+  }
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ /*
+ 
   public panelOpenState = false;
   public countQuestions = 2;
   public dataQuestions: any[];
@@ -109,4 +152,5 @@ export class OverviewComponent implements OnInit {
       }
     }
   }
+  */
 }

@@ -9,5 +9,6 @@
 # except foo.html which is maintained by hand
 # Untracked files:
 #       Documentation/foo.html
-/node_modules
-*.jose
+./node_modules
+node_modules
+

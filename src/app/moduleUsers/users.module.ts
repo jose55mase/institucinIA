@@ -24,7 +24,6 @@ import { TypeUserPipe } from 'app/pipes/estatus-TypeUser.pipe';
     OverviewModule,
     FormsModule,
     RouterModule.forChild(UserRoutes),
-    
   ],
   entryComponents:[],
 })

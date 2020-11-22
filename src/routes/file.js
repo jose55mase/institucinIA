@@ -23,7 +23,7 @@ _router.post('/upload', function(req,res,next){
     });
 });
 _router.post('/download', function(req,res,next){
-    console.log("Jos esta aca")
+   
    // filepath = path.join(__dirname,'../uploads') +'/'+ req.body.filename;
     //res.sendFile(filepath);
 });

@@ -105,3 +105,9 @@ ul{
   /*change color of underline when focused*/
   background-color: #4EB0BB !important;
 }
+
+.aling-text{
+  text-align: justify;
+  texto-justify: inter-palabra;
+}
+

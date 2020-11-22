@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit {
         console.error(error);
       },
     );
+    
     */
     this.loginService.login().subscribe(
       res => {

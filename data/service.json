@@ -58,36 +58,6 @@
       "Password": "99999"
     },
     {
-      "id": 1590537600530,
-      "Documento": 595511,
-      "Nombre": "Diego Alejandro",
-      "Apellidos": "Tobar",
-      "Telefonos": 6126411,
-      "Email": "testin@email.com",
-      "Edad": 0,
-      "Grupo": "A2",
-      "Salon": 4,
-      "Grado": "Quinto",
-      "Rol": "Rector",
-      "dateCreate": "6-20-2020",
-      "Password": "11111"
-    },
-    {
-      "id": 1590537600532,
-      "Documento": 12345,
-      "Nombre": "Alejandra",
-      "Apellidos": "Tobar",
-      "Telefonos": 6248542,
-      "Email": "diego@gmail.com",
-      "Edad": 0,
-      "Grupo": "A1",
-      "Salon": 1,
-      "Grado": "Primero",
-      "Rol": "Maestro",
-      "dateCreate": "6-20-2020",
-      "Password": "11111"
-    },
-    {
       "id": 1593112002776,
       "Documento": "11111",
       "Nombre": "Prueba",
@@ -98,8 +68,9 @@
       "Grupo": "-----",
       "Salon": "jj",
       "Grado": "-----",
-      "Rol": "Secretaria",
-      "Password": "11111"
+      "Rol": "Estudiante",
+      "dateCreate": "10-11-2020",
+      "Password": "22222"
     },
     {
       "id": 1593348599202,
@@ -113,7 +84,37 @@
       "Salon": "",
       "Grado": "-----",
       "Rol": "Secretaria",
+      "dateCreate": "10-11-2020",
       "Password": "88888"
+    },
+    {
+      "id": 1602448176571,
+      "Documento": "123456789",
+      "Nombre": "Diego Estudiante",
+      "Apellidos": "Estudiante",
+      "Telefonos": "123456789",
+      "Email": "estudiante@gmail.com",
+      "Edad": 0,
+      "Grupo": "",
+      "Salon": "1",
+      "Grado": "",
+      "Rol": "Estudiante",
+      "dateCreate": "10-11-2020",
+      "Password": "123456789"
+    }, {
+      "id": 16024481742341,
+      "Documento": "55555",
+      "Nombre": "Diego Estudiante",
+      "Apellidos": "Estudiante",
+      "Telefonos": "123456789",
+      "Email": "estudiante@gmail.com",
+      "Edad": 0,
+      "Grupo": "-----",
+      "Salon": "",
+      "Grado": "-----",
+      "Rol": "Estudiante",
+      "dateCreate": "10-11-2020",
+      "Password": "55555"
     }
   ],
   "Actividades": [
