@@ -139,8 +139,7 @@ export class AddComponent implements OnInit {
       ])),
       Email:new FormControl('',Validators.compose([
         Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(30)      
+        Validators.email,      
       ])),
       Edad:new FormControl('',Validators.compose([
           
@@ -242,13 +241,13 @@ export class AddComponent implements OnInit {
       Nombre:this.checkoutForm1.value.Nombre,
       Apellidos: this.checkoutForm1.value.Apellidos,
       Telefonos : this.checkoutForm1.value.Telefonos,
-      Acudiente : this.checkoutForm1.value.Acudientem,
-      Direccion: this.checkoutForm1.value.Direccon,
+      Acudiente : this.checkoutForm1.value.Acudiente,
+      Direccion: this.checkoutForm1.value.Direccion,
       Email: this.checkoutForm1.value.Email,
       Edad : 0,
-      Grupo: this.checkoutForm2.value.Grupo ? "":"-----",
+      Grupo: this.checkoutForm2.value.Grupo ? "-----":"-----",
       Salon :this.checkoutForm2.value.Salon,
-      Grado: this.checkoutForm2.value.Grado ? "":"-----",
+      Grado: this.checkoutForm2.value.Grado ? "-----":"-----",
       Rol:this.checkoutForm2.value.Rol,
       dateCreate:`${new Date().getMonth()+1}-${new Date().getDate()}-${new Date().getFullYear()}`,
       Password:this.checkoutForm1.value.Documento
@@ -280,8 +279,8 @@ export class AddComponent implements OnInit {
       Nombre:this.checkoutForm1.value.Nombre,
       Apellidos: this.checkoutForm1.value.Apellidos,
       Telefonos : this.checkoutForm1.value.Telefonos,
-      Acudiente : this.checkoutForm1.value.Acudientem,
-      Direccion: this.checkoutForm1.value.Direccon,
+      Acudiente : this.checkoutForm1.value.Acudiente,
+      Direccion: this.checkoutForm1.value.Direccion,
       Email: this.checkoutForm1.value.Email,
       Edad : 0,
       Grupo: this.checkoutForm2.value.Grupo,

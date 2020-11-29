@@ -13,9 +13,9 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(): Observable<any> {
-   // console.log(3)
-
-    return this.http.get<any>('http://192.168.1.2:3000/Usuarios')
+    console.log()
+    return this.http.get<any>('http://127.0.0.1:3000/Usuarios')
+    //return this.http.get<any>('http://192.168.127.1:3000/Usuarios')
   }
 
 }

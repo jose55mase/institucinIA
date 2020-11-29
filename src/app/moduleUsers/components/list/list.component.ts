@@ -90,26 +90,29 @@ export class ListComponent implements OnInit {
   }
 
   public delete(data: ModuleAsignature) {
+    console.log(data)
+
+    this.objet = {
+      id : data.id,
+      
+    }
+    this.usersService.delete(this.objet).subscribe(
+      (response)=>{
+        this.getProductList();
+        this.notificationService.alert('', "Registro Desactivo", 'success');
+      },
+      (error)=>{
+        this.notificationService.alert('', "Error al Desactivar registro", 'error');
+      }
+    )
+      /*
     if (data.state==0) {      
       Swal.fire( "👮" ,  "Este registro ya esta desactivo" ,  "warning" )
       this.notificationService.alert('', "Ya Desactivo", 'warning');
     }else{      
-      this.objet = {
-        name : data.name,
-        id : data.id,
-        state:"0",
-      }
-      this.usersService.delete(this.objet).subscribe(
-        (response)=>{
-          this.getProductList();
-          this.notificationService.alert('', "Registro Desactivo", 'success');
-        },
-        (error)=>{
-          this.notificationService.alert('', "Error al Desactivar registro", 'error');
-        }
-      )
+      
     }
-
+*/
   }
   
   

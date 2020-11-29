@@ -13,7 +13,7 @@ CREATE TABLE USERS(
 );
 
 INSERT INTO USERS(id, nameUser, indentification, rol, correo, direccion, telefono, acudiente)
-        VALUE(1,"RUT ELSY", "4234242", "1", "RUT@ELSI.COM", "KR 34 # 75", "343-434-34", "MARTA")
+        VALUE(1,"RUTH ELSY", "4234242", "1", "RUT@ELSI.COM", "KR 34 # 75", "343-434-34", "MARTA")
 
 CREATE TABLE ROL(
     id int,
@@ -22,3 +22,21 @@ CREATE TABLE ROL(
 INSERT INTO ROL(id,rol)
        VALUE(1,"ADMINISTRADOR")     
 
+
+CREATE TABLE ASIGNATURE(
+    id asignature int,
+    nameAsignature varchar(50),
+    descripcion varchar(50),
+);
+
+CREATE TABLE NOTE(
+    id note int,
+    nameAsignature varchar(50),
+    descripcion varchar(50),
+);
+
+CREATE TABLE EVENTOS(
+    id evento int,
+    nameEvento varchar(50),
+    descripcion varchar(50),
+);

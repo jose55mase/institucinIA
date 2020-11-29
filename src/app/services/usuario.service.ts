@@ -26,7 +26,7 @@ export class UsersService {
   }
 
   delete(data): Observable<any> {   
-    return this.http.post<any>(`${this.URI}/service/delete`,data)
+    return this.http.delete<any>(`${this.URI}/Usuarios/${data.id}`)
   }
   
 }

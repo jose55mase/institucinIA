@@ -1,6 +1,11 @@
-import { Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject, Input, Output, 
+  EventEmitter, ViewChild,Pipe, PipeTransform } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http'
+import { DomSanitizer } from "@angular/platform-browser";
+import { SafeResourceUrl } from '@angular/platform-browser';
+
+
 
 
 @Component({
@@ -12,7 +17,13 @@ import { HttpClient } from '@angular/common/http'
   
 })
 export class AsignatureComponent implements OnInit {
-    ngOnInit(){
 
-    }
+  //url: string = "http://192.168.1.6:8000/materias/";
+  //urlSafe: SafeResourceUrl;
+
+  //constructor(public sanitizer: DomSanitizer){}
+
+  ngOnInit() {
+    //this.urlSafe= this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+  }
 }

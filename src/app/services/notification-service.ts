@@ -13,7 +13,7 @@ export class NotificationService {
 
   /**
    * @date (12-05-2020)
-   * @author Castañeda Luis CC <jose.castaneda@grupokonecta.com>
+   * @author RuthFo <retobar6@misena.edu.co>
    * @description Metodo par mostrar las notificaciones
    * @params { strTitle, strMessage, strType } datos para el mensaje
   **/
